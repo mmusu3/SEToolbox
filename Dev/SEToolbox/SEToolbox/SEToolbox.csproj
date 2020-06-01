@@ -105,58 +105,58 @@
       <HintPath>..\References\HelixToolkit.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="ProtoBuf.Net">
-      <HintPath>$(BinPath)\ProtoBuf.Net.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\ProtoBuf.Net.dll</HintPath>
     </Reference>
     <Reference Include="ProtoBuf.Net.Core">
-      <HintPath>$(BinPath)\ProtoBuf.Net.Core.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\ProtoBuf.Net.Core.dll</HintPath>
     </Reference>
     <Reference Include="Sandbox.Common">
-      <HintPath>$(BinPath)\Sandbox.Common.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\Sandbox.Common.dll</HintPath>
     </Reference>
     <Reference Include="Sandbox.Game">
-      <HintPath>$(BinPath)\Sandbox.Game.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\Sandbox.Game.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.DXGI">
-      <HintPath>$(BinPath)\SharpDX.DXGI.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\SharpDX.DXGI.dll</HintPath>
     </Reference>
     <Reference Include="SpaceEngineers.Game">
-      <HintPath>$(BinPath)\SpaceEngineers.Game.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\SpaceEngineers.Game.dll</HintPath>
     </Reference>
     <Reference Include="SpaceEngineers.ObjectBuilders">
-      <HintPath>$(BinPath)\SpaceEngineers.ObjectBuilders.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\SpaceEngineers.ObjectBuilders.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.SQLite">
       <HintPath>$(BinPath)\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="VRage">
-      <HintPath>$(BinPath)\VRage.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.dll</HintPath>
     </Reference>
     <Reference Include="VRage.Game">
-      <HintPath>$(BinPath)\VRage.Game.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Game.dll</HintPath>
     </Reference>
     <Reference Include="VRage.Input">
-      <HintPath>$(BinPath)\VRage.Input.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Input.dll</HintPath>
     </Reference>
     <Reference Include="VRage.Library">
-      <HintPath>$(BinPath)\VRage.Library.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Library.dll</HintPath>
     </Reference>
     <Reference Include="VRage.Math">
-      <HintPath>$(BinPath)\VRage.Math.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Math.dll</HintPath>
     </Reference>
     <Reference Include="VRage.NativeWrapper">
-      <HintPath>$(BinPath)\VRage.NativeWrapper.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.NativeWrapper.dll</HintPath>
     </Reference>
     <Reference Include="VRage.Render">
-      <HintPath>$(BinPath)\VRage.Render.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Render.dll</HintPath>
     </Reference>
     <Reference Include="VRage.Render11">
-      <HintPath>$(BinPath)\VRage.Render11.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Render11.dll</HintPath>
     </Reference>
     <Reference Include="VRage.Steam">
-      <HintPath>$(BinPath)\VRage.Steam.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Steam.dll</HintPath>
     </Reference>
     <Reference Include="Steamworks.NET">
-      <HintPath>$(BinPath)\Steamworks.NET.dll</HintPath>
+      <HintPath>G:\Steam\steamapps\common\SpaceEngineers\Bin64\Steamworks.NET.dll</HintPath>
     </Reference>
     <ProjectReference Include="..\SEToolbox.Image.Library\SEToolbox.ImageLibrary.csproj">
       <Project>{e78476cb-bc3d-4265-806d-96f09229a449}</Project>

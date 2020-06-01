@@ -329,12 +329,12 @@
             <ToolBarPanel DockPanel.Dock="Top" Visibility="{Binding IsDebugger, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <ToolBar>
                     <Button Content="Clear" Command="{Binding ClearCommand}"/>
-                    <Button Content="Test1" ToolTip="Create test structure for smoothing." Command="{Binding Test1Command}"/>
-                    <Button Content="Test2" ToolTip="Optimise structure" Command="{Binding Test2Command}"/>
-                    <Button Content="Test3" ToolTip="Create 1/2 test model" Command="{Binding Test3Command}"/>
-                    <Button Content="Test4" ToolTip="Mirror Structure" Command="{Binding Test4Command}"/>
-                    <Button Content="Test5" ToolTip="Count orientations" Command="{Binding Test5Command}"/>
-                    <Button Content="Test6" ToolTip="Test converter" Command="{Binding Test6Command}"/>
+                    <Button Content="Test: Smooth" ToolTip="Create test structure for smoothing." Command="{Binding Test1Command}"/>
+                    <Button Content="Test: Optimise" ToolTip="Optimise structure" Command="{Binding Test2Command}"/>
+                    <Button Content="Test: 1/2 Model" ToolTip="Create 1/2 test model" Command="{Binding Test3Command}"/>
+                    <Button Content="Test: Mirror" ToolTip="Mirror Structure" Command="{Binding Test4Command}"/>
+                    <Button Content="Test: Orientation" ToolTip="Count orientations" Command="{Binding Test5Command}"/>
+                    <Button Content="Test: Converter" ToolTip="Test converter" Command="{Binding Test6Command}"/>
                 </ToolBar>
             </ToolBarPanel>
             <StatusBar DockPanel.Dock="Bottom">
