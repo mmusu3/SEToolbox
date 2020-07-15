@@ -1,10 +1,9 @@
-﻿<Window 
+﻿<Window
     x:Class="SEToolbox.Views.WindowSplashScreen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:SEToolbox.Converters"
-    Title="SE Toolbox" Height="256" Width="256" WindowStartupLocation="CenterScreen" WindowStyle="None" 
-        ShowInTaskbar="False" ResizeMode="NoResize" AllowsTransparency="True">
+    Title="SE Toolbox" Height="256" Width="256" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True">
     <Window.Resources>
         <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
     </Window.Resources>

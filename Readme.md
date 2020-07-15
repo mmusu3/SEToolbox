@@ -7,7 +7,15 @@ Created by Mid-Space productions. Est. 1993
 ![](http://i.imgur.com/429uvwe.jpg)
 
 
-## Currently dead as of 2019-08-23 due to changes in the major game update containing Economy.
+#### This is a fork of the original version with updates to fix compatibility issues with newer versions of Space Engineers.
+The [original version](https://github.com/midspace/SEToolbox) is no longer maintained since Midpsace has retired from working on SE Toolbox as of 2019-08-23 due to changes in the major game update containing Economy. This was after putting SE Toolbox into maintainance mode as described [here](https://forum.keenswh.com/threads/7402115/).
+
+I am not taking over active development of SE Toolbox, only providing compatibilty fixes as they are needed.
+
+[Download the latest version here](https://github.com/mmusu3/SEToolbox/releases/latest).
+
+Check the [wiki](https://github.com/midspace/SEToolbox/wiki) for help using the application.
+
 
 ---
 
@@ -20,42 +28,8 @@ For more details on the game, please visit the following links.
 
 ---
 
-### Installation
-
-* [Download the latest version](https://github.com/midspace/SEToolbox/releases/latest).
-* Details on [Installation/Runtime requirements](https://github.com/midspace/SEToolbox/wiki/System-Requirements).
-* We invite you to ask questions at the official KeenSWH forum, on the [SEToolbox thread](http://forums.keenswh.com/threads/6638984/).
-
-Before asking any question please read the [documentation (FAQ)](https://github.com/midspace/SEToolbox/wiki) first as your question may have already been answered.
-
-
-### Issues
-* Currently documented issues are [listed here](https://github.com/midspace/SEToolbox/wiki/Current-Issues).
-* Please submit any new issues here [here](https://github.com/midspace/SEToolbox/issues/new).
-
-
-### Contributing
-If you are interested in fixing issues and contributing directly to the code base, please see our document on [working with and developing SEToolbox](https://github.com/midspace/SEToolbox/wiki/Working-with-and-developing-SEToolbox).
-
-
 #### License
 
 This application contains code expressly licenced to it, and should not be used in any other application without the permission of Keen Software House.
 
 The Space Engineers logo was sourced from spaceengineerswiki.com under creative commons.
-
--/-
-/
-SEToolbox was started in 2013 soon after Space Engineers was released for Early Access, and has been worked on in my free time.
-There is no requirement for any individual to donate.
-[![](https://www.paypalobjects.com/en_AU/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5V7JL6CDGHCYL)
-
-
----
-
-### Maintainence only
-
-I [midspace](https://github.com/midspace) have stopped working on Space Engineers related stuff.
-I will only be fixing issues that cause SEToolbox to crash. I won't be adding or enhancing any further features.
-There is a lengthy post [here](https://forum.keenswh.com/threads/7402115/) on the Keen forums about this decision.
-I'm open to other developers taking over, or at least contributing further to SEToolbox.

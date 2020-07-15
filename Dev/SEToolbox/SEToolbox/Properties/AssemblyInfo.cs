@@ -54,5 +54,5 @@ using System.Windows;
 // First 3 numbers to match the current Space Engineers release.
 // http://forums.keenswh.com/post/about-change-log-6578819
 // Forth number to indicate my own build of SEToolbox to match. Remember to reset it back to 1 every time there is a new release of SpaceEngineers.
-[assembly: AssemblyFileVersion("01.194.207.1")]
+[assembly: AssemblyFileVersion("01.195.018.1")]
 

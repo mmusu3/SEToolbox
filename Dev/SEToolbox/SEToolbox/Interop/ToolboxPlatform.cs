@@ -103,6 +103,8 @@ namespace SEToolbox.Interop
 
         public bool IsDeprecatedOS => throw new NotImplementedException();
 
+        public bool IsMemoryLimited => throw new NotImplementedException();
+
         public event Action<IntPtr> OnSystemProtocolActivated;
 
         (string Name, uint MaxClock, uint Cores) m_cpuInfo;
@@ -192,6 +194,21 @@ namespace SEToolbox.Interop
         {
             Console.WriteLine(msg);
         }
+
+        public void GetGCMemory(out float allocated, out float used)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnThreadpoolInitialized()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogRuntimeInfo(Action<string> log)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class VRageRenderImpl : IVRageRender
@@ -229,6 +246,11 @@ namespace SEToolbox.Interop
         }
 
         public ulong GetMemoryBudgetForStreamedResources()
+        {
+            return 0;
+        }
+
+        public ulong GetMemoryBudgetForGeneratedTextures()
         {
             return 0;
         }
