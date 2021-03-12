@@ -127,6 +127,19 @@ namespace SEToolbox.Interop
 
         (string Name, uint MaxClock, uint Cores) m_cpuInfo;
 
+        event Action IVRageSystem.OnResuming
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public string GetAppDataPath()
         {
             throw new NotImplementedException();
@@ -239,6 +252,11 @@ namespace SEToolbox.Interop
         }
 
         public int? GetExperimentalPCULimit(int safePCULimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        DateTime IVRageSystem.GetNetworkTimeUTC()
         {
             throw new NotImplementedException();
         }
