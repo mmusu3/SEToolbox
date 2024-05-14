@@ -442,7 +442,7 @@
 
         const MethodImplOptions Inline = MethodImplOptions.AggressiveInlining;
 
-        struct XAxisSelector : IAxisValueSelector
+        readonly struct XAxisSelector : IAxisValueSelector
         {
             public int Axis { [MethodImpl(Inline)] get => 0; }
 
@@ -453,7 +453,7 @@
             public void UpdateRelCoord(ref int x, ref int y, ref int z, int c, int axisMin) { x = c - axisMin; }
         }
 
-        struct YAxisSelector : IAxisValueSelector
+        readonly struct YAxisSelector : IAxisValueSelector
         {
             public int Axis { [MethodImpl(Inline)] get => 1; }
 
@@ -464,7 +464,7 @@
             public void UpdateRelCoord(ref int x, ref int y, ref int z, int c, int axisMin) { y = c - axisMin; }
         }
 
-        struct ZAxisSelector : IAxisValueSelector
+        readonly struct ZAxisSelector : IAxisValueSelector
         {
             public int Axis { [MethodImpl(Inline)] get => 2; }
 
@@ -699,7 +699,7 @@
                 TestRayIndex = testRayIndex;
             }
 
-            public bool Equals(RayHit other)
+            public readonly bool Equals(RayHit other)
             {
                 return Point == other.Point && Face == other.Face && TestRayIndex == other.TestRayIndex;
             }
