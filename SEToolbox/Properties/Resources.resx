@@ -3085,6 +3085,12 @@ Reason: {1}</value>
   <data name="DialogNoNetworkTitle" xml:space="preserve">
     <value>Can not find update</value>
   </data>
+  <data name="WnExplorerMnuExportCAD" xml:space="preserve">
+    <value>Export CAD</value>
+  </data>
+  <data name="WnExplorerMnuExportCADTooltip" xml:space="preserve">
+    <value>Export model to SECAD ldr file.</value>
+  </data>
   <data name="CtlCubeMnuConvertSetPivotPoint" xml:space="preserve">
     <value>Set Pivot Point</value>
   </data>

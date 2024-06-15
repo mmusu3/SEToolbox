@@ -1,6 +1,7 @@
 ﻿namespace SEToolbox.ViewModels
 {
     using Sandbox.Common.ObjectBuilders;
+    using Sandbox.Definitions;
     using SEToolbox.Interfaces;
     using SEToolbox.Interop;
     using SEToolbox.Interop.Asteroids;
@@ -141,6 +142,8 @@
         public ICommand ExportSpawnGroupObjectCommand => new DelegateCommand(ExportSpawnGroupObjectExecuted, ExportSpawnGroupObjectCanExecute);
 
         public ICommand ExportBlueprintCommand => new DelegateCommand(ExportBlueprintExecuted, ExportBlueprintCanExecute);
+
+        public ICommand ExportCADCommand => new DelegateCommand(ExportCADExecuted, ExportCADCanExecute);
 
         public ICommand CreateFloatingItemCommand => new DelegateCommand(CreateFloatingItemExecuted, CreateFloatingItemCanExecute);
 
@@ -772,6 +775,17 @@
         public void ExportBlueprintExecuted()
         {
             ExportBlueprintToFile(Selections.ToArray());
+        }
+
+        public bool ExportCADCanExecute()
+        {
+            return _dataModel.ActiveWorld != null && _dataModel.ActiveWorld.IsValid && Selections.Count > 0 &&
+                Selections.Any(e => e is StructureCubeGridViewModel);
+        }
+
+        public void ExportCADExecuted()
+        {
+            ExportCADToFile(Selections.ToArray());
         }
 
         public bool CreateFloatingItemCanExecute()
@@ -2033,6 +2047,117 @@
 
                 SpaceEngineersApi.WriteSpaceEngineersFile(blueprintDefinition, Path.Combine(blueprintPath, "bp.sbc"));
                 SpaceEngineersApi.WriteSpaceEngineersFilePB(blueprintDefinition, Path.Combine(blueprintPath, $"bp.sbc{SpaceEngineersConsts.ProtobuffersExtension}"), false);
+            }
+        }
+
+        public void ExportCADToFile(params IStructureViewBase[] viewModels)
+        {
+            string localBlueprintsFolder = null;
+            if (string.IsNullOrEmpty(_dataModel.ActiveWorld.DataPath.BlueprintsPath))
+            {
+                // There is no blueprints under Dedicated Server, so cannot find the blueprint folder to save to.
+                _dialogService.ShowMessageBox(this, Res.ErrorNoBlueprintPath, Res.ErrorNoBlueprintPathTitle, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Hand);
+                return;
+            }
+            localBlueprintsFolder = Path.Combine(_dataModel.ActiveWorld.DataPath.BlueprintsPath, SpaceEngineersConsts.LocalBlueprintsSubFolder);
+
+            var saveFileDialog = _saveFileDialogFactory();
+            saveFileDialog.Filter = "SECAD Model File|*.ldr";//AppConstants.CADExportFilter;
+            saveFileDialog.Title = "Export to SECAD";//Res.DialogExportCADTitle;
+            saveFileDialog.FileName = "export cad.ldr";
+            saveFileDialog.OverwritePrompt = true;
+
+            if (_dialogService.ShowSaveFileDialog(this, saveFileDialog) == DialogResult.OK)
+            {
+                // open the file for writing
+                using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName, false, Encoding.ASCII))
+                {
+                    // write the header
+                    sw.WriteLine("0 SECAD Model File");
+                    sw.WriteLine("0 Name: " + Path.GetFileNameWithoutExtension(saveFileDialog.FileName));
+                    sw.WriteLine("0 Author: SEToolbox");
+                    sw.WriteLine("0 Unofficial Model");
+                    sw.WriteLine("0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt");
+
+                    // write the model
+                    foreach (var viewModel in viewModels)
+                    {
+                        if (viewModel is StructureCubeGridViewModel)
+                        {
+                            var model = (StructureCubeGridViewModel)viewModel;
+                            var testing = (StructureCubeGridViewModel)viewModel;
+                            foreach (var block in testing.CubeList)
+                            {
+                                MyCubeBlockDefinition definition = SpaceEngineersApi.GetCubeDefinition(block.TypeId, block.CubeSize, block.SubtypeId);
+                                System.Windows.Media.Brush clr = block.Color;
+                                BindablePoint3DIModel pos = block.Position;
+                                Vector3I sz = definition.Size;
+                                // format for output is 1 < colour > x y z a b c d e f g h i < file >
+                                sw.WriteLine(string.Format("0 {0} {1},{2},{3}", block.FriendlyName, sz.X, sz.Y, sz.Z));
+                                string line;
+                                if (block.TypeId == typeof(MyObjectBuilder_Thrust))
+                                {
+                                    line = string.Format("1 9 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Thruster.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_Reactor))
+                                {
+                                    line = string.Format("1 17 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Reactor.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_LandingGear))
+                                {
+                                    line = string.Format("1 73 {1} {2} {3} 1 0 0 0 1 0 0 0 1 LandingGear.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_Beacon))
+                                {
+                                    line = string.Format("1 25 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Beacon.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_Refinery))
+                                {
+                                    line = string.Format("1 70 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Refinery.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_Assembler))
+                                {
+                                    line = string.Format("1 15 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Assembler.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_CargoContainer))
+                                {
+                                    line = string.Format("1 19 {1} {2} {3} 1 0 0 0 1 0 0 0 1 CargoContainer.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_Gyro))
+                                {
+                                    line = string.Format("1 74 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Gyro.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_CubeBlock))
+                                {
+                                    if (block.SubtypeId == "LargeHeavyBlockArmorBlock")
+                                    {
+                                        line = string.Format("1 8 {1} {2} {3} 1 0 0 0 1 0 0 0 1 LightArmour.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                    }
+                                    else
+                                    {
+                                        line = string.Format("1 7 {1} {2} {3} 1 0 0 0 1 0 0 0 1 LightArmour.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                    }
+                                }
+                                else if (block.TypeId == typeof(MyObjectBuilder_ConveyorConnector))
+                                {
+                                    line = string.Format("1 27 {1} {2} {3} 1 0 0 0 1 0 0 0 1 ConveyorTube.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
+                                }
+                                else
+                                {
+                                    if (block.SubtypeId == "")
+                                    { 
+                                        line = string.Format("0 0 {1} {2} {3} 1 0 0 0 1 0 0 0 1 {4}.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20, block.TypeId.ToString());
+                                    }
+                                    else 
+                                    { 
+                                        line = string.Format("0 0 {1} {2} {3} 1 0 0 0 1 0 0 0 1 {4}.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20, block.SubtypeId);
+                                    }
+                                }
+                                sw.WriteLine(line);
+                            }
+                        }
+                    }
+                }
             }
         }
 
