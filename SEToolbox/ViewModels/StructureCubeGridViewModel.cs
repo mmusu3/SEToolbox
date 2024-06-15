@@ -156,6 +156,8 @@
 
         public ICommand ConvertCubeToFrameworkCommand => new DelegateCommand<double>(ConvertCubeToFrameworkExecuted, ConvertCubeToFrameworkCanExecute);
 
+        public ICommand ConvertCubeSetPivotPntHere => new DelegateCommand(ConvertCubeSetPivotPointHereExecuted, ConvertCubeSetPivotPointHereCanExecute);
+
         public ICommand ReplaceCubesCommand => new DelegateCommand(ReplaceCubesExecuted, ReplaceCubesCanExecute);
 
         public ICommand ColorCubesCommand => new DelegateCommand(ColorCubesExecuted, ColorCubesCanExecute);
@@ -574,6 +576,20 @@
         public bool ConvertCubeToFrameworkCanExecute(double value)
         {
             return SelectedCubeItem != null;
+        }
+
+        public void ConvertCubeSetPivotPointHereExecuted() 
+        {
+            DataModel.SetPivotPntHere(SelectedCubeItem);
+            MainViewModel.IsModified = true;
+            MainViewModel.CalcDistances();
+            IsSubsSystemNotReady = true;
+            DataModel.InitializeAsync();
+        }
+
+        public bool ConvertCubeSetPivotPointHereCanExecute()
+        {
+            return Selections.Count == 1;
         }
 
         public void ConvertCubeToFrameworkExecuted(double value)

@@ -1057,6 +1057,48 @@
             return count > 0;
         }
 
+        public bool SetPivotPntHere(ViewModels.CubeItemViewModel selectedCubeItem)
+        {
+            // Is the selectedCubeItem the pivot point?
+            var definitionS = SpaceEngineersApi.GetCubeDefinition(selectedCubeItem.TypeId, CubeGrid.GridSizeEnum, selectedCubeItem.SubtypeId);
+            SerializableBlockOrientation blockOrientation = selectedCubeItem.Cube.BlockOrientation;
+            var cubePos = selectedCubeItem.Cube.Min.ToVector3I();
+            if (definitionS.Size.X == 1 && definitionS.Size.Y == 1 && definitionS.Size.Z == 1) 
+            { 
+            }
+            else
+            {
+                var orientCenter = definitionS.Center.Transform(blockOrientation).Abs();
+                cubePos = selectedCubeItem.Cube.Min.ToVector3I() + orientCenter;
+            }
+            if(cubePos.X == 0 && cubePos.Y == 0 && cubePos.Z == 0)
+            {
+                return false;
+            }
+
+            //Update the position of each cube to be relative to the selected cube.
+            var position = selectedCubeItem.Position;
+            foreach (var cube in CubeGrid.CubeBlocks)
+            {
+                // Offset the cube's position by the passed position.
+                cube.Min = new SerializableVector3I(cube.Min.X - cubePos.X, cube.Min.Y - cubePos.Y, cube.Min.Z - cubePos.Z);
+            }
+
+            //Offset the ship's position by the passed position.
+            var pivot = CubeGrid.PositionAndOrientation.Value.Position;
+            var scaledPosition = new VRageMath.Vector3D(cubePos.X, cubePos.Y, cubePos.Z);
+            scaledPosition *= CubeGrid.GridSizeEnum == MyCubeSize.Large ? 2.5 : 1.0;
+            CubeGrid.PositionAndOrientation = new MyPositionAndOrientation
+            {
+                Position = new VRageMath.Vector3D(pivot.X + scaledPosition.X, pivot.Y + scaledPosition.Y, pivot.Z + scaledPosition.Z),
+                Forward = CubeGrid.PositionAndOrientation.Value.Forward,
+                Up = CubeGrid.PositionAndOrientation.Value.Up
+            };
+
+
+            return true;
+        }
+
         #region Mirror
 
         public bool MirrorModel(bool usePlane, bool oddMirror)
