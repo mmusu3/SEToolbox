@@ -433,7 +433,7 @@
 
         public bool SaveCanExecute()
         {
-            return _dataModel.ActiveWorld != null  && _dataModel.ActiveWorld.IsValid &&
+            return _dataModel.ActiveWorld != null && _dataModel.ActiveWorld.IsValid &&
                 ((_dataModel.ActiveWorld.SaveType != SaveWorldType.DedicatedServerService && _dataModel.ActiveWorld.SaveType != SaveWorldType.CustomAdminRequired)
                 || ((_dataModel.ActiveWorld.SaveType == SaveWorldType.DedicatedServerService || _dataModel.ActiveWorld.SaveType == SaveWorldType.CustomAdminRequired)
                     && ToolboxUpdater.IsRuningElevated()));
@@ -1219,10 +1219,10 @@
             int count = SetInertiaTensor(Selections, true);
             IsBusy = false;
 
-            _dialogService.ShowMessageBox(this, 
-                string.Format(Res.ClsExplorerGridChangesMade, count), 
-                Res.ClsExplorerTitleChangesMade, 
-                System.Windows.MessageBoxButton.OK, 
+            _dialogService.ShowMessageBox(this,
+                string.Format(Res.ClsExplorerGridChangesMade, count),
+                Res.ClsExplorerTitleChangesMade,
+                System.Windows.MessageBoxButton.OK,
                 System.Windows.MessageBoxImage.Information);
         }
 
@@ -2078,82 +2078,151 @@
                     sw.WriteLine("0 Author: SEToolbox");
                     sw.WriteLine("0 Unofficial Model");
                     sw.WriteLine("0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt");
+                    sw.WriteLine("0 Forward UP");
+                    sw.WriteLine("");
+
+                    // Rotation matrix around X axis
+                    Matrix matrix = Matrix.CreateFromAxisAngle(Vector3.UnitX, MathHelper.ToRadians(0));
 
                     // write the model
                     foreach (var viewModel in viewModels)
                     {
-                        if (viewModel is StructureCubeGridViewModel)
+                        if (viewModel is StructureCubeGridViewModel model)
                         {
-                            var model = (StructureCubeGridViewModel)viewModel;
-                            var testing = (StructureCubeGridViewModel)viewModel;
-                            foreach (var block in testing.CubeList)
+                            foreach (CubeItemViewModel block in model.CubeList)
                             {
                                 MyCubeBlockDefinition definition = SpaceEngineersApi.GetCubeDefinition(block.TypeId, block.CubeSize, block.SubtypeId);
                                 System.Windows.Media.Brush clr = block.Color;
                                 BindablePoint3DIModel pos = block.Position;
                                 Vector3I sz = definition.Size;
+                                SerializableBlockOrientation blockOrientation = block.Cube.BlockOrientation;
+
+                                MatrixI mt = new MatrixI(blockOrientation);
+                                Vector3I posT = Vector3.Transform(pos.ToVector3I(), matrix).RoundToVector3I();
+                                mt.ForwardVector = new Vector3I(mt.ForwardVector.X, mt.ForwardVector.Y, mt.ForwardVector.Z);
+
+                                // mt.Translation = pos.ToVector3I();
+                                // Matrix mtF = mt.GetFloatMatrix();
+
+                                // Matrix mtPO = new SerializableBlockOrientation(Base6Directions.Direction.Up, Base6Directions.Direction.Forward).ToQuaternion().ToMatrix(); // model.DataModel.PositionAndOrientation.Value.ToMatrix();
+                                // mtPO = Matrix.Invert(mtPO);
+                                // Matrix mtX = Matrix.Multiply(mtPO, mtF);
+                                // mtX = Matrix.Round(ref mtX);
+
                                 // format for output is 1 < colour > x y z a b c d e f g h i < file >
-                                sw.WriteLine(string.Format("0 {0} {1},{2},{3}", block.FriendlyName, sz.X, sz.Y, sz.Z));
+                                sw.WriteLine(string.Format("0 TypeId: {0} SubTypeId: {1}", block.TypeId.ToString(), block.SubtypeId));
+                                sw.WriteLine(string.Format("0 {0}|Size:{1,3},{2,3},{3,3}|Orientation:{4,3} {5,3}|Pos:{6,3} {7,3} {8,3}", block.FriendlyName, sz.X, sz.Y, sz.Z,
+                                    blockOrientation.Forward.ToString(), blockOrientation.Up.ToString(), pos.X, pos.Y, pos.Z));
+
+                                //Matrix m0 = mt.GetFloatMatrix();
+                                //Matrix m1 = new Matrix(1,0,0,0,1,0,0,0,-1);
+                                //Matrix.Invert(ref m1, out m1);
+
+                                //Matrix m2 = Matrix.Multiply(m0, m1);
+                                string posStr = string.Format("{0,3} {1,3} {2,3}", posT.X * 10, posT.Z * 10, posT.Y * 10);
+
+                                sw.WriteLine("0                      RIGHT          UP          FORWARD");
+                                sw.WriteLine("0                   _X_ _Y_ _Z_   _X_ _Y_ _Z_   _X_ _Y_ _Z_");
+                                string vecStr = string.Format("{0,3} {1,3} {2,3}   {3,3} {4,3} {5,3}   {6,3} {7,3} {8,3}",
+                                                                mt.RightVector.X, mt.RightVector.Y, mt.RightVector.Z,
+                                                                mt.UpVector.X, mt.UpVector.Y, mt.UpVector.Z,
+                                                                mt.ForwardVector.X, mt.ForwardVector.Y, mt.ForwardVector.Z);
+
+                                sw.WriteLine("0 blockOrientation: {0}", vecStr);
+                                sw.WriteLine("0");
+                                sw.WriteLine("0                       RIGHT          UP          FORWARD");
+                                sw.WriteLine("0 CLR _X_ _Y_ _Z_   _X_ _Y_ _Z_   _X_ _Y_ _Z_   _X_ _Y_ _Z_");
+
+                                MatrixI localMatrix = new MatrixI(Base6Directions.Direction.Forward, Base6Directions.Direction.Up);
+                                Vector3I normal = definition.Center;
+                                Vector3I normal2 = definition.Size - 1;
+                                Vector3I.TransformNormal(ref normal2, ref localMatrix, out Vector3I result);
+                                Vector3I.TransformNormal(ref normal, ref localMatrix, out Vector3I result2);
+                                Vector3I vector3I = Vector3I.Abs(result);
+                                Vector3I result3 = result2 + block.Cube.Min;
+
+                                if (result.X != vector3I.X)
+                                {
+                                    result3.X += vector3I.X;
+                                }
+                                if (result.Y != vector3I.Y)
+                                {
+                                    result3.Y += vector3I.Y;
+                                }
+                                if (result.Z != vector3I.Z)
+                                {
+                                    result3.Z += vector3I.Z;
+                                }
+
+
                                 string line;
-                                if (block.TypeId == typeof(MyObjectBuilder_Thrust))
+                                switch (block.TypeId.ToString())
                                 {
-                                    line = string.Format("1 9 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Thruster.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_Reactor))
-                                {
-                                    line = string.Format("1 17 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Reactor.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_LandingGear))
-                                {
-                                    line = string.Format("1 73 {1} {2} {3} 1 0 0 0 1 0 0 0 1 LandingGear.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_Beacon))
-                                {
-                                    line = string.Format("1 25 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Beacon.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_Refinery))
-                                {
-                                    line = string.Format("1 70 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Refinery.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_Assembler))
-                                {
-                                    line = string.Format("1 15 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Assembler.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_CargoContainer))
-                                {
-                                    line = string.Format("1 19 {1} {2} {3} 1 0 0 0 1 0 0 0 1 CargoContainer.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_Gyro))
-                                {
-                                    line = string.Format("1 74 {1} {2} {3} 1 0 0 0 1 0 0 0 1 Gyro.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_CubeBlock))
-                                {
-                                    if (block.SubtypeId == "LargeHeavyBlockArmorBlock")
-                                    {
-                                        line = string.Format("1 8 {1} {2} {3} 1 0 0 0 1 0 0 0 1 LightArmour.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                    }
-                                    else
-                                    {
-                                        line = string.Format("1 7 {1} {2} {3} 1 0 0 0 1 0 0 0 1 LightArmour.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                    }
-                                }
-                                else if (block.TypeId == typeof(MyObjectBuilder_ConveyorConnector))
-                                {
-                                    line = string.Format("1 27 {1} {2} {3} 1 0 0 0 1 0 0 0 1 ConveyorTube.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20);
-                                }
-                                else
-                                {
-                                    if (block.SubtypeId == "")
-                                    { 
-                                        line = string.Format("0 0 {1} {2} {3} 1 0 0 0 1 0 0 0 1 {4}.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20, block.TypeId.ToString());
-                                    }
-                                    else 
-                                    { 
-                                        line = string.Format("0 0 {1} {2} {3} 1 0 0 0 1 0 0 0 1 {4}.dat", clr, pos.X * 20, pos.Y * 20, pos.Z * 20, block.SubtypeId);
-                                    }
+                                    case "MyObjectBuilder_Thrust":
+                                        line = string.Format("1 9   {1}   {2} Thruster.dat", 9, posStr, "  1   0   0     0   1   0     0   0   1");
+                                        break;
+                                    case "MyObjectBuilder_Reactor":
+                                        line = string.Format("1 17  {1}   {2} Lrg1x1x1.dat", 17, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_LandingGear":
+                                        line = string.Format("1 73  {1}   {2} LandingGear.dat", 73, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_Beacon":
+                                        line = string.Format("1 25  {1}   {2} Beacon.dat", 25, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_Refinery":
+                                        line = string.Format("1 70  {1}   {2} Refinery.dat", 70, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_Assembler":
+                                        line = string.Format("1 {0,3} {1}   {2} Assembler.dat", 15, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_CargoContainer":
+                                        line = string.Format("1 19  {1}   {2} Lrg1x1x1.dat", 19, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_Gyro":
+                                        line = string.Format("1 74  {1}   {2} Lrg1x1x1.dat", 74, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_CubeBlock":
+                                        if (block.SubtypeId == "LargeHeavyBlockArmorBlock")
+                                        {
+                                            line = string.Format("1 8   {1}   {2} LightArmour.dat", 8, posStr, vecStr);
+                                        }
+                                        else
+                                        {
+                                            line = string.Format("1 {0,-3} {1}   {2} LightArmour.dat", 7, posStr, vecStr);
+                                        }
+                                        break;
+                                    case "MyObjectBuilder_ConveyorConnector":
+                                        line = string.Format("1 27  {1}   {2} Lrg1x1x1.dat", 27, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_ShipConnector":
+                                        line = string.Format("1 27  {1}   {2} Lrg1x1x1.dat", 27, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_Cockpit":
+                                        line = string.Format("1 2   {1}   {2} Cockpit.dat", 2, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_ShipWelder":
+                                        line = string.Format("1 29  {1}   {2} Lrg1x1x2.dat", 29, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_OxygenTank":
+                                        line = string.Format("1 14  {1}   {2} OxygenTank.dat", 14, posStr, vecStr);
+                                        break;
+                                    case "MyObjectBuilder_OreDetector":
+                                        line = string.Format("1 15  {1}   {2} OreDetector.dat", 15, posStr, vecStr);
+                                        break;
+                                    default:
+                                        if (block.SubtypeId == "")
+                                        {
+                                            line = string.Format("1 0   {1}   {2} {5}.dat", 0, posStr, vecStr, block.TypeId.ToString());
+                                        }
+                                        else
+                                        {
+                                            line = string.Format("1 0   {1}   {2} {5}.dat", 0, posStr, vecStr, block.SubtypeId);
+                                        }
+                                        break;
                                 }
                                 sw.WriteLine(line);
+                                sw.WriteLine("");
                             }
                         }
                     }
