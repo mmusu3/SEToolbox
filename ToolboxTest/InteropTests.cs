@@ -41,7 +41,7 @@
         {
             var contentPath = ToolboxUpdater.GetApplicationContentPath();
 
-            var fighterPath = Path.Combine(contentPath, @"Data\Prefabs\Fighter.sbc");
+            var fighterPath = Path.Combine(contentPath, @"Data\Prefabs\LegacyContent\Fighter.sbc");
             Assert.IsTrue(File.Exists(fighterPath), "Sandbox content file should exist");
 
             MyObjectBuilder_Definitions prefabDefinitions;
@@ -60,7 +60,7 @@
         {
             var contentPath = ToolboxUpdater.GetApplicationContentPath();
 
-            var baseEasyStart1Path = Path.Combine(contentPath, $@"Data\Prefabs\LargeShipRed.sbc{SpaceEngineersConsts.ProtobuffersExtension}");
+            var baseEasyStart1Path = Path.Combine(contentPath, $@"Data\Prefabs\LegacyContent\LargeShipRed.sbc{SpaceEngineersConsts.ProtobuffersExtension}");
             Assert.IsTrue(File.Exists(baseEasyStart1Path), "Sandbox content file should exist");
 
             MyObjectBuilder_Definitions prefabDefinitions;

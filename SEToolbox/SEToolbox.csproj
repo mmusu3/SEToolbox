@@ -12,9 +12,11 @@
     <Company>Mid-Space Productions</Company>
     <Product>SEToolbox</Product>
     <Copyright>Copyright © MidSpace 2013-2019</Copyright>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/mmusu3/SEToolbox</RepositoryUrl>
     <!-- First 3 numbers to match the current Space Engineers release. https://forum.keenswh.com/threads/about-change-log.6578819/
          Forth number to indicate my own build of SEToolbox to match. Remember to reset it back to 1 every time there is a new release of SpaceEngineers.-->
-    <Version>01.204.015.1</Version>
+    <Version>01.205.023.1</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\SEToolbox.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
@@ -24,6 +26,10 @@
 
   <ItemGroup>
     <Resource Include="app.ico" />
+    <None Include="..\Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ImportGroup Label="PropertySheets">
@@ -116,13 +122,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HelixToolkit.Wpf" Version="2.23.0" />
-    <PackageReference Include="log4net" Version="2.0.12" />
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.25.0" />
+    <PackageReference Include="log4net" Version="3.0.1" />
     <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
-    <PackageReference Include="Octokit" Version="0.47.0" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
-    <PackageReference Include="WPFLocalizeExtension" Version="3.5.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+    <PackageReference Include="Octokit" Version="13.0.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -122,8 +122,8 @@
             var model = MeshHelper.Load(modelFile, ignoreErrors: true);
             var cts = new CancellationTokenSource();
 
-            // cancel the convertion after 5 seconds.
-            var timer = new System.Timers.Timer(5000);
+            // cancel the convertion after 2 seconds.
+            var timer = new System.Timers.Timer(2000);
             timer.Elapsed += delegate
             {
                 Debug.WriteLine("Cancelling!!!");

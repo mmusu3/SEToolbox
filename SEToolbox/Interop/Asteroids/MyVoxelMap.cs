@@ -1169,6 +1169,7 @@
             switch (type)
             {
             case OperationType.Fill:
+                // Warning: FillInShape calls MySandboxGame.Invoke()
                 MyVoxelGenerator.FillInShape(this, shape, material);
                 break;
             case OperationType.Paint:

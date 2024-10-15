@@ -12,6 +12,7 @@
     <Product>SEToolbox</Product>
     <Copyright>Copyright © MidSpace 2013-2018</Copyright>
     <Platforms>AnyCPU;x64</Platforms>
+    <OutputPath>bin\$(Platform)\$(Configuration)</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
