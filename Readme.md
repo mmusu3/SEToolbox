@@ -1,30 +1,28 @@
 ## Space Engineers Toolbox
-###### A toolbox utility for modifying and importing content in the Space Engineers Game.
-The primary focus of the Toolbox is to allow importing of images and 3D models, and editing of save game content.
+SE Toolbox is a application for importing and modifying user content for the game Space Engineers.
+It can convert images and 3D models into grids or 3D models into asteroids.
 
-Created by Mid-Space productions. Est. 1993
+Originally created by Mid-Space productions. Est. 1993
 
 ![](http://i.imgur.com/429uvwe.jpg)
 
-
-#### This is a fork of the original version with updates to fix compatibility issues with newer versions of Space Engineers.
-The [original version](https://github.com/midspace/SEToolbox) is no longer maintained since Midpsace has retired from working on SE Toolbox as of 2019-08-23 due to changes in the major game update containing Economy. This was after putting SE Toolbox into maintainance mode as described [here](https://forum.keenswh.com/threads/7402115/).
-
-I am not taking over active development of SE Toolbox, only providing compatibilty fixes as they are needed.
-
-[Download the latest version here](https://github.com/mmusu3/SEToolbox/releases/latest).
+Download the [latest release here](https://github.com/mmusu3/SEToolbox/releases/latest).
 
 Check the [wiki](https://github.com/midspace/SEToolbox/wiki) for help using the application.
 
+#### This project is a fork of the original with fixes and changes for newer versions of Space Engineers.
+
+I lack the time for active development of SE Toolbox and so I am only providing compatibilty fixes for game updates as they are needed.
+
+The original author [midspace](https://github.com/midspace) has retired from working on [the original SE Toolbox](https://github.com/midspace/SEToolbox) as of 2019-08-23 and put it into maintainance mode as described [here](https://forum.keenswh.com/threads/7402115/).
 
 ---
 
-The **[Space Engineers Game](http://www.spaceengineersgame.com/)** is Copyright Keen Software House.
+**[Space Engineers](http://www.spaceengineersgame.com/)** is copyright of Keen Software House.
 For more details on the game, please visit the following links.
 * [www.spaceengineersgame.com](http://www.spaceengineersgame.com/)
-* [Steam store](http://store.steampowered.com/app/244850/)
+* [Steam store page](http://store.steampowered.com/app/244850/)
 * [Keen Software House](http://www.keenswh.com/about.html)
-* Space Engineers on [Facebook](https://www.facebook.com/SpaceEngineers/)
 
 ---
 
