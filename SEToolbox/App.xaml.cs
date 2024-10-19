@@ -118,7 +118,6 @@
                 return;
             }
 
-            // Log details to Application Event Log.
             DiagnosticsLogging.LogException(e.Exception);
 
             string message;
@@ -130,9 +129,9 @@
             else
             {
                 // Unhandled Exception.
-                if (DiagnosticsLogging.LoggingSourceExists())
-                    message = string.Format(Res.DialogUnhandledExceptionEventMessage, e.Exception.Message);
-                else
+                //if (DiagnosticsLogging.LoggingSourceExists())
+                //    message = string.Format(Res.DialogUnhandledExceptionEventMessage, e.Exception.Message);
+                //else
                     message = string.Format(Res.DialogUnhandledExceptionMessage, e.Exception.Message);
             }
 
