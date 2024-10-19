@@ -28,7 +28,9 @@
 
             // Accessing GitHub API directly for updates.
             GitHubClient client = new GitHubClient(new ProductHeaderValue("SEToolbox-Updater"));
+
             Release latest;
+
             try
             {
                 latest = client.Repository.Release.GetLatest("mmusu3", "SEToolbox").Result;
@@ -45,9 +47,16 @@
                 throw;
             }
 
-            var item = new ApplicationRelease { Name = latest.Name, Link = latest.HtmlUrl, Version = GetVersion(latest.TagName) };
+            var item = new ApplicationRelease {
+                Name = latest.Name,
+                Link = latest.HtmlUrl,
+                Version = GetVersion(latest.TagName),
+                Notes = latest.Body
+            };
+
             Version ignoreVersion;
             Version.TryParse(GlobalSettings.Default.IgnoreUpdateVersion, out ignoreVersion);
+
             if (item.Version > currentVersion && item.Version != ignoreVersion || dontIgnore)
                 return item;
 
@@ -58,12 +67,14 @@
         private static Version GetVersion(string version)
         {
             var match = Regex.Match(version, @"v?(?<v1>\d+)\.(?<v2>\d+)\.(?<v3>\d+)\sRelease\s(?<v4>\d+)");
+
             if (match.Success)
             {
                 return new Version(match.Groups["v1"].Value + "." + match.Groups["v2"].Value + "." + match.Groups["v3"].Value + "." + match.Groups["v4"].Value);
             }
 
             match = Regex.Match(version, @"v?(?<v1>\d+)\.(?<v2>\d+)\.(?<v3>\d+).(?<v4>\d+)");
+
             if (match.Success)
             {
                 return new Version(match.Groups["v1"].Value + "." + match.Groups["v2"].Value + "." + match.Groups["v3"].Value + "." + match.Groups["v4"].Value);
@@ -78,5 +89,6 @@
         public string Name { get; set; }
         public string Link { get; set; }
         public Version Version { get; set; }
+        public string Notes { get; set; }
     }
 }

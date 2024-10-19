@@ -19,7 +19,7 @@ namespace SEToolbox.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -3657,12 +3657,26 @@ namespace SEToolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A new version of SEToolbox ({0}) is available.
+        ///   Looks up a localized string similar to A new version of SEToolbox is available. Version {0}
         ///Would you like to download it now? (Open in browser).
         /// </summary>
         public static string DialogNewVersionMessage {
             get {
                 return ResourceManager.GetString("DialogNewVersionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new version of SEToolbox is available.
+        ///Release notes for version {0}:
+        ///
+        ///{1}
+        ///
+        ///Would you like to download it now? (Open in browser).
+        /// </summary>
+        public static string DialogNewVersionNotesMessage {
+            get {
+                return ResourceManager.GetString("DialogNewVersionNotesMessage", resourceCulture);
             }
         }
         
@@ -3821,7 +3835,7 @@ namespace SEToolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error has been detected in the application that has caused the application to shut down:
+        ///   Looks up a localized string similar to SEToolbox has experienced a fatal error and will now close:
         ///
         ///{0}
         ///
@@ -3835,10 +3849,11 @@ namespace SEToolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error has been detected in the application that has caused the application to shut down:
+        ///   Looks up a localized string similar to SEToolbox has experienced a fatal error and will now close:
         ///
         ///{0}
         ///
+        ///Please see the log.txt file in the application folder for more details.
         ///Apologies for any inconvenience..
         /// </summary>
         public static string DialogUnhandledExceptionMessage {
@@ -3871,6 +3886,24 @@ namespace SEToolbox.Properties {
         public static string DialogXmlFiles {
             get {
                 return ResourceManager.GetString("DialogXmlFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string DirApplicationName {
+            get {
+                return ResourceManager.GetString("DirApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string DirCompanyName {
+            get {
+                return ResourceManager.GetString("DirCompanyName", resourceCulture);
             }
         }
         

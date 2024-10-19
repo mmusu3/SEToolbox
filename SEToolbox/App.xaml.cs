@@ -22,15 +22,9 @@
     /// </summary>
     public partial class App : Application
     {
-        #region Fields
-
         private CoreToolbox _toolboxApplication;
 
-        #endregion
-
-        #region events
-
-        private void OnStartup(Object sender, StartupEventArgs e)
+        private void OnStartup(object sender, StartupEventArgs e)
         {
             if ((NativeMethods.GetKeyState(System.Windows.Forms.Keys.ShiftKey) & KeyStates.Down) == KeyStates.Down)
             {
@@ -67,7 +61,11 @@
 
             if (update != null)
             {
-                var dialogResult = MessageBox.Show(string.Format(Res.DialogNewVersionMessage, update.Version), Res.DialogNewVersionTitle, MessageBoxButton.YesNo, MessageBoxImage.Information);
+                var message = string.IsNullOrEmpty(update.Notes)
+                    ? string.Format(Res.DialogNewVersionMessage, update.Version)
+                    : string.Format(Res.DialogNewVersionNotesMessage, update.Version, update.Notes);
+
+                var dialogResult = MessageBox.Show(message, Res.DialogNewVersionTitle, MessageBoxButton.YesNo, MessageBoxImage.Information);
 
                 if (dialogResult == MessageBoxResult.Yes)
                 {
@@ -90,9 +88,10 @@
             ServiceLocator.Register<IColorDialog, ColorDialogViewModel>();
             ServiceLocator.Register<IFolderBrowserDialog, FolderBrowserDialogViewModel>();
 
-            System.Windows.FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
+            FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
 
             _toolboxApplication = new CoreToolbox();
+
             if (_toolboxApplication.Init(e.Args))
                 _toolboxApplication.Load(e.Args);
             else
@@ -101,8 +100,7 @@
 
         private void OnExit(object sender, ExitEventArgs e)
         {
-            if (_toolboxApplication != null)
-                _toolboxApplication.Exit();
+            _toolboxApplication?.Exit();
         }
 
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
@@ -141,12 +139,7 @@
 
             e.Handled = true;
 
-            if (Application.Current != null)
-            {
-                Application.Current.Shutdown();
-            }
+            Application.Current?.Shutdown();
         }
-
-        #endregion
     }
 }
