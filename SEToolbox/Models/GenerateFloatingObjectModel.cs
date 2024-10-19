@@ -304,6 +304,9 @@
 
             foreach (var physicalItemDefinition in SpaceEngineersCore.Resources.PhysicalItemDefinitions)
             {
+                if (physicalItemDefinition.Id.TypeId == typeof(VRage.Game.MyObjectBuilder_TreeObject))
+                    continue;
+
                 if (physicalItemDefinition.Id.SubtypeName == "CubePlacerItem" || physicalItemDefinition.Id.SubtypeName == "WallPlacerItem")
                     continue;
 
