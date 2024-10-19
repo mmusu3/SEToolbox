@@ -565,17 +565,19 @@
 
         public static List<MyObjectBuilder_Character> GetHierarchyCharacters(this MyObjectBuilder_CubeBlock cube)
         {
-            List<MyObjectBuilder_Character> list = new List<MyObjectBuilder_Character>();
+            var list = new List<MyObjectBuilder_Character>();
 
-            MyObjectBuilder_Cockpit cockpit = cube as MyObjectBuilder_Cockpit;
-            if (cockpit == null)
+            if (cube is not MyObjectBuilder_Cockpit cockpit)
                 return list;
 
-            var hierarchyBase = cockpit.ComponentContainer.Components.FirstOrDefault(e => e.TypeId == "MyHierarchyComponentBase")?.Component as MyObjectBuilder_HierarchyComponentBase;
+            var hierarchyBase = cockpit.ComponentContainer?.Components
+                .FirstOrDefault(e => e.TypeId == "MyHierarchyComponentBase")?.Component as MyObjectBuilder_HierarchyComponentBase;
+
             if (hierarchyBase != null)
             {
                 list.AddRange(hierarchyBase.Children.Where(e => e is MyObjectBuilder_Character).Cast<MyObjectBuilder_Character>());
             }
+
             return list;
         }
 
