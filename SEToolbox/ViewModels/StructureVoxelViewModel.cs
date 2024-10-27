@@ -233,18 +233,19 @@
         public void ReseedExecuted()
         {
             MainViewModel.IsBusy = true;
+
             var sourceFile = DataModel.SourceVoxelFilepath ?? DataModel.VoxelFilepath;
 
             var asteroid = new MyVoxelMap();
             asteroid.Load(sourceFile);
 
-            var cellCount = asteroid.VoxCells;
+            long cellCount = asteroid.VoxCells;
 
             // TODO: regenerate the materials inside of the asteroid randomly.
 
-
             var tempfilename = TempfileUtil.NewFilename(MyVoxelMap.V2FileExtension);
             asteroid.Save(tempfilename);
+
             DataModel.UpdateNewSource(asteroid, tempfilename);
 
             MainViewModel.IsModified = true;
@@ -262,15 +263,16 @@
         public void ReplaceSurfaceExecuted(string materialName)
         {
             MainViewModel.IsBusy = true;
+
             var sourceFile = DataModel.SourceVoxelFilepath ?? DataModel.VoxelFilepath;
 
             var asteroid = new MyVoxelMap();
             asteroid.Load(sourceFile);
-
             asteroid.ForceShellMaterial(materialName, 2);
 
             var tempfilename = TempfileUtil.NewFilename(MyVoxelMap.V2FileExtension);
             asteroid.Save(tempfilename);
+
             DataModel.UpdateNewSource(asteroid, tempfilename);
 
             MainViewModel.IsModified = true;
@@ -288,15 +290,16 @@
         public void ReplaceAllExecuted(string materialName)
         {
             MainViewModel.IsBusy = true;
+
             var sourceFile = DataModel.SourceVoxelFilepath ?? DataModel.VoxelFilepath;
 
             var asteroid = new MyVoxelMap();
             asteroid.Load(sourceFile);
-
             asteroid.ForceBaseMaterial(materialName, materialName);
 
             var tempfilename = TempfileUtil.NewFilename(MyVoxelMap.V2FileExtension);
             asteroid.Save(tempfilename);
+
             DataModel.UpdateNewSource(asteroid, tempfilename);
 
             MainViewModel.IsModified = true;
@@ -319,6 +322,7 @@
         public void ReplaceSelectedExecuted(string materialName)
         {
             MainViewModel.IsBusy = true;
+
             var sourceFile = DataModel.SourceVoxelFilepath ?? DataModel.VoxelFilepath;
 
             var asteroid = new MyVoxelMap();
@@ -330,7 +334,9 @@
                 DataModel.VoxCells = asteroid.VoxCells;
             }
             else
+            {
                 asteroid.ReplaceMaterial(SelectedMaterialAsset.MaterialName, materialName);
+            }
 
             var tempfilename = TempfileUtil.NewFilename(MyVoxelMap.V2FileExtension);
             asteroid.Save(tempfilename);
@@ -353,16 +359,20 @@
         public void SliceQuarterExecuted()
         {
             MainViewModel.IsBusy = true;
+
             var sourceFile = DataModel.SourceVoxelFilepath ?? DataModel.VoxelFilepath;
 
             var asteroid = new MyVoxelMap();
             asteroid.Load(sourceFile);
             asteroid.RefreshAssets();
 
-            var height = asteroid.BoundingContent.Size.Y + 1;
+            int height = asteroid.BoundingContent.Size.Y + 1;
+            var contentCenter = asteroid.ContentCenter;
+            var asteroidSize = asteroid.Size;
+            var min = (VRageMath.Vector3I)VRageMath.Vector3D.Round(contentCenter, 0);
 
             // remove the Top half.
-            asteroid.RemoveMaterial((int)Math.Round(asteroid.ContentCenter.X, 0), asteroid.Size.X, (int)Math.Round(asteroid.ContentCenter.Y, 0), asteroid.Size.Y, 0, (int)Math.Round(asteroid.ContentCenter.Z, 0));
+            asteroid.RemoveMaterial(min.X, asteroidSize.X, min.Y, asteroidSize.Y, 0, min.Z);
 
             var tempfilename = TempfileUtil.NewFilename(MyVoxelMap.V2FileExtension);
             asteroid.Save(tempfilename);
@@ -372,13 +382,11 @@
             posOrient.Position.y += height;
 
             // genreate a new Asteroid entry.
-            var newEntity = new MyObjectBuilder_VoxelMap
-            {
+            var newEntity = new MyObjectBuilder_VoxelMap {
                 EntityId = SpaceEngineersApi.GenerateEntityId(IDType.ASTEROID),
                 PersistentFlags = MyPersistentEntityFlags2.CastShadows | MyPersistentEntityFlags2.InScene,
                 StorageName = Path.GetFileNameWithoutExtension(newFilename),
-                PositionAndOrientation = new MyPositionAndOrientation
-                {
+                PositionAndOrientation = new MyPositionAndOrientation {
                     Position = posOrient.Position,
                     Forward = posOrient.Forward,
                     Up = posOrient.Up
@@ -400,13 +408,14 @@
         public void SliceHalfExecuted()
         {
             MainViewModel.IsBusy = true;
+
             var sourceFile = DataModel.SourceVoxelFilepath ?? DataModel.VoxelFilepath;
 
             var asteroid = new MyVoxelMap();
             asteroid.Load(sourceFile);
             asteroid.RefreshAssets();
 
-            var height = asteroid.BoundingContent.Size.Y + 1;
+            int height = asteroid.BoundingContent.Size.Y + 1;
 
             // remove the Top half.
             asteroid.RemoveMaterial(null, null, (int)Math.Round(asteroid.ContentCenter.Y, 0), asteroid.Size.Y, null, null);
@@ -419,13 +428,11 @@
             posOrient.Position.y += height;
 
             // genreate a new Asteroid entry.
-            var newEntity = new MyObjectBuilder_VoxelMap
-            {
+            var newEntity = new MyObjectBuilder_VoxelMap {
                 EntityId = SpaceEngineersApi.GenerateEntityId(IDType.ASTEROID),
                 PersistentFlags = MyPersistentEntityFlags2.CastShadows | MyPersistentEntityFlags2.InScene,
                 StorageName = Path.GetFileNameWithoutExtension(newFilename),
-                PositionAndOrientation = new MyPositionAndOrientation
-                {
+                PositionAndOrientation = new MyPositionAndOrientation {
                     Position = posOrient.Position,
                     Forward = posOrient.Forward,
                     Up = posOrient.Up

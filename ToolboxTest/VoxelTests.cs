@@ -33,9 +33,9 @@
             MyVoxelMap.UncompressV1(fileOriginal, fileExtracted);
             MyVoxelMap.CompressV1(fileExtracted, fileNew);
 
-            var lengthOriginal = new FileInfo(fileOriginal).Length;
+            long lengthOriginal = new FileInfo(fileOriginal).Length;
             var lengthExtracted = new FileInfo(fileExtracted).Length;
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(9428, lengthOriginal, "File size must match.");
             Assert.AreEqual(310276, lengthExtracted, "File size must match.");
@@ -58,13 +58,13 @@
 
             MyVoxelMap.UpdateFileFormat(fileOriginal, fileNew);
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
 
             voxelMap.Load(fileNew);
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
-            var lengthOriginal = new FileInfo(fileOriginal).Length;
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthOriginal = new FileInfo(fileOriginal).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(9428, lengthOriginal, "File size must match.");
             Assert.AreEqual(9431, lengthNew, "File size must match.");
@@ -79,7 +79,7 @@
             const string fileOriginal = @".\TestAssets\AsteroidV1Format.vx2";
             const string fileNew = @".\TestOutput\AsteroidV1Format_save.vx2";
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Load(fileOriginal);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
@@ -122,8 +122,8 @@
 
             voxelMap.Save(fileNew);
 
-            var lengthOriginal = new FileInfo(fileOriginal).Length;
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthOriginal = new FileInfo(fileOriginal).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(88299, lengthOriginal, "File size must match.");
             Assert.AreEqual(134301, lengthNew, "File size must match.");
@@ -138,7 +138,7 @@
             const string fileOriginal = @".\TestAssets\AsteroidV2Format.vx2";
             const string fileNew = @".\TestOutput\AsteroidV2Format_save.vx2";
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Load(fileOriginal);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
@@ -181,8 +181,8 @@
 
             voxelMap.Save(fileNew);
 
-            var lengthOriginal = new FileInfo(fileOriginal).Length;
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthOriginal = new FileInfo(fileOriginal).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(72296, lengthOriginal, "File size must match.");
             Assert.AreEqual(134301, lengthNew, "File size must match.");
@@ -197,7 +197,7 @@
             const string fileOriginal = @".\TestAssets\AsteroidV3Format.vx2";
             const string fileNew = @".\TestOutput\AsteroidV3Format_save.vx2";
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Load(fileOriginal);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
@@ -240,8 +240,8 @@
 
             voxelMap.Save(fileNew);
 
-            var lengthOriginal = new FileInfo(fileOriginal).Length;
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthOriginal = new FileInfo(fileOriginal).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(145351, lengthOriginal, "Original File size must match.");
             Assert.AreEqual(144997, lengthNew, "New File size must match.");
@@ -256,7 +256,7 @@
             var contentPath = ToolboxUpdater.GetApplicationContentPath();
             var redShipCrashedAsteroidPath = Path.Combine(contentPath, "VoxelMaps", "RedShipCrashedAsteroid.vx2");
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Load(redShipCrashedAsteroidPath);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
@@ -273,7 +273,7 @@
             Assert.IsTrue(assetNameCount.ContainsKey("Platinum_01"), "Platinum_01 asset should exist.");
             Assert.AreEqual(17876016, assetNameCount["Platinum_01"], "Platinum_01 count should be equal.");
 
-            var lengthOriginal = new FileInfo(redShipCrashedAsteroidPath).Length;
+            long lengthOriginal = new FileInfo(redShipCrashedAsteroidPath).Length;
             Assert.AreEqual(109192, lengthOriginal, "File size must match.");
         }
 
@@ -285,7 +285,7 @@
 
             const string fileOriginal = @".\TestAssets\DeformedSphereWithHoles_64x128x64.vx2";
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
 
             voxelMap.Load(fileOriginal);
             voxelMap.RefreshAssets();
@@ -335,13 +335,13 @@
 
             MyVoxelBuilder.ConvertAsteroid(fileOriginal, fileNew, stoneMaterial.Id.SubtypeName, goldMaterial.Id.SubtypeName);
 
-            var lengthOriginal = new FileInfo(fileOriginal).Length;
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthOriginal = new FileInfo(fileOriginal).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(9431, lengthOriginal, "Original file size must match.");
             Assert.AreEqual(14618, lengthNew, "New file size must match.");
 
-            var voxelMapOriginal = new MyVoxelMap();
+            using var voxelMapOriginal = new MyVoxelMap();
             voxelMapOriginal.Load(fileOriginal);
 
             Assert.IsTrue(voxelMapOriginal.IsValid, "Voxel format must be valid.");
@@ -371,7 +371,7 @@
         {
             const string fileOriginal = @".\TestAssets\test_cube2x2x2.vx2";
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Load(fileOriginal);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
@@ -389,7 +389,7 @@
         {
             const string fileOriginal = @".\TestAssets\test_cube_mixed_2x2x2.vx2";
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Load(fileOriginal);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
@@ -439,7 +439,7 @@
 
             const string fileOriginal = @".\TestAssets\Arabian_Border_7.vx2";
 
-            var voxelMap = new MyVoxelMap();
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Load(fileOriginal);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
@@ -458,25 +458,28 @@
             // Create matieral distribution of set percentages, with remainder to Stone.
 
             var distribution = new[] { double.NaN, .5, .25 };
-            var materialSelection = new[]
-            {
+
+            var materialSelection = new[] {
                 SpaceEngineersCore.Resources.GetMaterialIndex(stoneMaterial.Id.SubtypeName),
                 SpaceEngineersCore.Resources.GetMaterialIndex(goldMaterial.Id.SubtypeName),
                 SpaceEngineersCore.Resources.GetMaterialIndex(uraniumMaterial.Id.SubtypeName)
             };
 
             var newMaterialAssetDistributiuon = new List<byte>();
+
             int count;
-            for (var i = 1; i < distribution.Length; i++)
+
+            for (int i = 1; i < distribution.Length; i++)
             {
                 count = (int)Math.Floor(distribution[i] * materialAssets.Count); // Round down.
-                for (var j = 0; j < count; j++)
-                {
+
+                for (int j = 0; j < count; j++)
                     newMaterialAssetDistributiuon.Add(materialSelection[i]);
-                }
             }
+
             count = materialAssets.Count - newMaterialAssetDistributiuon.Count;
-            for (var j = 0; j < count; j++)
+
+            for (int j = 0; j < count; j++)
                 newMaterialAssetDistributiuon.Add(materialSelection[0]);
 
             // Randomize the distribution.
@@ -514,11 +517,10 @@
             {
                 foreach (var material in materials)
                 {
-                    var fileNewVoxel =
-                        Path.Combine(Path.GetDirectoryName(Path.GetFullPath(fileOriginal)),
-                            Path.GetFileNameWithoutExtension(fileOriginal) + "_" + material.Id.SubtypeName + ".vx2").ToLower();
+                    var fileNewVoxel = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(fileOriginal)),
+                        Path.GetFileNameWithoutExtension(fileOriginal) + "_" + material.Id.SubtypeName + ".vx2").ToLower();
 
-                    var voxelMap = new MyVoxelMap();
+                    using var voxelMap = new MyVoxelMap();
                     voxelMap.Load(fileOriginal);
 
                     IList<byte> materialAssets = voxelMap.CalcVoxelMaterialList();
@@ -527,20 +529,21 @@
                     var materialSelection = new byte[] { 0, SpaceEngineersCore.Resources.GetMaterialIndex(material.Id.SubtypeName) };
 
                     var newDistributiuon = new List<byte>();
+
                     int count;
-                    for (var i = 1; i < distribution.Length; i++)
+
+                    for (int i = 1; i < distribution.Length; i++)
                     {
                         count = (int)Math.Floor(distribution[i] * materialAssets.Count); // Round down.
+
                         for (var j = 0; j < count; j++)
-                        {
                             newDistributiuon.Add(materialSelection[i]);
-                        }
                     }
+
                     count = materialAssets.Count - newDistributiuon.Count;
-                    for (var j = 0; j < count; j++)
-                    {
+
+                    for (int j = 0; j < count; j++)
                         newDistributiuon.Add(materialSelection[0]);
-                    }
 
                     newDistributiuon.Shuffle();
 
@@ -565,13 +568,13 @@
             const string fileNew = @".\TestOutput\test_cube_solid_8x8x8_gold_single.vx2";
 
             int size = 8;
-            var voxelMap = MyVoxelBuilder.BuildAsteroidCube(false, size, size, size, goldMaterial.Index, stoneMaterial.Index, false, 0);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroidCube(false, size, size, size, goldMaterial.Index, stoneMaterial.Index, false, 0);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
             voxelMap.Save(fileNew);
 
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
             Dictionary<string, long> assetNameCount = voxelMap.RefreshAssets();
 
             Assert.AreEqual(984, lengthNew, "New file size must match.");
@@ -612,13 +615,13 @@
             const string fileNew = @".\TestOutput\test_cube_solid_8x8x8_gold_multi.vx2";
 
             int size = 8;
-            var voxelMap = MyVoxelBuilder.BuildAsteroidCube(true, size, size, size, goldMaterial.Index, stoneMaterial.Index, false, 0);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroidCube(true, size, size, size, goldMaterial.Index, stoneMaterial.Index, false, 0);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
             voxelMap.Save(fileNew);
 
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
             Dictionary<string, long> assetNameCount = voxelMap.RefreshAssets();
 
             Assert.AreEqual(909, lengthNew, "New file size must match.");
@@ -657,13 +660,13 @@
 
             const string fileNew = @".\TestOutput\test_sphere_solid_7_gold.vx2";
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroidSphere(false, 4, goldMaterial.Index, stoneMaterial.Index, false, 0);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroidSphere(false, 4, goldMaterial.Index, stoneMaterial.Index, false, 0);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
             voxelMap.Save(fileNew);
 
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             //Assert.AreEqual(1337, lengthNew, "New file size must match.");
 
@@ -694,8 +697,9 @@
             Assert.IsNotNull(goldMaterial, "Gold material should exist.");
 
             Vector3I size = new Vector3I(128, 128, 128);
-            var voxelMap = new MyVoxelMap();
             var actualSize = MyVoxelBuilder.CalcRequiredSize(size);
+
+            using var voxelMap = new MyVoxelMap();
             voxelMap.Create(actualSize, stoneMaterial.Index);
 
             MyShapeSphere sphereShape1 = new MyShapeSphere {
@@ -725,7 +729,8 @@
 
             //const string fileNew = @".\TestOutput\test_sphere_solid_7_gold.vx2";
             //voxelMap.Save(fileNew);
-            //var lengthNew = new FileInfo(fileNew).Length;
+
+            //long lengthNew = new FileInfo(fileNew).Length;
 
             MyShapeBox sphereBox = new MyShapeBox() {
                 Boundaries = new BoundingBoxD {
@@ -754,14 +759,14 @@
 
             const string fileNew = @".\TestOutput\test_sphere_solid_499_gold.vx2";
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroidSphere(true, 250, goldMaterial.Index, stoneMaterial.Index, false, 0);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroidSphere(true, 250, goldMaterial.Index, stoneMaterial.Index, false, 0);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
             voxelMap.Save(fileNew);
             voxelMap.RefreshAssets();
 
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(16689203471, voxelMap.VoxCells, "Voxel cells must match.");
 
@@ -808,13 +813,13 @@
                 }
             }
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[0].Index, null, CellAction);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[0].Index, null, CellAction);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
             voxelMap.Save(fileNew);
 
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             // Multi threading does not produce a consistant volume across the cells in the voxel, so the actual file content can vary!!
             Assert.IsTrue(lengthNew > 77000, "New file size must match.");
@@ -877,13 +882,13 @@
                 }
             }
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[0].Index, null, CellAction);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[0].Index, null, CellAction);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
             voxelMap.Save(fileNew);
 
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             // Multi threading does not produce a consistant volume across the cells in the voxel, so the actual file content can vary!!
             Assert.IsTrue(lengthNew > 44000, "New file size must match.");
@@ -919,7 +924,8 @@
 
             var transform = MeshHelper.TransformVector(new System.Windows.Media.Media3D.Vector3D(0, 0, 0), 0, 0, 180);
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroidFromModel(true, modelFile, goldMaterial.Index, stoneMaterial.Index, true, stoneMaterial.Index, ModelTraceVoxel.ThinSmoothed, 0.766, transform);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroidFromModel(true, modelFile, goldMaterial.Index,
+                stoneMaterial.Index, true, stoneMaterial.Index, ModelTraceVoxel.ThinSmoothed, 0.766, transform);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
@@ -948,7 +954,7 @@
                 Stopwatch watch = new Stopwatch();
                 watch.Start();
 
-                var voxelMap = new MyVoxelMap();
+                using var voxelMap = new MyVoxelMap();
                 voxelMap.Load(filename);
 
                 watch.Stop();
@@ -978,8 +984,8 @@
             var goldMaterial = materials.FirstOrDefault(m => m.Id.SubtypeName.Contains("Gold"));
             Assert.IsNotNull(goldMaterial, "Gold material should exist.");
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroidCube(false, 64, 64, 64, stoneMaterial.Index, stoneMaterial.Index, false, 0);
-            //var voxelMap = MyVoxelBuilder.BuildAsteroidSphere(true, 64, stoneMaterial.Id.SubtypeName, stoneMaterial.Id.SubtypeName, false, 0);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroidCube(false, 64, 64, 64, stoneMaterial.Index, stoneMaterial.Index, false, 0);
+            //using var voxelMap = MyVoxelBuilder.BuildAsteroidSphere(true, 64, stoneMaterial.Id.SubtypeName, stoneMaterial.Id.SubtypeName, false, 0);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
@@ -1032,7 +1038,7 @@
             //voxelMap.RemoveMaterial(stoneMaterial.Id.SubtypeName, null);
             //const string fileNew = @".\TestOutput\randomSeedMaterialCube.vx2";
             //voxelMap.Save(fileNew);
-            //var lengthNew = new FileInfo(fileNew).Length;
+            //long lengthNew = new FileInfo(fileNew).Length;
         }
 
         [TestMethod, TestCategory("UnitTest")]
@@ -1072,14 +1078,14 @@
 
             void CellAction(ref MyVoxelBuilderArgs e) => e.Volume = 0xFF;
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[06].Index, null, CellAction);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[06].Index, null, CellAction);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 
             voxelMap.Save(fileNew);
             voxelMap.RefreshAssets();
 
-            var lengthNew = new FileInfo(fileNew).Length;
+            long lengthNew = new FileInfo(fileNew).Length;
 
             Assert.AreEqual(437, lengthNew, "New file size must match.");
 
@@ -1135,7 +1141,7 @@
                 }
             }
 
-            var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[0].Index, null, CellAction);
+            using var voxelMap = MyVoxelBuilder.BuildAsteroid(true, size, materials[0].Index, null, CellAction);
 
             Assert.IsTrue(voxelMap.IsValid, "Voxel format must be valid.");
 

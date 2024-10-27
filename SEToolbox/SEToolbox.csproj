@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/mmusu3/SEToolbox</RepositoryUrl>
     <!-- First 3 numbers to match the current Space Engineers release. https://forum.keenswh.com/threads/about-change-log.6578819/
          Forth number to indicate my own build of SEToolbox to match. Remember to reset it back to 1 every time there is a new release of SpaceEngineers.-->
-    <Version>01.205.025.1</Version>
+    <Version>01.205.026.1</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\SEToolbox.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>

@@ -30,6 +30,7 @@
             voxelMap.Load(loadFile);
             voxelMap.RemoveContent(stripMaterial, replaceFillMaterial);
             voxelMap.Save(saveFile);
+            voxelMap.Dispose();
         }
 
         #region BuildAsteroid standard tools

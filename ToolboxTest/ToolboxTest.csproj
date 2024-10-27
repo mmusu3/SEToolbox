@@ -5,6 +5,7 @@
     <TargetFramework>net48</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWPF>true</UseWPF>
+    <LangVersion>latest</LangVersion>
     <SignAssembly>false</SignAssembly>
     <Title>ToolboxTest</Title>
     <Product>ToolboxTest</Product>

@@ -256,40 +256,55 @@
 
         #region MergeAsteroidVolumeInto
 
-        private void MergeAsteroidVolumeInto(ref MyVoxelMap newAsteroid, Vector3D min, StructureVoxelModel modelPrimary, StructureVoxelModel modelSecondary, Vector3D minPrimary, Vector3D minSecondary)
+        private void MergeAsteroidVolumeInto(ref MyVoxelMap newAsteroid, Vector3D min, StructureVoxelModel modelPrimary,
+            StructureVoxelModel modelSecondary, Vector3D minPrimary, Vector3D minSecondary)
         {
             var filenameSecondary = modelSecondary.SourceVoxelFilepath ?? modelSecondary.VoxelFilepath;
             var filenamePrimary = modelPrimary.SourceVoxelFilepath ?? modelPrimary.VoxelFilepath;
+
             Vector3I block;
             Vector3I newBlock;
             Vector3I cacheSize;
 
-            var asteroid = new MyVoxelMap();
+            using var asteroid = new MyVoxelMap();
             asteroid.Load(filenameSecondary);
+
             BoundingBoxI content = modelSecondary.InflatedContentBounds;
+
             for (block.Z = content.Min.Z; block.Z <= content.Max.Z; block.Z += 64)
+            {
                 for (block.Y = content.Min.Y; block.Y <= content.Max.Y; block.Y += 64)
+                {
                     for (block.X = content.Min.X; block.X <= content.Max.X; block.X += 64)
                     {
                         var cache = new MyStorageData();
+
                         cacheSize = new Vector3I(MathHelper.Min(content.Max.X, block.X + 63) - block.X + 1,
                             MathHelper.Min(content.Max.Y, block.Y + 63) - block.Y + 1,
                             MathHelper.Min(content.Max.Z, block.Z + 63) - block.Z + 1);
 
                         cache.Resize(cacheSize);
+
                         asteroid.Storage.ReadRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, 0, block, block + cacheSize - 1);
 
                         newBlock = ((minSecondary - min) + (Vector3D)(block - content.Min)).RoundToVector3I();
+
                         newAsteroid.Storage.WriteRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, newBlock, newBlock + cacheSize - 1);
                     }
+                }
+            }
 
             asteroid.Load(filenamePrimary);
             content = modelPrimary.InflatedContentBounds;
+
             for (block.Z = content.Min.Z; block.Z <= content.Max.Z; block.Z += 64)
+            {
                 for (block.Y = content.Min.Y; block.Y <= content.Max.Y; block.Y += 64)
+                {
                     for (block.X = content.Min.X; block.X <= content.Max.X; block.X += 64)
                     {
                         var cache = new MyStorageData();
+
                         cacheSize = new Vector3I(MathHelper.Min(content.Max.X, block.X + 63) - block.X + 1,
                             MathHelper.Min(content.Max.Y, block.Y + 63) - block.Y + 1,
                             MathHelper.Min(content.Max.Z, block.Z + 63) - block.Z + 1);
@@ -298,22 +313,30 @@
                         asteroid.Storage.ReadRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, 0, block, block + cacheSize - 1);
 
                         newBlock = ((minPrimary - min) + (Vector3D)(block - content.Min)).RoundToVector3I();
+
                         var newCache = new MyStorageData();
                         newCache.Resize(cacheSize);
+
                         newAsteroid.Storage.ReadRange(newCache, MyStorageDataTypeFlags.ContentAndMaterial, 0, newBlock, newBlock + cacheSize - 1);
 
                         Vector3I p;
-                        for (p.Z = 0; p.Z < cacheSize.Z; ++p.Z)
-                            for (p.Y = 0; p.Y < cacheSize.Y; ++p.Y)
-                                for (p.X = 0; p.X < cacheSize.X; ++p.X)
+
+                        for (p.Z = 0; p.Z < cacheSize.Z; p.Z++)
+                        {
+                            for (p.Y = 0; p.Y < cacheSize.Y; p.Y++)
+                            {
+                                for (p.X = 0; p.X < cacheSize.X; p.X++)
                                 {
                                     byte volume = cache.Content(ref p);
                                     byte material = cache.Material(ref p);
+
                                     if (volume > 0)
                                     {
                                         byte existingVolume = newCache.Content(ref p);
+
                                         if (volume > existingVolume)
                                             newCache.Content(ref p, volume);
+
                                         // Overwrites secondary material with primary.
                                         newCache.Material(ref p, material);
                                     }
@@ -321,9 +344,11 @@
                                     {
                                         // try to find cover material.
                                         Vector3I[] points = CreateTestPoints(p, cacheSize - 1);
+
                                         for (int i = 0 ; i < points.Length;i++)
                                         {
                                             byte testVolume = cache.Content(ref points[i]);
+
                                             if (testVolume > 0)
                                             {
                                                 material = cache.Material(ref points[i]);
@@ -333,67 +358,94 @@
                                         }
                                     }
                                 }
+                            }
+                        }
 
                         newAsteroid.Storage.WriteRange(newCache, MyStorageDataTypeFlags.ContentAndMaterial, newBlock, newBlock + cacheSize - 1);
                     }
+                }
+            }
         }
 
         #endregion
 
         #region SubtractAsteroidVolumeFrom
 
-        private void SubtractAsteroidVolumeFrom(ref MyVoxelMap newAsteroid, Vector3D min, StructureVoxelModel modelPrimary, StructureVoxelModel modelSecondary, Vector3D minPrimary, Vector3D minSecondary)
+        private void SubtractAsteroidVolumeFrom(ref MyVoxelMap newAsteroid, Vector3D min, StructureVoxelModel modelPrimary,
+            StructureVoxelModel modelSecondary, Vector3D minPrimary, Vector3D minSecondary)
         {
             var filenameSecondary = modelSecondary.SourceVoxelFilepath ?? modelSecondary.VoxelFilepath;
             var filenamePrimary = modelPrimary.SourceVoxelFilepath ?? modelPrimary.VoxelFilepath;
+
             Vector3I block;
             Vector3I newBlock;
             Vector3I cacheSize;
 
-            var asteroid = new MyVoxelMap();
+            using var asteroid = new MyVoxelMap();
             asteroid.Load(filenamePrimary);
+
             BoundingBoxI content = modelPrimary.InflatedContentBounds;
+
             for (block.Z = content.Min.Z; block.Z <= content.Max.Z; block.Z += 64)
+            {
                 for (block.Y = content.Min.Y; block.Y <= content.Max.Y; block.Y += 64)
+                {
                     for (block.X = content.Min.X; block.X <= content.Max.X; block.X += 64)
                     {
                         var cache = new MyStorageData();
+
                         cacheSize = new Vector3I(MathHelper.Min(content.Max.X, block.X + 63) - block.X + 1,
                             MathHelper.Min(content.Max.Y, block.Y + 63) - block.Y + 1,
                             MathHelper.Min(content.Max.Z, block.Z + 63) - block.Z + 1);
 
                         cache.Resize(cacheSize);
+
                         asteroid.Storage.ReadRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, 0, block, block + cacheSize - 1);
 
                         newBlock = ((minPrimary - min) + (Vector3D)(block - content.Min)).RoundToVector3I();
+
                         newAsteroid.Storage.WriteRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, newBlock, newBlock + cacheSize - 1);
                     }
-            
+                }
+            }
+
             asteroid.Load(filenameSecondary);
+
             content = modelSecondary.InflatedContentBounds;
+
             for (block.Z = content.Min.Z; block.Z <= content.Max.Z; block.Z += 64)
+            {
                 for (block.Y = content.Min.Y; block.Y <= content.Max.Y; block.Y += 64)
+                {
                     for (block.X = content.Min.X; block.X <= content.Max.X; block.X += 64)
                     {
                         var cache = new MyStorageData();
+
                         cacheSize = new Vector3I(MathHelper.Min(content.Max.X, block.X + 63) - block.X + 1,
                             MathHelper.Min(content.Max.Y, block.Y + 63) - block.Y + 1,
                             MathHelper.Min(content.Max.Z, block.Z + 63) - block.Z + 1);
 
                         cache.Resize(cacheSize);
+
                         asteroid.Storage.ReadRange(cache, MyStorageDataTypeFlags.Content, 0, block, block + cacheSize - 1);
 
                         newBlock = ((minSecondary - min) + (Vector3D)(block - content.Min)).RoundToVector3I();
+
                         var newCache = new MyStorageData();
                         newCache.Resize(cacheSize);
+
                         newAsteroid.Storage.ReadRange(newCache, MyStorageDataTypeFlags.ContentAndMaterial, 0, newBlock, newBlock + cacheSize - 1);
 
                         Vector3I p;
-                        for (p.Z = 0; p.Z < cacheSize.Z; ++p.Z)
-                            for (p.Y = 0; p.Y < cacheSize.Y; ++p.Y)
-                                for (p.X = 0; p.X < cacheSize.X; ++p.X)
+
+                        for (p.Z = 0; p.Z < cacheSize.Z; p.Z++)
+                        {
+                            for (p.Y = 0; p.Y < cacheSize.Y; p.Y++)
+                            {
+                                for (p.X = 0; p.X < cacheSize.X; p.X++)
                                 {
                                     byte volume = cache.Content(ref p);
+
                                     if (volume > 0)
                                     {
                                         byte existingVolume = newCache.Content(ref p);
@@ -402,79 +454,111 @@
                                             volume = 0;
                                         else
                                             volume = (byte)(existingVolume - volume);
+
                                         newCache.Content(ref p, volume);
                                     }
                                 }
+                            }
+                        }
 
                         newAsteroid.Storage.WriteRange(newCache, MyStorageDataTypeFlags.ContentAndMaterial, newBlock, newBlock + cacheSize - 1);
                     }
+                }
+            }
         }
 
         #endregion
 
         #region MergeAsteroidMaterialFrom
 
-        private void MergeAsteroidMaterialFrom(ref MyVoxelMap newAsteroid, Vector3 min, StructureVoxelModel modelPrimary, StructureVoxelModel modelSecondary, Vector3 minPrimary, Vector3 minSecondary)
+        private void MergeAsteroidMaterialFrom(ref MyVoxelMap newAsteroid, Vector3 min, StructureVoxelModel modelPrimary,
+            StructureVoxelModel modelSecondary, Vector3 minPrimary, Vector3 minSecondary)
         {
             var filenameSecondary = modelSecondary.SourceVoxelFilepath ?? modelSecondary.VoxelFilepath;
             var filenamePrimary = modelPrimary.SourceVoxelFilepath ?? modelPrimary.VoxelFilepath;
+
             Vector3I block;
             Vector3I newBlock;
             Vector3I cacheSize;
 
-            var asteroid = new MyVoxelMap();
+            using var asteroid = new MyVoxelMap();
             asteroid.Load(filenamePrimary);
+
             BoundingBoxI content = modelPrimary.InflatedContentBounds;
+
             for (block.Z = content.Min.Z; block.Z <= content.Max.Z; block.Z += 64)
+            {
                 for (block.Y = content.Min.Y; block.Y <= content.Max.Y; block.Y += 64)
+                {
                     for (block.X = content.Min.X; block.X <= content.Max.X; block.X += 64)
                     {
                         var cache = new MyStorageData();
+
                         cacheSize = new Vector3I(MathHelper.Min(content.Max.X, block.X + 63) - block.X + 1,
                             MathHelper.Min(content.Max.Y, block.Y + 63) - block.Y + 1,
                             MathHelper.Min(content.Max.Z, block.Z + 63) - block.Z + 1);
 
                         cache.Resize(cacheSize);
+
                         asteroid.Storage.ReadRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, 0, block, block + cacheSize - 1);
 
                         newBlock = ((minPrimary - min) + (Vector3D)(block - content.Min)).RoundToVector3I();
+
                         newAsteroid.Storage.WriteRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, newBlock, newBlock + cacheSize - 1);
                     }
+                }
+            }
 
             asteroid.Load(filenameSecondary);
+
             content = modelSecondary.InflatedContentBounds;
+
             for (block.Z = content.Min.Z; block.Z <= content.Max.Z; block.Z += 64)
+            {
                 for (block.Y = content.Min.Y; block.Y <= content.Max.Y; block.Y += 64)
+                {
                     for (block.X = content.Min.X; block.X <= content.Max.X; block.X += 64)
                     {
                         var cache = new MyStorageData();
+
                         cacheSize = new Vector3I(MathHelper.Min(content.Max.X, block.X + 63) - block.X + 1,
                             MathHelper.Min(content.Max.Y, block.Y + 63) - block.Y + 1,
                             MathHelper.Min(content.Max.Z, block.Z + 63) - block.Z + 1);
 
                         cache.Resize(cacheSize);
+
                         asteroid.Storage.ReadRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, 0, block, block + cacheSize - 1);
 
                         newBlock = ((minSecondary - min) + (Vector3D)(block - content.Min)).RoundToVector3I();
+
                         var newCache = new MyStorageData();
                         newCache.Resize(cacheSize);
+
                         newAsteroid.Storage.ReadRange(newCache, MyStorageDataTypeFlags.ContentAndMaterial, 0, newBlock, newBlock + cacheSize - 1);
 
                         Vector3I p;
-                        for (p.Z = 0; p.Z < cacheSize.Z; ++p.Z)
-                            for (p.Y = 0; p.Y < cacheSize.Y; ++p.Y)
-                                for (p.X = 0; p.X < cacheSize.X; ++p.X)
+
+                        for (p.Z = 0; p.Z < cacheSize.Z; p.Z++)
+                        {
+                            for (p.Y = 0; p.Y < cacheSize.Y; p.Y++)
+                            {
+                                for (p.X = 0; p.X < cacheSize.X; p.X++)
                                 {
                                     byte volume = cache.Content(ref p);
                                     byte material = cache.Material(ref p);
+
                                     if (volume > 0)
                                     {
                                         newCache.Material(ref p, material);
                                     }
                                 }
+                            }
+                        }
 
                         newAsteroid.Storage.WriteRange(newCache, MyStorageDataTypeFlags.ContentAndMaterial, newBlock, newBlock + cacheSize - 1);
                     }
+                }
+            }
         }
 
         #endregion

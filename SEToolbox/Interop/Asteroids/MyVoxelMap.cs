@@ -189,11 +189,11 @@
 
         #region Load
 
-        public void Load(string filename)
+        public void Load(string fileName)
         {
             try
             {
-                m_storage = MyStorageBase.LoadFromFile(filename);
+                m_storage = MyStorageBase.LoadFromFile(fileName, cache: false);
                 IsValid = true;
                 Size = m_storage.Size;
 
@@ -210,7 +210,7 @@
                 _boundingContent = new BoundingBoxI();
                 VoxCells = 0;
                 IsValid = false;
-                DiagnosticsLogging.LogWarning(string.Format(Res.ExceptionState_CorruptAsteroidFile, filename), ex);
+                DiagnosticsLogging.LogWarning(string.Format(Res.ExceptionState_CorruptAsteroidFile, fileName), ex);
             }
         }
 
@@ -1025,33 +1025,42 @@
             if (!IsValid)
                 return null;
 
-            Vector3I block;
-            var cacheSize = Vector3I.Min(new Vector3I(64), m_storage.Size);
+            const int chunkSize = 64;
+
+            var storage = m_storage;
+            var storageSize = storage.Size;
+            var cacheSize = Vector3I.Min(new Vector3I(chunkSize), storageSize);
+
+            var cache = new MyStorageData();
+            cache.Resize(cacheSize);
+
             var voxelMaterialList = new List<byte>();
 
-            // read the asteroid in chunks of 64 to avoid the Arithmetic overflow issue.
-            for (block.Z = 0; block.Z < m_storage.Size.Z; block.Z += 64)
-                for (block.Y = 0; block.Y < m_storage.Size.Y; block.Y += 64)
-                    for (block.X = 0; block.X < m_storage.Size.X; block.X += 64)
-                    {
-                        var cache = new MyStorageData();
-                        cache.Resize(cacheSize);
-                        // LOD1 is not detailed enough for content information on asteroids.
-                        Vector3I maxRange = block + cacheSize - 1;
-                        m_storage.ReadRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, 0, block, maxRange);
+            Vector3I block;
 
-                        Vector3I p;
-                        for (p.Z = 0; p.Z < cacheSize.Z; ++p.Z)
-                            for (p.Y = 0; p.Y < cacheSize.Y; ++p.Y)
-                                for (p.X = 0; p.X < cacheSize.X; ++p.X)
-                                {
-                                    var content = cache.Content(ref p);
-                                    if (content > 0)
-                                    {
-                                        voxelMaterialList.Add(cache.Material(ref p));
-                                    }
-                                }
+            // Read the asteroid in chunks of 64 to avoid the Arithmetic overflow issue.
+            for (block.Z = 0; block.Z < storageSize.Z; block.Z += chunkSize)
+            {
+                for (block.Y = 0; block.Y < storageSize.Y; block.Y += chunkSize)
+                {
+                    for (block.X = 0; block.X < storageSize.X; block.X += chunkSize)
+                    {
+                        Vector3I maxRange = Vector3I.Min(block + cacheSize, storageSize) - 1;
+
+                        storage.ReadRange(cache, MyStorageDataTypeFlags.ContentAndMaterial, 0, block, maxRange);
+
+                        for (int i = 0; i < cache.SizeLinear; i++)
+                        {
+                            byte content = cache.Content(i);
+
+                            if (content > 0)
+                            {
+                                voxelMaterialList.Add(cache.Material(i));
+                            }
+                        }
                     }
+                }
+            }
 
             return voxelMaterialList;
         }

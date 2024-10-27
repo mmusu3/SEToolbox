@@ -298,16 +298,16 @@
             foreach (var voxelDesign in VoxelCollection)
             {
                 MainViewModel.Progress++;
+
                 if (string.IsNullOrEmpty(voxelDesign.VoxelFile.SourceFilename) || !MyVoxelMap.IsVoxelMapFile(voxelDesign.VoxelFile.SourceFilename))
                     continue;
 
-
-                var asteroid = new MyVoxelMap();
+                using var asteroid = new MyVoxelMap();
                 string tempSourcefilename = null;
 
                 switch (AsteroidFillType)
                 {
-                    case Support.AsteroidFillType.None:
+                    case AsteroidFillType.None:
                         asteroid.Load(voxelDesign.VoxelFile.SourceFilename);
                         tempSourcefilename = voxelDesign.VoxelFile.SourceFilename;
                         break;
@@ -323,7 +323,7 @@
 
 
                 // automatically number all files, and check for duplicate filenames.
-                var filename = MainViewModel.CreateUniqueVoxelStorageName(voxelDesign.VoxelFile.Name + MyVoxelMap.V2FileExtension, entities.ToArray());
+                var fileName = MainViewModel.CreateUniqueVoxelStorageName(voxelDesign.VoxelFile.Name + MyVoxelMap.V2FileExtension, entities.ToArray());
 
                 var radius = RandomUtil.GetDouble(MinimumRange, MaximumRange);
                 var longitude = RandomUtil.GetDouble(0, 2 * Math.PI);
@@ -339,14 +339,13 @@
                 var y = radius * Math.Sin(latitude);
 
                 var center = new Vector3D(CenterPositionX, CenterPositionY, CenterPositionZ);
-                Vector3D position = center + new Vector3D(x, y, z) - asteroid.ContentCenter;
-                var entity = new MyObjectBuilder_VoxelMap(position, filename)
-                {
+                var position = center + new Vector3D(x, y, z) - asteroid.ContentCenter;
+
+                var entity = new MyObjectBuilder_VoxelMap(position, fileName) {
                     EntityId = SpaceEngineersApi.GenerateEntityId(IDType.ASTEROID),
                     PersistentFlags = MyPersistentEntityFlags2.CastShadows | MyPersistentEntityFlags2.InScene,
-                    StorageName = Path.GetFileNameWithoutExtension(filename),
-                    PositionAndOrientation = new MyPositionAndOrientation
-                    {
+                    StorageName = Path.GetFileNameWithoutExtension(fileName),
+                    PositionAndOrientation = new MyPositionAndOrientation {
                         Position = position,
                         Forward = Vector3.Forward, // Asteroids currently don't have any orientation.
                         Up = Vector3.Up
