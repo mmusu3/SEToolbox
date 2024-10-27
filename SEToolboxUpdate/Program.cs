@@ -13,19 +13,18 @@
 
     class Program
     {
-        #region consts
-
         private const int NoError = 0;
         private const int UpdateBinariesFailed = 1;
         private const int UacDenied = 2;
 
-        #endregion
-
-        #region Main
+        private const string logFilePath = "updater-log.txt";
 
         static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfoByIetfLanguageTag(GlobalSettings.Default.LanguageCode);
+
+            if (File.Exists(logFilePath))
+                File.Delete(logFilePath);
 
             // Install.
             if (args.Any(a => a.Equals("/I", StringComparison.OrdinalIgnoreCase) || a.Equals("-I", StringComparison.OrdinalIgnoreCase)))
@@ -52,19 +51,11 @@
             MessageBox.Show(string.Format(Res.AppParameterHelpMessage, appFile), Res.AppParameterHelpTitle, MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK);
         }
 
-        #endregion
-
-        #region InstallConfigurationSettings
-
         private static void InstallConfigurationSettings()
         {
             DiagnosticsLogging.CreateLog();
             CleanBinCache();
         }
-
-        #endregion
-
-        #region UninstallConfigurationSettings
 
         private static void UninstallConfigurationSettings()
         {
@@ -72,156 +63,143 @@
             CleanBinCache();
         }
 
-        #endregion
-
-        #region UpdateBaseLibrariesFromSpaceEngineers
-
         private static void UpdateBaseLibrariesFromSpaceEngineers(string[] args)
         {
-            var attemptedAlready = args.Any(a => a.ToUpper() == "/A");
+            bool attemptedAlready = args.Any(a => a.Equals("/A", StringComparison.OrdinalIgnoreCase));
 
-            var appFile = Assembly.GetExecutingAssembly().Location;
-            var appFilePath = Path.GetDirectoryName(appFile);
+            var updaterExePath = Assembly.GetExecutingAssembly().Location;
+            var appDirectory = Path.GetDirectoryName(updaterExePath);
+            var toolboxExePath = Path.Combine(appDirectory, "SEToolbox.exe");
 
-            if (ToolboxUpdater.IsRuningElevated())
-            {
-                if (!attemptedAlready)
-                {
-                    MessageBox.Show(Res.UpdateRequiredMessage, Res.UpdateRequiredTitle, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-
-                // is running elevated permission, update the files.
-                var updateRet = UpdateBaseFiles(appFilePath);
-
-                if (!attemptedAlready)
-                {
-                    if (updateRet)
-                    {
-                        // B = Binaries were updated.
-                        ToolboxUpdater.RunElevated(Path.Combine(appFilePath, "SEToolbox.exe"), "/B " + String.Join(" ", args), false, false);
-                        Environment.Exit(NoError);
-                    }
-                    else
-                    {
-                        // Update failed? Files are readonly. Files are locked. Source Files missing (or renamed).
-                        var dialogResult = MessageBox.Show(Res.UpdateErrorMessage, Res.UpdateErrorTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                        if (dialogResult == MessageBoxResult.Yes)
-                        {
-                            // X = Ignore updates.
-                            ToolboxUpdater.RunElevated(Path.Combine(appFilePath, "SEToolbox.exe"), "/X " + String.Join(" ", args), false, false);
-                        }
-                        Environment.Exit(UpdateBinariesFailed);
-                    }
-                }
-
-                if (updateRet)
-                    Environment.Exit(NoError);
-                else
-                    Environment.Exit(UpdateBinariesFailed);
-            }
-            else
+            if (!ToolboxUpdater.IsRuningElevated())
             {
                 // Does not have elevated permission to run.
                 if (!attemptedAlready)
                 {
                     MessageBox.Show(Res.UpdateRequiredUACMessage, Res.UpdateRequiredTitle, MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    var ret = ToolboxUpdater.RunElevated(appFile, string.Join(" ", args) + " /A", true, true);
+                    var ret = ToolboxUpdater.RunElevated(updaterExePath, string.Join(" ", args) + " /A", elevate: true, waitForExit: true);
+
+                    // Don't run toolbox from the elevated process, do it here.
                     if (ret.HasValue)
+                        LaunchToolbox(ret.Value);
+                    else
+                        LaunchToolbox(UacDenied);
+                }
+            }
+            else
+            {
+                if (!attemptedAlready)
+                    MessageBox.Show(Res.UpdateRequiredMessage, Res.UpdateRequiredTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Is running elevated permission, update the files.
+                bool wasUpdated = UpdateBaseFiles(appDirectory, out var ex);
+
+                if (!wasUpdated && ex != null)
+                {
+                    string errorMsg;
+
+                    if (ex is IOException ioEx)
+                        errorMsg = $"Failed to copy one or more game files. Error:\n{ioEx.Message}";
+                    else
+                        errorMsg = $"Failed to copy one or more game files. Error:\n{ex}";
+
+                    File.WriteAllText(logFilePath, errorMsg);
+                }
+
+                int errorCode = wasUpdated ? NoError : UpdateBinariesFailed;
+
+                if (!attemptedAlready)
+                    LaunchToolbox(errorCode);
+                else // Don't run toolbox from the elevated process, return to the original updater process.
+                    Environment.Exit(errorCode);
+            }
+
+            void LaunchToolbox(int errorCode)
+            {
+                if (errorCode == 0)
+                {
+                    // B = Binaries were updated.
+                    ToolboxUpdater.RunElevated(toolboxExePath, "/B " + string.Join(" ", args), elevate: false, waitForExit: false);
+                }
+                else
+                {
+                    string message, caption;
+
+                    if (errorCode == UacDenied)
                     {
-                        if (ret.Value == 0)
-                        {
-                            // B = Binaries were updated.
-                            ToolboxUpdater.RunElevated(Path.Combine(appFilePath, "SEToolbox.exe"), "/B " + String.Join(" ", args), false, false);
-                            Environment.Exit(NoError);
-                        }
-                        else
-                        {
-                            // Update failed? Files are readonly. Files are locked. Source Files missing (or renamed).
-                            var dialogResult = MessageBox.Show(Res.UpdateErrorMessage, Res.UpdateErrorTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                            if (dialogResult == MessageBoxResult.Yes)
-                            {
-                                // X = Ignore updates.
-                                ToolboxUpdater.RunElevated(Path.Combine(appFilePath, "SEToolbox.exe"), "/X " + String.Join(" ", args), false, false);
-                            }
-                            Environment.Exit(ret.Value);
-                        }
+                        message = Res.CancelUACMessage;
+                        caption = Res.CancelUACTitle;
                     }
                     else
                     {
-                        var dialogResult = MessageBox.Show(Res.CancelUACMessage, Res.CancelUACTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                        if (dialogResult == MessageBoxResult.Yes)
-                        {
-                            // X = Ignore updates.
-                            ToolboxUpdater.RunElevated(Path.Combine(appFilePath, "SEToolbox.exe"), "/X " + String.Join(" ", args), false, false);
-                        }
-                        Environment.Exit(UacDenied);
+                        // Update failed? Files are readonly. Files are locked. Source Files missing (or renamed).
+                        message = Res.UpdateErrorMessage;
+                        caption = Res.UpdateErrorTitle;
+                    }
+
+                    var dialogResult = MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                    if (dialogResult == MessageBoxResult.Yes)
+                    {
+                        // X = Ignore updates.
+                        ToolboxUpdater.RunElevated(toolboxExePath, "/X " + string.Join(" ", args), elevate: false, waitForExit: false);
                     }
                 }
+
+                Environment.Exit(errorCode);
             }
         }
-
-        #endregion
-
-        #region UpdateBaseFiles
 
         /// <summary>
         /// Updates the base library files from the Space Engineers application path.
         /// </summary>
         /// <param name="appFilePath"></param>
         /// <returns>True if it succeeded, False if there was an issue that blocked it.</returns>
-        private static bool UpdateBaseFiles(string appFilePath)
+        private static bool UpdateBaseFiles(string appFilePath, out Exception exception)
         {
-            var counter = 0;
-            // Wait until SEToolbox is shut down.
-            while (Process.GetProcessesByName("SEToolbox").Length > 0)
-            {
-                System.Threading.Thread.Sleep(100);
+            exception = null;
 
-                counter++;
-                if (counter > 100)
+            var liveProcesses = Process.GetProcessesByName("SEToolbox");
+
+            // Wait until SEToolbox is shut down.
+            foreach (var item in liveProcesses)
+            {
+                if (!item.WaitForExit(10_000))
                 {
-                    // 10 seconds is too long. Abort.
-                    return false;
+                    exception = new Exception("Timed out waiting for SEToolbox to close.");
+                    return false; // 10 seconds is too long. Abort.
                 }
             }
 
             var baseFilePath = ToolboxUpdater.GetApplicationFilePath();
 
-            foreach (var filename in ToolboxUpdater.CoreSpaceEngineersFiles)
+            foreach (var fileName in ToolboxUpdater.CoreSpaceEngineersFiles)
             {
-                var sourceFile = Path.Combine(baseFilePath, filename);
+                var sourceFile = Path.Combine(baseFilePath, fileName);
 
                 try
                 {
-                    if (File.Exists(sourceFile))
-                    {
-                        File.Copy(sourceFile, Path.Combine(appFilePath, filename), true);
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    File.Copy(sourceFile, Path.Combine(appFilePath, fileName), overwrite: true);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    exception = ex;
                     return false;
                 }
             }
 
-            foreach (var filename in ToolboxUpdater.OptionalSpaceEngineersFiles)
+            foreach (var fileName in ToolboxUpdater.OptionalSpaceEngineersFiles)
             {
-                var sourceFile = Path.Combine(baseFilePath, filename);
+                var sourceFile = Path.Combine(baseFilePath, fileName);
 
                 try
                 {
-                    if (File.Exists(sourceFile))
-                    {
-                        File.Copy(sourceFile, Path.Combine(appFilePath, filename), true);
-                    }
+                    File.Copy(sourceFile, Path.Combine(appFilePath, fileName), overwrite: true);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    exception = ex;
                     return false;
                 }
             }
@@ -229,17 +207,13 @@
             return true;
         }
 
-        #endregion
-
-        #region CleanBinCache
-
         /// <summary>
         /// Clear app bin cache.
         /// </summary>
         private static void CleanBinCache()
         {
-
             var binCache = ToolboxUpdater.GetBinCachePath();
+
             if (Directory.Exists(binCache))
             {
                 try
@@ -249,7 +223,5 @@
                 catch { }
             }
         }
-
-        #endregion
     }
 }

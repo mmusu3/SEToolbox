@@ -137,11 +137,11 @@ If you accept this risk, then press Yes to continue.</value>
     <value>Update cancelled</value>
   </data>
   <data name="UpdateErrorMessage" xml:space="preserve">
-    <value>An error occuring whilst attempting to updating the base files.
+    <value>An error occurred whilst attempting to updating the base files.
 You may attempt to run SEToolbox but you risk corrupting any Space Engineers world when you save.
-It is recommended you close the application now, then download and install the latest version of SEToolbox as soon as possible.
+It is recommended you close the application now, then download the latest version of SEToolbox.
 
-If with to continue and attempt to run SEToolbox as it is, then press Yes to continue.</value>
+If you want to ignore the error and attempt to run SEToolbox as it is, then press Yes to continue.</value>
   </data>
   <data name="UpdateErrorTitle" xml:space="preserve">
     <value>Update error</value>
