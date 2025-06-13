@@ -831,12 +831,39 @@
                 {
                     cockpit.RemoveHierarchyCharacter();
                 }
+                /*  TODO: Could we combine Pistons and Rotors into MyObjectBuilder_MechanicalConnectionBlock? That would increase robustness in case SE adds more mechanical connection types.
+                 *  var connectionBase = cubeGrid as MyObjectBuilder_MechanicalConnectionBlock;
+                 *  if (connectionBase != null) {
+                 *      connectionBase.TopBlockId = MergeId(pistonBase.TopBlockId.Value, ref idReplacementTable);
+                 *  }
+                 *  var motorBase = cubeGrid as MyObjectBuilder_MotorBase;
+                 *  if (motorBase != null) {
+                 *      if (motorBase.RotorEntityId.HasValue) {
+                 *          motorBase.RotorEntityId = MergeId(motorBase.RotorEntityId.Value, ref idReplacementTable);
+                 *      }
+                 *      if (motorBase.WeldedEntityId.HasValue) {
+                 *          MotorBase.WeldedEntityId = MergeId(motorBase.WeldedEntityId.Value, ref idReplacementTable);
+                 *      }
+                 * }
+                 */
 
                 var motorBase = cubeGrid as MyObjectBuilder_MotorBase;
-                if (motorBase != null && motorBase.RotorEntityId.HasValue)
+                /*  Old version of code, which led to Wheels/Suspensions, Rotors and Hinges getting seperated
+                 *  (motorBase != null && motorBase.RotorEntityId.HasValue)
+                 *  {
+                 *      // reattach motor/rotor to correct entity.
+                 *      motorBase.RotorEntityId = MergeId(motorBase.RotorEntityId.Value, ref idReplacementTable);
+                 *  }
+                */
+                if (motorBase != null)
                 {
-                    // reattach motor/rotor to correct entity.
-                    motorBase.RotorEntityId = MergeId(motorBase.RotorEntityId.Value, ref idReplacementTable);
+                    if (motorBase.TopBlockId.HasValue)
+                        motorBase.TopBlockId = MergeId(motorBase.TopBlockId.Value, ref idReplacementTable);
+                    if (motorBase.RotorEntityId.HasValue)
+                        motorBase.RotorEntityId = MergeId(motorBase.RotorEntityId.Value, ref idReplacementTable);
+                    // Not sure whether this is necessary
+                    if (motorBase.WeldedEntityId.HasValue)
+                        motorBase.WeldedEntityId = MergeId(motorBase.WeldedEntityId.Value, ref idReplacementTable);
                 }
 
                 var pistonBase = cubeGrid as MyObjectBuilder_PistonBase;
