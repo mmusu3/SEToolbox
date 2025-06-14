@@ -1058,8 +1058,10 @@
             {
                 Selections.Clear();
 
-                foreach (IStructureViewBase structure in newSelectionModels)
-                    Selections.Add(structure);
+                foreach (IStructureViewBase structure in newSelectionModels) {
+                    if (!Selections.Contains(structure))
+                     Selections.Add(structure);
+                }
             }
         }
 
