@@ -1320,7 +1320,14 @@
                         MyObjectBuilder_MechanicalConnectionBlock mechanicalConnection = block as MyObjectBuilder_MechanicalConnectionBlock;
                         if (mechanicalConnection != null)
                         {
-                            gridEntityNode.CubeEntityNodes.Add(block.EntityId, new CubeEntityNode { GridConnectionType = GridConnectionType.Mechanical, EntityId = block.EntityId, Entity = block, RemoteEntityId = mechanicalConnection?.TopBlockId.Value ?? 0 });
+                            gridEntityNode.CubeEntityNodes.Add(
+                                block.EntityId,
+                                new CubeEntityNode { 
+                                    GridConnectionType = GridConnectionType.Mechanical,
+                                    EntityId = block.EntityId, Entity = block,
+                                    //RemoteEntityId = mechanicalConnection?.TopBlockId.Value ?? 0 // Fixed: This crashed if any Rotor had no attached TopBlock
+                                    RemoteEntityId = mechanicalConnection.TopBlockId.HasValue ? mechanicalConnection.TopBlockId.Value : 0
+                                });
                             continue;
                         }
 
@@ -1385,8 +1392,8 @@
                         MyObjectBuilder_MechanicalConnectionBlock mechanicalConnection = block as MyObjectBuilder_MechanicalConnectionBlock;
                         if (mechanicalConnection != null)
                         {
-                            long topBlockId = mechanicalConnection?.TopBlockId.Value ?? 0;
-
+                            //long topBlockId = mechanicalConnection?.TopBlockId?.Value ?? 0; // Fixed: This crashed if any Rotor had no attached TopBlock
+                            long topBlockId = mechanicalConnection.TopBlockId.HasValue ? mechanicalConnection.TopBlockId.Value : 0;
                             foreach (var kvp in GridEntityNodes)
                             {
                                 KeyValuePair<long, CubeEntityNode> node;
