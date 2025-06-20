@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="SEToolbox.Views.ControlSafeZone"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:converters="clr-namespace:SEToolbox.Converters"
+             xmlns:controls="clr-namespace:SEToolbox.Controls"
+             xmlns:commands="clr-namespace:SEToolbox.Services"
+             xmlns:views="clr-namespace:SEToolbox.Views"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:ResxLocalizationProvider.DefaultAssembly="SEToolbox"
+             lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+             mc:Ignorable="d"
+             d:DesignHeight="400" d:DesignWidth="600"
+             commands:DialogService.IsRegisteredView="True">
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="Safe Zone">
+                <ScrollViewer>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Name:"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding DisplayName, Mode=TwoWay}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Enabled:"/>
+                        <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding IsEnabled, Mode=TwoWay}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Visible:"/>
+                        <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding IsVisible, Mode=TwoWay}" Checked="CheckBox_Checked"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Radius:"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Radius, Mode=TwoWay}"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Shape:"/>
+                        <ComboBox Grid.Row="4" Grid.Column="1" SelectedItem="{Binding Shape, Mode=TwoWay}" IsEditable="False">
+                            <ComboBoxItem Content="Sphere" />
+                            <ComboBoxItem Content="Box" />
+                        </ComboBox>
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Texture:"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Texture}"/>
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="AccessType (Players):"/>
+                        <ComboBox Grid.Row="6" Grid.Column="1" SelectedItem="{Binding AccessTypePlayers, Mode=TwoWay}" IsEditable="False">
+                            <ComboBoxItem Content="Whitelist" />
+                            <ComboBoxItem Content="Blacklist" />
+                        </ComboBox>
+
+                        <Label Grid.Row="7" Grid.Column="0" Content="AccessType (Factions):"/>
+                        <ComboBox Grid.Row="7" Grid.Column="1" SelectedItem="{Binding AccessTypeFactions, Mode=TwoWay}" IsEditable="False">
+                            <ComboBoxItem Content="Whitelist" />
+                            <ComboBoxItem Content="Blacklist" />
+                        </ComboBox>
+
+                        <Label Grid.Row="8" Grid.Column="0" Content="AccessType (Grids):"/>
+                        <ComboBox Grid.Row="8" Grid.Column="1" SelectedItem="{Binding AccessTypeGrids, Mode=TwoWay}" IsEditable="False">
+                            <ComboBoxItem Content="Whitelist" />
+                            <ComboBoxItem Content="Blacklist" />
+                        </ComboBox>
+
+                        <Label Grid.Row="9" Grid.Column="0" Content="AccessType (Floating Objects):"/>
+                        <ComboBox Grid.Row="9" Grid.Column="1" SelectedItem="{Binding AccessTypeFloatingObjects, Mode=TwoWay}" IsEditable="False">
+                            <ComboBoxItem Content="Whitelist" />
+                            <ComboBoxItem Content="Blacklist" />
+                        </ComboBox>
+
+                        <Label Grid.Row="10" Grid.Column="0" Content="Position:"/>
+                        <views:ControlPosition Grid.Row="10" Grid.Column="1" />
+
+                        <Label Grid.Row="11" Grid.Column="0" Content="Size:"/>
+                        <TextBlock Grid.Row="11" Grid.Column="1">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}, {1}, {2}">
+                                    <Binding Path="Size.X"/>
+                                    <Binding Path="Size.Y"/>
+                                    <Binding Path="Size.Z"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                        <Label Grid.Row="12" Grid.Column="0" Content="Model Color:"/>
+                        <TextBlock Grid.Row="12" Grid.Column="1">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0:F2}, {1:F2}, {2:F2}">
+                                    <Binding Path="ModelColor.X"/>
+                                    <Binding Path="ModelColor.Y"/>
+                                    <Binding Path="ModelColor.Z"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

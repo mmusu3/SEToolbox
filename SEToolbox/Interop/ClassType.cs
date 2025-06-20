@@ -3,6 +3,7 @@
     public enum ClassType 
     {
         Unknown,
+        SafeZone,
         Character,
         FloatingObject,
         LargeShip,

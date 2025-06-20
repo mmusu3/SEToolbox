@@ -151,7 +151,7 @@
                     data.SetData(typeof(string), parent.Uid);
 
                     //data.SetData(dragObject.DataType, this.AssociatedObject.DataContext);
-                    System.Windows.DragDrop.DoDragDrop(parent, data, DragDropEffects.Copy);
+                    System.Windows.DragDrop.DoDragDrop(parent, data, DragDropEffects.Copy); // TODO Crash here on Safezone transfer
                     //System.Windows.DragDrop.DoDragDrop(this.AssociatedObject, data, DragDropEffects.Move);
                 }
             }

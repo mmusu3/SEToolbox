@@ -414,7 +414,10 @@
             {
                 return new StructureInventoryBagModel(entityBase);
             }
-
+            if (entityBase is MyObjectBuilder_SafeZone)
+            {
+                return new StructureSafeZoneModel(entityBase);
+            }
             return new StructureUnknownModel(entityBase);
             //throw new NotImplementedException(string.Format("A new object has not been catered for in the StructureBase, of type '{0}'.", entityBase.GetType()));
         }

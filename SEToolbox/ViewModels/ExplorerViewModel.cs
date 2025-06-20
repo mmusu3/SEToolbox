@@ -1356,9 +1356,11 @@
                 item = new StructureMeteorViewModel(this, structureBase as StructureMeteorModel);
             else if (structureBase is StructureInventoryBagModel)
                 item = new StructureInventoryBagViewModel(this, structureBase as StructureInventoryBagModel);
+            else if (structureBase is StructureSafeZoneModel)
+                item = new StructureSafeZoneViewModel(this, structureBase as StructureSafeZoneModel);
             else if (structureBase is StructureUnknownModel)
                 item = new StructureUnknownViewModel(this, structureBase as StructureUnknownModel);
-            else
+            else 
             {
                 throw new NotImplementedException("As yet undefined ViewModel has been called.");
             }

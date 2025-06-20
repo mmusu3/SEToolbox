@@ -513,6 +513,9 @@
                             <DataTemplate DataType="{x:Type vm:StructureInventoryBagViewModel}">
                                 <views:ControlInventoryBag />
                             </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:StructureSafeZoneViewModel}">
+                                <views:ControlSafeZone />
+                            </DataTemplate>
                             <DataTemplate DataType="{x:Type vm:StructureUnknownViewModel}">
                                 <views:ControlUnknown />
                             </DataTemplate>
