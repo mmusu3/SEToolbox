@@ -1,30 +1,42 @@
-﻿using System;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-using Sandbox.Common.ObjectBuilders;
-using VRageMath;
-using VRage.ObjectBuilders;
-using SEToolbox.Interop;
-using VRage;
-using System.ComponentModel;
-
-namespace SEToolbox.Models
+﻿namespace SEToolbox.Models
 {
+    using System;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
+
+    using Sandbox.Common.ObjectBuilders;
+    using SEToolbox.Interop;
+    using VRage.ObjectBuilders;
+    using VRageMath;
+    using VRage;
+
     [Serializable]
     public class StructureSafeZoneModel : StructureBaseModel
     {
+        #region Fields
+        #endregion
+
+        #region ctor
+
         public StructureSafeZoneModel(MyObjectBuilder_EntityBase entityBase)
             : base(entityBase)
         {
         }
 
+        #endregion
+
+        #region Properties
+
         [XmlIgnore]
         public MyObjectBuilder_SafeZone SafeZone => EntityBase as MyObjectBuilder_SafeZone;
 
         [XmlIgnore]
-        public bool IsVisible
+        public bool IsVisible //Done
         {
-            get => SafeZone.IsVisible;
+            get 
+            { 
+                return SafeZone.IsVisible; 
+            }
             set
             {
                 if (value != SafeZone.IsVisible)
@@ -36,9 +48,12 @@ namespace SEToolbox.Models
         }
 
         [XmlIgnore]
-        public bool IsEnabled
+        public bool IsEnabled //Done
         {
-            get => SafeZone.Enabled;
+            get
+            {
+                return SafeZone.Enabled;
+            }
             set
             {
                 if (value != SafeZone.Enabled)
@@ -50,9 +65,13 @@ namespace SEToolbox.Models
         }
 
         [XmlIgnore]
-        public float Radius
+        public float Radius //Done
         {
-            get => SafeZone.Radius;
+            get
+            {
+                return SafeZone.Radius;
+            }
+
             set
             {
                 if (value != SafeZone.Radius)
@@ -64,15 +83,13 @@ namespace SEToolbox.Models
         }
 
         [XmlIgnore]
-        public Vector3 Size => SafeZone.Size;
+        public Vector3 Size => SafeZone.Size; //TODO
 
         [XmlIgnore]
         public SerializableVector3 ModelColor => SafeZone.ModelColor;
 
         [XmlIgnore]
         public string Texture => SafeZone.Texture;
-
-        #region Enum-Properties mit String-Wrapper
 
         [XmlIgnore]
         public MySafeZoneShape ShapeEnum
@@ -216,6 +233,8 @@ namespace SEToolbox.Models
 
         #endregion
 
+        #region methods
+
         public override void UpdateGeneralFromEntityBase()
         {
             ClassType = ClassType.SafeZone;
@@ -235,5 +254,7 @@ namespace SEToolbox.Models
         {
             EntityBase = SpaceEngineersApi.Deserialize<MyObjectBuilder_SafeZone>(SerializedEntity);
         }
+
+        #endregion
     }
 }

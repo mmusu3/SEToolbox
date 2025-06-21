@@ -1,8 +1,10 @@
 ﻿namespace SEToolbox.ViewModels
 {
+    using Sandbox.Common.ObjectBuilders;
     using SEToolbox.Interfaces;
     using SEToolbox.Models;
     using SEToolbox.Services;
+    using System.Collections.Generic;
 
     public class StructureSafeZoneViewModel : StructureBaseViewModel<StructureSafeZoneModel>
     {
@@ -21,54 +23,93 @@
 
         protected new StructureSafeZoneModel DataModel => base.DataModel as StructureSafeZoneModel;
 
-        public bool IsVisible
+
+        public bool IsVisible                       //Done
         {
-            get => DataModel.IsVisible;
-            set => DataModel.IsVisible = value;
+            get { return DataModel.IsVisible; }
+
+            set
+            {
+                DataModel.IsVisible = value;
+                MainViewModel.IsModified = true;
+            }
         }
 
-        public bool IsEnabled
+        public bool IsEnabled                       //Done
         {
-            get => DataModel.IsEnabled;
-            set => DataModel.IsEnabled = value;
+            get { return DataModel.IsEnabled; }
+
+            set
+            {
+                DataModel.IsEnabled = value;
+                MainViewModel.IsModified = true;
+            }
         }
 
-        public float Radius
+        public float Radius                         //Done
         {
-            get => DataModel.Radius;
-            set => DataModel.Radius = value;
+            get { return DataModel.Radius; }
+            set { 
+                DataModel.Radius = value;
+                MainViewModel.IsModified = true;
+            }
+        }
+        public List<string> AvailableShapes { get; } = new() { "Sphere", "Box" };
+        public string Shape                         //TODO Dropdown: Sphere/Box
+        {
+            get { 
+                return DataModel.Shape; }
+            set
+            {
+                DataModel.Shape = value;
+                MainViewModel.IsModified = true;
+            }
         }
 
-        public string Shape
+        public List<string> AvailableTextures { get; } = new() { "Sphere" }; // TODO
+        public string Texture => DataModel.Texture; //Todo enum
+
+
+        public List<string> AccessTypes { get; } = new List<string> { "Whitelist", "Blacklist" };
+
+        public string AccessTypePlayers             //TODO
         {
-            get => DataModel.Shape;
-            set => DataModel.Shape = value;
+            get { return DataModel.AccessTypePlayers; }
+            set
+            {
+                DataModel.AccessTypePlayers = value;
+                MainViewModel.IsModified = true;
+            }
         }
 
-        public string Texture => DataModel.Texture;
-
-        public string AccessTypePlayers
+        public string AccessTypeFactions            //TODO
         {
-            get => DataModel.AccessTypePlayers;
-            set => DataModel.AccessTypePlayers = value;
+            get { return DataModel.AccessTypeFactions; }
+            set
+            {
+                DataModel.AccessTypeFactions = value;
+                MainViewModel.IsModified = true;
+            }
         }
 
-        public string AccessTypeFactions
+        public string AccessTypeGrids               //TODO
         {
-            get => DataModel.AccessTypeFactions;
-            set => DataModel.AccessTypeFactions = value;
+            get { return DataModel.AccessTypeGrids; }
+            set
+            {
+                DataModel.AccessTypeGrids = value;
+                MainViewModel.IsModified = true;
+            }
         }
 
-        public string AccessTypeGrids
+        public string AccessTypeFloatingObjects     //TODO
         {
-            get => DataModel.AccessTypeGrids;
-            set => DataModel.AccessTypeGrids = value;
-        }
-
-        public string AccessTypeFloatingObjects
-        {
-            get => DataModel.AccessTypeFloatingObjects;
-            set => DataModel.AccessTypeFloatingObjects = value;
+            get { return DataModel.AccessTypeFloatingObjects; }
+            set
+            {
+                DataModel.AccessTypeFloatingObjects = value;
+                MainViewModel.IsModified = true;
+            }
         }
 
         public float SizeX => DataModel.Size.X;

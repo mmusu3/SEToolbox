@@ -48,47 +48,40 @@
                         <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding IsEnabled, Mode=TwoWay}"/>
 
                         <Label Grid.Row="2" Grid.Column="0" Content="Visible:"/>
-                        <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding IsVisible, Mode=TwoWay}" Checked="CheckBox_Checked"/>
+                        <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding IsVisible, Mode=TwoWay}"/>
 
                         <Label Grid.Row="3" Grid.Column="0" Content="Radius:"/>
                         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Radius, Mode=TwoWay}"/>
 
                         <Label Grid.Row="4" Grid.Column="0" Content="Shape:"/>
-                        <ComboBox Grid.Row="4" Grid.Column="1" SelectedItem="{Binding Shape, Mode=TwoWay}" IsEditable="False">
-                            <ComboBoxItem Content="Sphere" />
-                            <ComboBoxItem Content="Box" />
-                        </ComboBox>
+                        <ComboBox Grid.Row="4" Grid.Column="1" 
+                            ItemsSource="{Binding AvailableShapes}"
+                            SelectedItem="{Binding Shape, Mode=TwoWay}" />
 
                         <Label Grid.Row="5" Grid.Column="0" Content="Texture:"/>
                         <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Texture}"/>
 
                         <Label Grid.Row="6" Grid.Column="0" Content="AccessType (Players):"/>
-                        <ComboBox Grid.Row="6" Grid.Column="1" SelectedItem="{Binding AccessTypePlayers, Mode=TwoWay}" IsEditable="False">
-                            <ComboBoxItem Content="Whitelist" />
-                            <ComboBoxItem Content="Blacklist" />
-                        </ComboBox>
-
+                        <ComboBox Grid.Row="6" Grid.Column="1" 
+                                   ItemsSource="{Binding AccessTypes}"
+                                   SelectedItem="{Binding AccessTypePlayers, Mode=TwoWay}" />
                         <Label Grid.Row="7" Grid.Column="0" Content="AccessType (Factions):"/>
-                        <ComboBox Grid.Row="7" Grid.Column="1" SelectedItem="{Binding AccessTypeFactions, Mode=TwoWay}" IsEditable="False">
-                            <ComboBoxItem Content="Whitelist" />
-                            <ComboBoxItem Content="Blacklist" />
-                        </ComboBox>
+                        <ComboBox Grid.Row="7" Grid.Column="1" 
+                                   ItemsSource="{Binding AccessTypes}"
+                                   SelectedItem="{Binding AccessTypeFactions, Mode=TwoWay}" />
 
                         <Label Grid.Row="8" Grid.Column="0" Content="AccessType (Grids):"/>
-                        <ComboBox Grid.Row="8" Grid.Column="1" SelectedItem="{Binding AccessTypeGrids, Mode=TwoWay}" IsEditable="False">
-                            <ComboBoxItem Content="Whitelist" />
-                            <ComboBoxItem Content="Blacklist" />
-                        </ComboBox>
+                        <ComboBox Grid.Row="8" Grid.Column="1" 
+                                   ItemsSource="{Binding AccessTypes}"
+                                   SelectedItem="{Binding AccessTypeGrids, Mode=TwoWay}" />
 
                         <Label Grid.Row="9" Grid.Column="0" Content="AccessType (Floating Objects):"/>
-                        <ComboBox Grid.Row="9" Grid.Column="1" SelectedItem="{Binding AccessTypeFloatingObjects, Mode=TwoWay}" IsEditable="False">
-                            <ComboBoxItem Content="Whitelist" />
-                            <ComboBoxItem Content="Blacklist" />
-                        </ComboBox>
+                        <ComboBox Grid.Row="9" Grid.Column="1"  
+                                   ItemsSource="{Binding AccessTypes}"
+                                   SelectedItem="{Binding AccessTypeFloatingObjects, Mode=TwoWay}" />
 
                         <Label Grid.Row="10" Grid.Column="0" Content="Position:"/>
                         <views:ControlPosition Grid.Row="10" Grid.Column="1" />
-
                         <Label Grid.Row="11" Grid.Column="0" Content="Size:"/>
                         <TextBlock Grid.Row="11" Grid.Column="1">
                             <TextBlock.Text>
@@ -112,6 +105,18 @@
                         </TextBlock>
                     </Grid>
                 </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Allowed Actions">
+                <StackPanel Margin="10">
+                    <CheckBox Content="Shooting" IsChecked="{Binding AllowedActions, ConverterParameter=Shooting, Mode=TwoWay}" />
+                    <CheckBox Content="Welding" IsChecked="{Binding AllowedActions, ConverterParameter=Welding, Mode=TwoWay}" />
+                    <CheckBox Content="Grinding" IsChecked="{Binding AllowedActions, ConverterParameter=Grinding, Mode=TwoWay}" />
+                    <CheckBox Content="Drilling" IsChecked="{Binding AllowedActions, ConverterParameter=Drilling, Mode=TwoWay}" />
+                    <CheckBox Content="VoxelHand" IsChecked="{Binding AllowedActions, ConverterParameter=VoxelHand, Mode=TwoWay}" />
+                    <CheckBox Content="ConvertToStation" IsChecked="{Binding AllowedActions,ConverterParameter=ConvertToStation, Mode=TwoWay}" />
+                    <CheckBox Content="Building" IsChecked="{Binding AllowedActions, ConverterParameter=Building, Mode=TwoWay}" />
+                    <CheckBox Content="BuildingProjections" IsChecked="{Binding AllowedActions, ConverterParameter=BuildingProjections, Mode=TwoWay}" />
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>
