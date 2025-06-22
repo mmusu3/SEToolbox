@@ -1,10 +1,14 @@
 ﻿namespace SEToolbox.ViewModels
 {
+    using ObjectBuilders.Definitions.SafeZone;
     using Sandbox.Common.ObjectBuilders;
-    using SEToolbox.Interfaces;
+    using Sandbox.Definitions;
     using SEToolbox.Models;
-    using SEToolbox.Services;
+    using SpaceEngineers.Game.Definitions.SafeZone;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using VRage.Game.ObjectBuilders.Components;
 
     public class StructureSafeZoneViewModel : StructureBaseViewModel<StructureSafeZoneModel>
     {
@@ -13,12 +17,194 @@
         public StructureSafeZoneViewModel(BaseViewModel parentViewModel, StructureSafeZoneModel dataModel)
             : base(parentViewModel, dataModel)
         {
-            // Optional: Hook für PropertyChanged → automatisch weiterreichen
             DataModel.PropertyChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
         }
 
         #endregion
 
+        #region AllowedActions
+        public MySafeZoneAction AllowedActions
+        {
+            get => DataModel.AllowedActions;
+            set
+            {
+                if (DataModel.AllowedActions != value)
+                {
+                    DataModel.AllowedActions = value;
+                    OnPropertyChanged(nameof(AllowedActions));
+                    OnPropertyChanged(nameof(IsDamageAllowed));
+                    OnPropertyChanged(nameof(IsShootingAllowed));
+                    OnPropertyChanged(nameof(IsDrillingAllowed));
+                    OnPropertyChanged(nameof(IsWeldingAllowed));
+                    OnPropertyChanged(nameof(IsGrindingAllowed));
+                    OnPropertyChanged(nameof(IsBuildingAllowed));
+                    OnPropertyChanged(nameof(IsBuildingProjectionsAllowed));
+                    OnPropertyChanged(nameof(IsVoxelHandAllowed));
+                    OnPropertyChanged(nameof(IsLandingGearLockAllowed));
+                    OnPropertyChanged(nameof(IsConvertToStationAllowed));
+                    MainViewModel.IsModified = true;
+                }
+            }
+        }
+        public bool IsDamageAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.Damage);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.Damage;
+                else
+                    AllowedActions &= ~MySafeZoneAction.Damage;
+
+                OnPropertyChanged(nameof(IsDamageAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsShootingAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.Shooting);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.Shooting;
+                else
+                    AllowedActions &= ~MySafeZoneAction.Shooting;
+
+                OnPropertyChanged(nameof(IsShootingAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsDrillingAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.Drilling);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.Drilling;
+                else
+                    AllowedActions &= ~MySafeZoneAction.Drilling;
+
+                OnPropertyChanged(nameof(IsDrillingAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsWeldingAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.Welding);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.Welding;
+                else
+                    AllowedActions &= ~MySafeZoneAction.Welding;
+
+                OnPropertyChanged(nameof(IsWeldingAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsGrindingAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.Grinding);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.Grinding;
+                else
+                    AllowedActions &= ~MySafeZoneAction.Grinding;
+
+                OnPropertyChanged(nameof(IsGrindingAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsBuildingAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.Building);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.Building;
+                else
+                    AllowedActions &= ~MySafeZoneAction.Building;
+
+                OnPropertyChanged(nameof(IsBuildingAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsBuildingProjectionsAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.BuildingProjections);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.BuildingProjections;
+                else
+                    AllowedActions &= ~MySafeZoneAction.BuildingProjections;
+
+                OnPropertyChanged(nameof(IsBuildingProjectionsAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsVoxelHandAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.VoxelHand);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.VoxelHand;
+                else
+                    AllowedActions &= ~MySafeZoneAction.VoxelHand;
+
+                OnPropertyChanged(nameof(IsVoxelHandAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsLandingGearLockAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.LandingGearLock);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.LandingGearLock;
+                else
+                    AllowedActions &= ~MySafeZoneAction.LandingGearLock;
+
+                OnPropertyChanged(nameof(IsLandingGearLockAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        public bool IsConvertToStationAllowed
+        {
+            get => AllowedActions.HasFlag(MySafeZoneAction.ConvertToStation);
+            set
+            {
+                if (value)
+                    AllowedActions |= MySafeZoneAction.ConvertToStation;
+                else
+                    AllowedActions &= ~MySafeZoneAction.ConvertToStation;
+
+                OnPropertyChanged(nameof(IsConvertToStationAllowed));
+                MainViewModel.IsModified = true;
+            }
+        }
+
+        #endregion
+
+        #region "fields"
+        public List<string> AvailableTextures { get; } = new() { "SafeZone_Texture_Hexagon", "SafeZone_Texture_Default" }; // TODO
+
+        public Array AvailableShapes => Enum.GetValues(typeof(MySafeZoneShape));
+        public Array AccessTypes => Enum.GetValues(typeof(MySafeZoneAccess));
+
+        #endregion
         #region Properties
 
         protected new StructureSafeZoneModel DataModel => base.DataModel as StructureSafeZoneModel;
@@ -54,63 +240,95 @@
                 MainViewModel.IsModified = true;
             }
         }
-        public List<string> AvailableShapes { get; } = new() { "Sphere", "Box" };
-        public string Shape                         //TODO Dropdown: Sphere/Box
+        
+        public MySafeZoneShape Shape                //Done
         {
-            get { 
-                return DataModel.Shape; }
+            get => DataModel.ShapeEnum;
             set
             {
-                DataModel.Shape = value;
-                MainViewModel.IsModified = true;
+                if (value != DataModel.ShapeEnum)
+                {
+                    DataModel.ShapeEnum = value;
+                    OnPropertyChanged(nameof(Shape));
+                    //IsSphereShape = value == MySafeZoneShape.Sphere;
+                    OnPropertyChanged(nameof(IsSphereShape));
+                    MainViewModel.IsModified = true;
+                }
             }
         }
 
-        public List<string> AvailableTextures { get; } = new() { "Sphere" }; // TODO
-        public string Texture => DataModel.Texture; //Todo enum
-
-
-        public List<string> AccessTypes { get; } = new List<string> { "Whitelist", "Blacklist" };
-
-        public string AccessTypePlayers             //TODO
+        public string Texture                       //Done (Find more textures)
         {
-            get { return DataModel.AccessTypePlayers; }
+            get => DataModel.Texture;
             set
             {
-                DataModel.AccessTypePlayers = value;
-                MainViewModel.IsModified = true;
+                if (value != DataModel.Texture)
+                {
+                    DataModel.Texture = value;
+                    OnPropertyChanged(nameof(Texture));
+                    MainViewModel.IsModified = true;
+                }
             }
         }
 
-        public string AccessTypeFactions            //TODO
+        public bool IsSphereShape => Shape == MySafeZoneShape.Sphere;
+
+        public MySafeZoneAccess AccessTypePlayers             //Done?
         {
-            get { return DataModel.AccessTypeFactions; }
+            get { return DataModel.AccessTypePlayersEnum; }
             set
             {
-                DataModel.AccessTypeFactions = value;
-                MainViewModel.IsModified = true;
+                if (value != DataModel.AccessTypePlayersEnum)
+                {
+                    DataModel.AccessTypePlayersEnum = value;
+                    MainViewModel.IsModified = true;
+                    OnPropertyChanged(nameof(AccessTypePlayers));
+                }
             }
         }
 
-        public string AccessTypeGrids               //TODO
+        public MySafeZoneAccess AccessTypeFactions            //Done?
         {
-            get { return DataModel.AccessTypeGrids; }
+            get => DataModel.AccessTypeFactionsEnum;
             set
             {
-                DataModel.AccessTypeGrids = value;
-                MainViewModel.IsModified = true;
+                if (value != DataModel.AccessTypeFactionsEnum)
+                {
+                    DataModel.AccessTypeFactionsEnum = value;
+                    MainViewModel.IsModified = true;
+                    OnPropertyChanged(nameof(AccessTypeFactions));
+                }
             }
         }
 
-        public string AccessTypeFloatingObjects     //TODO
+        public MySafeZoneAccess AccessTypeGrids               //Done?
         {
-            get { return DataModel.AccessTypeFloatingObjects; }
+            get => DataModel.AccessTypeGridsEnum;
             set
             {
-                DataModel.AccessTypeFloatingObjects = value;
-                MainViewModel.IsModified = true;
+                if (value != DataModel.AccessTypeGridsEnum)
+                {
+                    DataModel.AccessTypeGridsEnum = value;
+                    MainViewModel.IsModified = true;
+                    OnPropertyChanged(nameof(AccessTypeGrids));
+                }
             }
         }
+
+        public MySafeZoneAccess AccessTypeFloatingObjects     //Done?
+        {
+            get => DataModel.AccessTypeFloatingObjectsEnum;
+            set
+            {
+                if (value != DataModel.AccessTypeFloatingObjectsEnum)
+                {
+                    DataModel.AccessTypeFloatingObjectsEnum = value;
+                    MainViewModel.IsModified = true;
+                    OnPropertyChanged(nameof(AccessTypeFloatingObjects));
+                }
+            }
+        }
+
 
         public float SizeX => DataModel.Size.X;
         public float SizeY => DataModel.Size.Y;

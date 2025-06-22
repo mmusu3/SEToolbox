@@ -1,19 +1,20 @@
 ﻿namespace SEToolbox.Models
 {
+    using Sandbox.Common.ObjectBuilders;
+    using SEToolbox.Interop;
     using System;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
-
-    using Sandbox.Common.ObjectBuilders;
-    using SEToolbox.Interop;
+    using VRage;
+    using VRage.Game.ObjectBuilders.Components;
     using VRage.ObjectBuilders;
     using VRageMath;
-    using VRage;
 
     [Serializable]
     public class StructureSafeZoneModel : StructureBaseModel
     {
         #region Fields
+       
         #endregion
 
         #region ctor
@@ -89,7 +90,18 @@
         public SerializableVector3 ModelColor => SafeZone.ModelColor;
 
         [XmlIgnore]
-        public string Texture => SafeZone.Texture;
+        public string Texture
+        {
+            get => SafeZone.Texture;
+            set
+            {
+                if (value != SafeZone.Texture)
+                {
+                    SafeZone.Texture = value;
+                    OnPropertyChanged(nameof(Texture));
+                }
+            }
+        }
 
         [XmlIgnore]
         public MySafeZoneShape ShapeEnum
@@ -230,7 +242,18 @@
                 }
             }
         }
-
+        public MySafeZoneAction AllowedActions
+        {
+            get => SafeZone.AllowedActions;
+            set
+            {
+                if (value != SafeZone.AllowedActions)
+                {
+                    SafeZone.AllowedActions = value;
+                    OnPropertyChanged(nameof(AllowedActions));
+                }
+            }
+        }
         #endregion
 
         #region methods

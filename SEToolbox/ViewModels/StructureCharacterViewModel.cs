@@ -136,7 +136,10 @@
         public float BatteryCapacity
         {
             get { return DataModel.BatteryCapacity * 100000; }
-            set { DataModel.BatteryCapacity = value / 100000; }
+            set { 
+                DataModel.BatteryCapacity = value / 100000;
+                //MainViewModel.IsModified = true; //TODO : Is this needed?
+            }
         }
 
         public float? Health
