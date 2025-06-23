@@ -312,7 +312,19 @@
             OnPropertyChanged(nameof(CreatingGrid));
             return;
         }
-
+        [XmlIgnore]
+        public long SafeZoneBlockId
+        {
+            get => SafeZone.SafeZoneBlockId;
+            set
+            {
+                if (SafeZone.SafeZoneBlockId != value)
+                {
+                    SafeZone.SafeZoneBlockId = value;
+                    OnPropertyChanged(nameof(SafeZoneBlockId));
+                }
+            }
+        }
 
         public override void UpdateGeneralFromEntityBase()
         {

@@ -9,6 +9,7 @@
     using System.Windows.Shell;
     using System.Windows.Threading;
     using Microsoft.VisualBasic.FileIO;
+    using ObjectBuilders.SafeZone;
     using Sandbox.Common.ObjectBuilders;
     using SEToolbox.Interfaces;
     using SEToolbox.Interop;
@@ -18,6 +19,7 @@
     using VRage.Game;
     using VRage.ObjectBuilders;
     using VRageMath;
+    using VRage.Game.ObjectBuilders.Components.Beacon; //Apparently the safeZoneComponent is in the namespace Beacon
     using IDType = VRage.MyEntityIdentifier.ID_OBJECT_TYPE;
 
     public class ExplorerModel : BaseModel
@@ -806,9 +808,13 @@
                 else if (item is StructureSafeZoneModel)
                 {
                     var safeZone = item as StructureSafeZoneModel;
-                    //TODO
                     var entity = AddEntity(safeZone.EntityBase);
                     entity.EntityId = MergeId(safeZone.EntityId, ref idReplacementTable);
+
+                    var safeZonetmp = entity as StructureSafeZoneModel;
+                    if(safeZonetmp != null && safeZonetmp.SafeZoneBlockId != 0) {
+                        safeZonetmp.SafeZoneBlockId = MergeId(safeZonetmp.SafeZoneBlockId, ref idReplacementTable);
+                    }
                 }
                 else if (item is StructureUnknownModel)
                 {
@@ -914,9 +920,43 @@
                     // reattach Ship Controller actions to correct entity.
                     RenumberToolbar(shipController.Toolbar, ref idReplacementTable);
                 }
+
+                var safeZoneBlock = cubeGrid as MyObjectBuilder_SafeZoneBlock;
+                if (safeZoneBlock != null)
+                {
+                    //TODO: Also merge the component SafeZone of the Block
+                    adjustSafeZoneBlock(safeZoneBlock, ref idReplacementTable);
+                }
             }
 
             AddEntity(cubeGridObject);
+        }
+
+        private void adjustSafeZoneBlock(MyObjectBuilder_SafeZoneBlock safeZoneBlock, ref Dictionary<Int64, Int64> idReplacementTable)
+        {
+            safeZoneBlock.SafeZoneId = MergeId(safeZoneBlock.SafeZoneId, ref idReplacementTable);
+            
+            if (safeZoneBlock.ComponentContainer?.Components != null)
+            {
+                foreach (var component in safeZoneBlock.ComponentContainer.Components)
+                {
+                    //System.Diagnostics.Debug.WriteLine(component.Component.GetType().FullName);
+                    
+                    var safeZoneComponent = component.Component as MyObjectBuilder_SafeZoneComponent;
+
+                    if (safeZoneComponent != null && safeZoneComponent.SafeZoneOb != null)
+                    {
+                        MyObjectBuilder_SafeZone safeZoneUninitialzed = safeZoneComponent.SafeZoneOb as MyObjectBuilder_SafeZone;
+                        if (safeZoneUninitialzed != null)
+                        {
+                            // Die SafeZone-EntityId auf die neue EntityId mergen:
+                            safeZoneUninitialzed.EntityId = MergeId(safeZoneUninitialzed.EntityId, ref idReplacementTable);
+                            // UND die SafeZoneBlockId auf die neue Block-EntityId mappen!
+                            safeZoneUninitialzed.SafeZoneBlockId = MergeId(safeZoneUninitialzed.SafeZoneBlockId, ref idReplacementTable);
+                        }
+                    }
+                }
+            }
         }
 
         private void RenumberToolbar(MyObjectBuilder_Toolbar toolbar, ref Dictionary<Int64, Int64> idReplacementTable)
