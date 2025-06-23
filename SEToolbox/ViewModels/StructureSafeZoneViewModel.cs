@@ -207,7 +207,23 @@
         #endregion
 
         #region "fields"
-        public List<string> AvailableTextures { get; } = new() { "SafeZone_Texture_Hexagon", "SafeZone_Texture_Default" }; // TODO
+        public List<string> AvailableTextures { get; } = new() {  "SafeZone_Texture_Default",
+            "SafeZone_Texture_Aura",
+            "SafeZone_Texture_Organic",
+            "SafeZone_Texture_Rain",
+            "SafeZone_Texture_Dots",
+            "SafeZone_Texture_Disco",
+            "SafeZone_Texture_Noise",
+            "SafeZone_Texture_Hexagon",
+            "SafeZone_Texture_Lines",
+            "SafeZone_Texture_Digital",
+            "SafeZone_Texture_Gloura",
+            "SafeZone_Texture_Clang",
+            "SafeZone_Texture_Voronoi",
+            "SafeZone_Texture_Restricted",
+            "SafeZone_Texture_KeenSWH",
+            "SafeZone_Texture_Disabled"
+            }; // TODO: Sadly I have no idea how to get the actual textures from the game, so this is a hardcoded list. Works until something changes.
 
         public Array AvailableShapes => Enum.GetValues(typeof(MySafeZoneShape));
         public Array AccessTypes => Enum.GetValues(typeof(MySafeZoneAccess));
