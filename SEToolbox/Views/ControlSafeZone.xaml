@@ -39,6 +39,10 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -70,42 +74,18 @@
                         <!-- Nur anzeigen, wenn NICHT Sphere -->
                         <Label Grid.Row="4" Grid.Column="0" Content="Size:"
                                     Visibility="{Binding IsSphereShape, Converter={StaticResource InverseBoolToVis}}" />
-                        <TextBlock Grid.Row="4" Grid.Column="1"
+                        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal"
                                     Visibility="{Binding IsSphereShape, Converter={StaticResource InverseBoolToVis}}">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0}, {1}, {2}">
-                                    <Binding Path="Size.X"/>
-                                    <Binding Path="Size.Y"/>
-                                    <Binding Path="Size.Z"/>
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                            <TextBox Width="60" Margin="0,0,10,0" Text="{Binding SizeX, Mode=TwoWay}" />
+                            <TextBox Width="60" Margin="0,0,10,0" Text="{Binding SizeY, Mode=TwoWay}" />
+                            <TextBox Width="60" Margin="0,0,10,0" Text="{Binding SizeZ, Mode=TwoWay}" />
+                        </StackPanel>
 
 
                         <Label Grid.Row="5" Grid.Column="0" Content="Texture:"/>
                         <ComboBox Grid.Row="5" Grid.Column="1"
                               ItemsSource="{Binding AvailableTextures}"
                               SelectedItem="{Binding Texture, Mode=TwoWay}" />
-
-                        <Label Grid.Row="6" Grid.Column="0" Content="AccessType (Players):"/>
-                        <ComboBox Grid.Row="6" Grid.Column="1" 
-                                  ItemsSource="{Binding AccessTypes}"
-                                  SelectedItem="{Binding AccessTypePlayers, Mode=TwoWay}" />
-
-                        <Label Grid.Row="7" Grid.Column="0" Content="AccessType (Factions):"/>
-                        <ComboBox Grid.Row="7" Grid.Column="1" 
-                                  ItemsSource="{Binding AccessTypes}"
-                                  SelectedItem="{Binding AccessTypeFactions, Mode=TwoWay}" />
-
-                        <Label Grid.Row="8" Grid.Column="0" Content="AccessType (Grids):"/>
-                        <ComboBox Grid.Row="8" Grid.Column="1" 
-                                  ItemsSource="{Binding AccessTypes}"
-                                  SelectedItem="{Binding AccessTypeGrids, Mode=TwoWay}" />
-
-                        <Label Grid.Row="9" Grid.Column="0" Content="AccessType (Floating Objects):"/>
-                        <ComboBox Grid.Row="9" Grid.Column="1"  
-                                  ItemsSource="{Binding AccessTypes}"
-                                  SelectedItem="{Binding AccessTypeFloatingObjects, Mode=TwoWay}" />
 
                         <Label Grid.Row="10" Grid.Column="0" Content="Position:"/>
                         <views:ControlPosition Grid.Row="10" Grid.Column="1" />
@@ -120,10 +100,94 @@
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
-                    </Grid>
-                </ScrollViewer>
-            </TabItem>
 
+                        <!-- Zeile 13: Creating Block -->
+                        <Button Grid.Row="13" Grid.Column="0" Content="Suche Erzeugenden Block"
+                            Command="{Binding SearchCreatingEntitiesCommand}" />
+                        <TextBlock Grid.Row="13" Grid.Column="1"
+                            Text="{Binding CreatingBlockInfo}"
+                            TextTrimming="CharacterEllipsis"/>
+
+                        <!-- Zeile 14: Creating Grid -->
+                        <Button Grid.Row="14" Grid.Column="0" Content="Suche Erzeugendes Grid"
+                            Command="{Binding SearchCreatingEntitiesCommand}" />
+                        <TextBlock Grid.Row="14" Grid.Column="1"
+                            Text="{Binding CreatingGridInfo}"
+                            TextTrimming="CharacterEllipsis" />
+
+                    </Grid>
+                    
+                </ScrollViewer>
+                
+            </TabItem>
+            
+            <TabItem Header="Access Type: Player">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="6" Grid.Column="0" Content="AccessType (Players):"/>
+                    <ComboBox Grid.Row="6" Grid.Column="1" 
+                                  ItemsSource="{Binding AccessTypes}"
+                                  SelectedItem="{Binding AccessTypePlayers, Mode=TwoWay}" />
+
+                    
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Access Type: Factions">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="7" Grid.Column="0" Content="AccessType (Factions):"/>
+                    <ComboBox Grid.Row="7" Grid.Column="1" 
+              ItemsSource="{Binding AccessTypes}"
+              SelectedItem="{Binding AccessTypeFactions, Mode=TwoWay}" />
+
+ 
+                </Grid>
+            </TabItem>
+            <TabItem Header="Access Type: Grids">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="8" Grid.Column="0" Content="AccessType (Grids):"/>
+                    <ComboBox Grid.Row="8" Grid.Column="1" 
+             ItemsSource="{Binding AccessTypes}"
+             SelectedItem="{Binding AccessTypeGrids, Mode=TwoWay}" />
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Access Type: Floating Objects">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="9" Grid.Column="0" Content="AccessType (Floating Objects):"/>
+                    <ComboBox Grid.Row="9" Grid.Column="1"  
+             ItemsSource="{Binding AccessTypes}"
+             SelectedItem="{Binding AccessTypeFloatingObjects, Mode=TwoWay}" />
+                </Grid>
+            </TabItem>
             <TabItem Header="Allowed Actions">
                 <StackPanel Margin="10">
                     <CheckBox Content="Damage" IsChecked="{Binding IsDamageAllowed}" />

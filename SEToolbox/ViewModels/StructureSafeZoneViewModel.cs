@@ -1,13 +1,13 @@
 ﻿namespace SEToolbox.ViewModels
 {
-    using ObjectBuilders.Definitions.SafeZone;
+    using ObjectBuilders.SafeZone;
     using Sandbox.Common.ObjectBuilders;
-    using Sandbox.Definitions;
     using SEToolbox.Models;
-    using SpaceEngineers.Game.Definitions.SafeZone;
+    using SEToolbox.Services;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    using System.Windows.Input;
+    using VRage.Game;
     using VRage.Game.ObjectBuilders.Components;
 
     public class StructureSafeZoneViewModel : StructureBaseViewModel<StructureSafeZoneModel>
@@ -17,7 +17,15 @@
         public StructureSafeZoneViewModel(BaseViewModel parentViewModel, StructureSafeZoneModel dataModel)
             : base(parentViewModel, dataModel)
         {
-            DataModel.PropertyChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
+            DataModel.PropertyChanged += (sender, e) =>
+            {
+                OnPropertyChanged(e.PropertyName);
+                if (e.PropertyName == nameof(DataModel.CreatingBlock) || e.PropertyName == nameof(DataModel.CreatingGrid))
+                {
+                    OnPropertyChanged(nameof(CreatingBlockInfo));
+                    OnPropertyChanged(nameof(CreatingGridInfo));
+                }
+            };
         }
 
         #endregion
@@ -205,6 +213,7 @@
         public Array AccessTypes => Enum.GetValues(typeof(MySafeZoneAccess));
 
         #endregion
+
         #region Properties
 
         protected new StructureSafeZoneModel DataModel => base.DataModel as StructureSafeZoneModel;
@@ -330,9 +339,125 @@
         }
 
 
-        public float SizeX => DataModel.Size.X;
-        public float SizeY => DataModel.Size.Y;
-        public float SizeZ => DataModel.Size.Z;
+        public MyObjectBuilder_CubeBlock CreatingBlock => DataModel.CreatingBlock;
+        public MyObjectBuilder_CubeGrid CreatingGrid => DataModel.CreatingGrid;
+
+        public string CreatingBlockInfo
+        {
+            get
+            {
+                MyObjectBuilder_SafeZoneBlock safeZoneBlock = CreatingBlock as MyObjectBuilder_SafeZoneBlock;
+                if (safeZoneBlock == null)
+                    return "(no Block found)";
+
+                var name = safeZoneBlock.CustomName
+                        ?? safeZoneBlock.Name
+                        ?? "<no Name>";
+
+                var type = CreatingBlock.GetType().Name;
+                var subtype = CreatingBlock.SubtypeName ?? "";
+                return $"{name} (Type: {type}{(string.IsNullOrWhiteSpace(subtype) ? "" : $", Subtype: {subtype}")}) [ID: {CreatingBlock.EntityId}]";
+            }
+        }
+        public string CreatingGridInfo
+        {
+            get
+            {
+                if (CreatingGrid == null)
+                    return "(no Grid found)";
+
+                // Name versuchen, falls vorhanden (CustomName, Name, DisplayName)
+                var name = CreatingGrid.DisplayName
+                        ?? CreatingGrid.Name
+                        ?? "<no name>";
+
+                var id = CreatingGrid.EntityId;
+                var subtype = CreatingGrid.SubtypeName ?? "";
+                if (!string.IsNullOrWhiteSpace(subtype))
+                    return $"{name} (Typ: {subtype}) [ID: {id}]";
+                else
+                    return $"{name} [ID: {id}]";
+            }
+        }
+        private void SearchCreatingEntitiesExecuted()
+        {
+            DataModel.FindCreatingEntities(); //TODO: Pass the actual entity collection
+            OnPropertyChanged(nameof(CreatingBlock));
+            OnPropertyChanged(nameof(CreatingGrid));
+            MainViewModel.IsModified = true; // Not needed here, as this is just a search operation
+        }
+        public bool SearchCreatingEntitiesCanExecute()
+        {
+            return true;
+        }
+        #endregion
+
+        #region command properties
+        private ICommand _searchCreatingEntitiesCommand;
+        public ICommand SearchCreatingEntitiesCommand
+        {
+            get
+            {
+                if (_searchCreatingEntitiesCommand == null)
+                {
+                    _searchCreatingEntitiesCommand = new DelegateCommand(
+                        SearchCreatingEntitiesExecuted,
+                        SearchCreatingEntitiesCanExecute
+                    );
+                }
+                return _searchCreatingEntitiesCommand;
+            }
+        }
+        #endregion
+
+        #region Size and Color Properties
+        public float SizeX
+        {
+            get => DataModel.Size.X;
+            set
+            {
+                if (DataModel.Size.X != value)
+                {
+                    var s = DataModel.Size;
+                    s.X = value;
+                    DataModel.Size = s;
+                    OnPropertyChanged(nameof(SizeX));
+                    MainViewModel.IsModified = true;
+                }
+            }
+        }
+
+        public float SizeY
+        {
+            get => DataModel.Size.Y;
+            set
+            {
+                if (DataModel.Size.Y != value)
+                {
+                    var s = DataModel.Size;
+                    s.Y = value;
+                    DataModel.Size = s;
+                    OnPropertyChanged(nameof(SizeY));
+                    MainViewModel.IsModified = true;
+                }
+            }
+        }
+
+        public float SizeZ
+        {
+            get => DataModel.Size.Z;
+            set
+            {
+                if (DataModel.Size.Z != value)
+                {
+                    var s = DataModel.Size;
+                    s.Z = value;
+                    DataModel.Size = s;
+                    OnPropertyChanged(nameof(SizeZ));
+                    MainViewModel.IsModified = true;
+                }
+            }
+        }
 
         public float ColorR => DataModel.ModelColor.X;
         public float ColorG => DataModel.ModelColor.Y;

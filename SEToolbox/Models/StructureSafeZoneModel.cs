@@ -1,11 +1,14 @@
 ﻿namespace SEToolbox.Models
 {
     using Sandbox.Common.ObjectBuilders;
+    using Sandbox.Game.Entities;
     using SEToolbox.Interop;
     using System;
+    using System.Linq;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
     using VRage;
+    using VRage.Game;
     using VRage.Game.ObjectBuilders.Components;
     using VRage.ObjectBuilders;
     using VRageMath;
@@ -14,7 +17,9 @@
     public class StructureSafeZoneModel : StructureBaseModel
     {
         #region Fields
-       
+        private MyObjectBuilder_CubeBlock _creatingBlock;
+        private MyObjectBuilder_CubeGrid _creatingGrid;
+
         #endregion
 
         #region ctor
@@ -27,7 +32,11 @@
         #endregion
 
         #region Properties
+        [XmlIgnore]
+        public MyObjectBuilder_CubeBlock CreatingBlock => _creatingBlock;
 
+        [XmlIgnore]
+        public MyObjectBuilder_CubeGrid CreatingGrid => _creatingGrid;
         [XmlIgnore]
         public MyObjectBuilder_SafeZone SafeZone => EntityBase as MyObjectBuilder_SafeZone;
 
@@ -64,7 +73,7 @@
                 }
             }
         }
-
+        
         [XmlIgnore]
         public float Radius //Done
         {
@@ -75,18 +84,36 @@
 
             set
             {
-                if (value != SafeZone.Radius)
+                float clamped = Math.Min(Math.Max(value, MySafeZone.MIN_RADIUS), MySafeZone.MAX_RADIUS);
+                if (clamped != SafeZone.Radius)
                 {
-                    SafeZone.Radius = value;
+                    SafeZone.Radius = clamped;
                     OnPropertyChanged(nameof(Radius));
                 }
             }
         }
 
         [XmlIgnore]
-        public Vector3 Size => SafeZone.Size; //TODO
+        public Vector3 Size
+        {
+            get => SafeZone.Size;
+            set
+            {
+                // TODO unknown what the max values are, but I guess this is reasonable
+                Vector3 clamped = new Vector3(
+                    Math.Min(Math.Max(value.X, MySafeZone.MIN_RADIUS), MySafeZone.MAX_RADIUS),
+                    Math.Min(Math.Max(value.Y, MySafeZone.MIN_RADIUS), MySafeZone.MAX_RADIUS),
+                    Math.Min(Math.Max(value.Z, MySafeZone.MIN_RADIUS), MySafeZone.MAX_RADIUS)
+                );
+                if (SafeZone.Size != clamped)
+                {
+                    SafeZone.Size = clamped;
+                    OnPropertyChanged(nameof(Size));
+                }
+            }
+        }
 
-        [XmlIgnore]
+        [XmlIgnore] 
         public SerializableVector3 ModelColor => SafeZone.ModelColor;
 
         [XmlIgnore]
@@ -242,6 +269,7 @@
                 }
             }
         }
+        
         public MySafeZoneAction AllowedActions
         {
             get => SafeZone.AllowedActions;
@@ -257,6 +285,32 @@
         #endregion
 
         #region methods
+        public void FindCreatingEntities()
+        {
+            var allGrids = ExplorerModel.Default.ActiveWorld.SectorData.SectorObjects
+                .OfType<MyObjectBuilder_CubeGrid>();
+
+            _creatingBlock = null;
+            _creatingGrid = null;
+            foreach (var grid in allGrids)
+            {
+                foreach (var block in grid.CubeBlocks)
+                {
+                    if (SafeZone.SafeZoneBlockId == block.EntityId)
+                    {
+                        _creatingBlock = block;
+                        _creatingGrid = grid;
+                        OnPropertyChanged(nameof(CreatingBlock));
+                        OnPropertyChanged(nameof(CreatingGrid));
+                        return;
+                    }
+                }
+            }
+            OnPropertyChanged(nameof(CreatingBlock));
+            OnPropertyChanged(nameof(CreatingGrid));
+            return;
+        }
+
 
         public override void UpdateGeneralFromEntityBase()
         {
