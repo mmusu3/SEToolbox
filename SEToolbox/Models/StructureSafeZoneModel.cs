@@ -24,7 +24,7 @@
 
         #endregion
 
-        #region ctor
+        #region Constructor
 
         public StructureSafeZoneModel(MyObjectBuilder_EntityBase entityBase)
             : base(entityBase)
@@ -34,21 +34,23 @@
         #endregion
 
         #region Properties
+
+        [XmlIgnore]
+        public MyObjectBuilder_SafeZone SafeZone => EntityBase as MyObjectBuilder_SafeZone;
+
+        // --- creating Block/Grid (for UI/Mapping) ---
         [XmlIgnore]
         public MyObjectBuilder_CubeBlock CreatingBlock => _creatingBlock;
 
         [XmlIgnore]
         public MyObjectBuilder_CubeGrid CreatingGrid => _creatingGrid;
-        [XmlIgnore]
-        public MyObjectBuilder_SafeZone SafeZone => EntityBase as MyObjectBuilder_SafeZone;
 
+
+        //Basic properties
         [XmlIgnore]
-        public bool IsVisible //Done
+        public bool IsVisible
         {
-            get 
-            { 
-                return SafeZone.IsVisible; 
-            }
+            get => SafeZone.IsVisible;
             set
             {
                 if (value != SafeZone.IsVisible)
@@ -60,12 +62,9 @@
         }
 
         [XmlIgnore]
-        public bool IsEnabled //Done
+        public bool IsEnabled
         {
-            get
-            {
-                return SafeZone.Enabled;
-            }
+            get => SafeZone.Enabled;
             set
             {
                 if (value != SafeZone.Enabled)
@@ -77,13 +76,9 @@
         }
         
         [XmlIgnore]
-        public float Radius //Done
+        public float Radius
         {
-            get
-            {
-                return SafeZone.Radius;
-            }
-
+            get => SafeZone.Radius;
             set
             {
                 float clamped = Math.Min(Math.Max(value, MySafeZone.MIN_RADIUS), MySafeZone.MAX_RADIUS);
@@ -160,6 +155,7 @@
             }
         }
 
+        // --- Access Types (Enum + String) ---
         [XmlIgnore]
         public MySafeZoneAccess AccessTypePlayersEnum
         {
@@ -271,7 +267,9 @@
                 }
             }
         }
-        
+
+        // --- Actions ---
+        [XmlIgnore]
         public MySafeZoneAction AllowedActions
         {
             get => SafeZone.AllowedActions;
@@ -281,6 +279,19 @@
                 {
                     SafeZone.AllowedActions = value;
                     OnPropertyChanged(nameof(AllowedActions));
+                }
+            }
+        }
+        [XmlIgnore]
+        public long SafeZoneBlockId
+        {
+            get => SafeZone.SafeZoneBlockId;
+            set
+            {
+                if (SafeZone.SafeZoneBlockId != value)
+                {
+                    SafeZone.SafeZoneBlockId = value;
+                    OnPropertyChanged(nameof(SafeZoneBlockId));
                 }
             }
         }
@@ -312,20 +323,7 @@
             OnPropertyChanged(nameof(CreatingGrid));
             return;
         }
-        [XmlIgnore]
-        public long SafeZoneBlockId
-        {
-            get => SafeZone.SafeZoneBlockId;
-            set
-            {
-                if (SafeZone.SafeZoneBlockId != value)
-                {
-                    SafeZone.SafeZoneBlockId = value;
-                    OnPropertyChanged(nameof(SafeZoneBlockId));
-                }
-            }
-        }
-
+        
         public override void UpdateGeneralFromEntityBase()
         {
             ClassType = ClassType.SafeZone;
@@ -333,7 +331,9 @@
             DisplayName = SafeZone.Name ?? "Safe Zone";
             Mass = 0;
         }
+        #endregion
 
+        #region Serialization
         [OnSerializing]
         private void OnSerializingMethod(StreamingContext context)
         {

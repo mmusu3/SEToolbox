@@ -924,7 +924,7 @@
                 var safeZoneBlock = cubeGrid as MyObjectBuilder_SafeZoneBlock;
                 if (safeZoneBlock != null)
                 {
-                    //TODO: Also merge the component SafeZone of the Block
+                    // Also merge the component SafeZone of the Block
                     adjustSafeZoneBlock(safeZoneBlock, ref idReplacementTable);
                 }
             }
@@ -934,6 +934,7 @@
 
         private void adjustSafeZoneBlock(MyObjectBuilder_SafeZoneBlock safeZoneBlock, ref Dictionary<Int64, Int64> idReplacementTable)
         {
+            // re assign the ID which points to the seperate Safe-Zone Object.
             safeZoneBlock.SafeZoneId = MergeId(safeZoneBlock.SafeZoneId, ref idReplacementTable);
             
             if (safeZoneBlock.ComponentContainer?.Components != null)
@@ -949,9 +950,8 @@
                         MyObjectBuilder_SafeZone safeZoneUninitialzed = safeZoneComponent.SafeZoneOb as MyObjectBuilder_SafeZone;
                         if (safeZoneUninitialzed != null)
                         {
-                            // Die SafeZone-EntityId auf die neue EntityId mergen:
+                            // We are still INSIDE the safeZone Block, it stores a copy of the seperate SafeZoneObject to later turn on/off the SafeZone.
                             safeZoneUninitialzed.EntityId = MergeId(safeZoneUninitialzed.EntityId, ref idReplacementTable);
-                            // UND die SafeZoneBlockId auf die neue Block-EntityId mappen!
                             safeZoneUninitialzed.SafeZoneBlockId = MergeId(safeZoneUninitialzed.SafeZoneBlockId, ref idReplacementTable);
                         }
                     }

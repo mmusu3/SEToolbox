@@ -64,14 +64,14 @@
                                   SelectedItem="{Binding Shape, Mode=TwoWay}" />
 
 
-                        <!-- Nur anzeigen, wenn Shape = Sphere -->
+                        <!-- Only show if Shape = Sphere -->
                         <Label Grid.Row="4" Grid.Column="0" Content="Radius:"
                                     Visibility="{Binding IsSphereShape, Converter={StaticResource BoolToVis}}" />
                         <TextBox Grid.Row="4" Grid.Column="1"
                                     Text="{Binding Radius, Mode=TwoWay}"
                                     Visibility="{Binding IsSphereShape, Converter={StaticResource BoolToVis}}" />
 
-                        <!-- Nur anzeigen, wenn NICHT Sphere -->
+                        <!-- Only show if NOT Shape -->
                         <Label Grid.Row="4" Grid.Column="0" Content="Size:"
                                     Visibility="{Binding IsSphereShape, Converter={StaticResource InverseBoolToVis}}" />
                         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal"
@@ -101,14 +101,14 @@
                             </TextBlock.Text>
                         </TextBlock>
 
-                        <!-- Zeile 13: Creating Block -->
+                        <!-- Row 13: Block -->
                         <Button Grid.Row="13" Grid.Column="0" Content="Suche Erzeugenden Block"
                             Command="{Binding SearchCreatingEntitiesCommand}" />
                         <TextBlock Grid.Row="13" Grid.Column="1"
                             Text="{Binding CreatingBlockInfo}"
                             TextTrimming="CharacterEllipsis"/>
 
-                        <!-- Zeile 14: Creating Grid -->
+                        <!-- Row 14:  Grid -->
                         <Button Grid.Row="14" Grid.Column="0" Content="Suche Erzeugendes Grid"
                             Command="{Binding SearchCreatingEntitiesCommand}" />
                         <TextBlock Grid.Row="14" Grid.Column="1"
