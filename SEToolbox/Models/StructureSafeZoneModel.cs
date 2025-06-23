@@ -17,7 +17,9 @@
     public class StructureSafeZoneModel : StructureBaseModel
     {
         #region Fields
+        [NonSerialized]
         private MyObjectBuilder_CubeBlock _creatingBlock;
+        [NonSerialized]
         private MyObjectBuilder_CubeGrid _creatingGrid;
 
         #endregion

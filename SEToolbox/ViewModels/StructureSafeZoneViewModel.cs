@@ -400,7 +400,7 @@
             DataModel.FindCreatingEntities(); //TODO: Pass the actual entity collection
             OnPropertyChanged(nameof(CreatingBlock));
             OnPropertyChanged(nameof(CreatingGrid));
-            MainViewModel.IsModified = true; // Not needed here, as this is just a search operation
+            //MainViewModel.IsModified = true; // Not needed here, as this is just a search operation
         }
         public bool SearchCreatingEntitiesCanExecute()
         {
