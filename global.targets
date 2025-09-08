@@ -11,7 +11,7 @@
 
   <!-- Copy this PropertyGroup into "user.targets" and modify the "FxcPath" to indicate the path to fxc.exe from the Windows SDK. -->
   <PropertyGroup>
-    <FxcPath>&quot;$(MSBuildProgramFiles32)\Windows Kits\10\bin\10.0.20348.0\x64\fxc.exe&quot;</FxcPath>
+    <FxcPath>&quot;$(MSBuildProgramFiles32)\Windows Kits\10\bin\10.0.26100.0\x64\fxc.exe&quot;</FxcPath>
   </PropertyGroup>
 
   <ImportGroup Label="PropertySheets">

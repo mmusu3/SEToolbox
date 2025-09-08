@@ -50,7 +50,6 @@
             "VRage.Scripting.dll",              // x64     1.197.x requirement.
             "VRage.Steam.dll",                  // x64     1.188.x requirement.
             "Steamworks.NET.dll",               // x64     1.188.x requirement.
-            "System.Data.SQLite.dll",           // AnyCPU  1.171.x requirement
             "System.Buffers.dll",
             "System.ComponentModel.Annotations.dll",
             "System.Collections.Immutable.dll", // AnyCPU  1.194.x requirement
