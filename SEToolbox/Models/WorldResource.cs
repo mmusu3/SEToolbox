@@ -287,9 +287,13 @@
             if (_resources == null || Checkpoint == null || Checkpoint.Mods == null)
                 return;
 
-            SpaceEngineersWorkshop.DownloadWorldModsBlocking(Checkpoint.Mods, cancelToken: null);
+            List<MyObjectBuilder_Checkpoint.ModItem> mods = [.. Checkpoint.Mods];
+            var result = SpaceEngineersWorkshop.DownloadWorldModsBlocking(mods, cancelToken: null);
 
-            _resources.LoadDefinitionsAndMods(DataPath.ModsPath, Checkpoint.Mods);
+            if (result.Result == 0)
+                mods.Clear();
+
+            _resources.LoadDefinitionsAndMods(DataPath.ModsPath, mods);
         }
 
         public bool LoadSector(out string errorInformation, bool snapshot = false)

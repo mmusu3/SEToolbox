@@ -14,6 +14,9 @@ namespace SEToolbox.Interop
     {
         public static MyWorkshop.ResultData DownloadWorldModsBlocking(List<MyObjectBuilder_Checkpoint.ModItem> mods, MyWorkshop.CancelToken cancelToken)
         {
+            if (!MyGameService.IsActive)
+                return default;
+
             MyWorkshop.ResultData ret = default;
 
             Task task = Parallel.Start(() =>
