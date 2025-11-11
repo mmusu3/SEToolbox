@@ -10,8 +10,6 @@
 
     public class GlobalSettings
     {
-        #region fields
-
         public static GlobalSettings Default = new GlobalSettings();
 
         /// <summary>
@@ -23,22 +21,6 @@
 
         private const string BaseKey = @"SOFTWARE\MidSpace\SEToolbox";
 
-        #endregion
-
-        #region ctor
-
-        public GlobalSettings()
-        {
-            if (!_isLoaded)
-            {
-                Load();
-            }
-        }
-
-        #endregion
-
-        #region properties
-        
         /// <summary>
         /// Temporary store for Game Version.
         /// </summary>
@@ -75,7 +57,7 @@
         /// Indicates if Toolbox Version check should be ignored.
         /// </summary>
         public bool? AlwaysCheckForUpdates { get; set; }
-        
+
         /// <summary>
         /// Ignore this specific version during Toolbox version check.
         /// </summary>
@@ -100,10 +82,6 @@
         /// Counter for the number times successfully started up SEToolbox, since the last game update.
         /// </summary>
         public int? TimesStartedLastGameUpdate { get; set; }
-
-        #endregion
-
-        #region methods
 
         public void Save()
         {
@@ -130,7 +108,9 @@
         public void Load()
         {
             _isLoaded = true;
+
             var key = Registry.CurrentUser.OpenSubKey(BaseKey, false);
+
             if (key == null)
             {
                 Reset();
@@ -156,10 +136,13 @@
 
             if (WindowTop.HasValue && (int.MinValue > WindowTop || WindowTop > int.MaxValue))
                 WindowTop = null;
+
             if (WindowLeft.HasValue && (int.MinValue > WindowLeft || WindowLeft > int.MaxValue))
                 WindowLeft = null;
+
             if (WindowWidth.HasValue && (0 > WindowWidth || WindowWidth > int.MaxValue))
                 WindowWidth = null;
+
             if (WindowHeight.HasValue && (0 > WindowHeight || WindowHeight > int.MaxValue))
                 WindowHeight = null;
         }
@@ -197,13 +180,9 @@
 
             if (ignoreBuildRevision)
                 return new Version(version.Major, version.Minor, 0, 0);
-            
+
             return version;
         }
-
-        #endregion
-
-        #region helpers
 
         private static void UpdateValue(RegistryKey key, string subkey, object value)
         {
@@ -214,13 +193,13 @@
             else
             {
                 // Registry values need to be non-culture specific when written.
-                if (value is bool || value is Int32)
+                if (value is bool || value is int)
                 {
                     key.SetValue(subkey, value, RegistryValueKind.DWord);
                 }
-                if (value is double)
+                else if (value is double d)
                 {
-                    value = ((double)value).ToString(CultureInfo.InvariantCulture);
+                    value = d.ToString(CultureInfo.InvariantCulture);
                     key.SetValue(subkey, value);
                 }
                 else
@@ -237,24 +216,19 @@
             try
             {
                 if (item == null)
-                {
-                    return default(T);
-                }
-                
+                    return default;
+
                 if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(Nullable<>))
                 {
                     var baseType = typeof(T).GetGenericArguments()[0];
 
                     if (baseType.BaseType == typeof(Enum))
-                    {
                         return (T)Enum.Parse(baseType, (string)item);
-                    }
 
                     // Registry values need to be non-culture specific when read.
                     return (T)Convert.ChangeType(item, baseType, CultureInfo.InvariantCulture);
                 }
-
-                if (typeof(T) == typeof(Version))
+                else if (typeof(T) == typeof(Version))
                 {
                     item = new Version((string)item);
                 }
@@ -266,7 +240,5 @@
 
             return (T)item;
         }
-
-        #endregion
     }
 }

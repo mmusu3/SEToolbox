@@ -26,11 +26,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="..\SEToolbox\Support\DiagnosticsLogging.cs">
-      <Link>Support\DiagnosticsLogging.cs</Link>
-    </Compile>
     <Compile Include="..\SEToolbox\Support\GlobalSettings.cs">
       <Link>Support\GlobalSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\SEToolbox\Support\Log.cs">
+      <Link>Support\Log.cs</Link>
     </Compile>
     <Compile Include="..\SEToolbox\Support\ToolboxUpdater.cs">
       <Link>Support\ToolboxUpdater.cs</Link>

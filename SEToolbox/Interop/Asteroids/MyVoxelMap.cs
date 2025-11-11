@@ -210,7 +210,7 @@
                 _boundingContent = new BoundingBoxI();
                 VoxCells = 0;
                 IsValid = false;
-                DiagnosticsLogging.LogWarning(string.Format(Res.ExceptionState_CorruptAsteroidFile, fileName), ex);
+                Log.Warning(string.Format(Res.ExceptionState_CorruptAsteroidFile, fileName), ex);
             }
         }
 

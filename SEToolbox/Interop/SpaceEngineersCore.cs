@@ -63,6 +63,8 @@
         /// </summary>
         public static void LoadDefinitions()
         {
+            Log.Debug("Init MyTexts.");
+
             typeof(MyTexts).TypeInitializer.Invoke(null, null); // For tests
 
             _singleton = new SpaceEngineersCore();
@@ -81,22 +83,30 @@
 
         public SpaceEngineersCore()
         {
+            Log.Debug("Loading Space Engineers core.");
+
             var contentPath = ToolboxUpdater.GetApplicationContentPath();
             var userDataPath = SpaceEngineersConsts.BaseLocalPath.DataPath;
 
             MyFileSystem.ExePath = Path.GetDirectoryName(Assembly.GetAssembly(typeof(FastResourceLock)).Location);
 
             MyLog.Default = MySandboxGame.Log;
+
+            Log.Debug("SetupBasicGameInfo");
             SpaceEngineersGame.SetupBasicGameInfo();
 
+            Log.Debug("CommonProgramStartup");
             _startup = new MyCommonProgramStartup([]);
 
             //var appDataPath = _startup.GetAppDataPath();
             //MyInitializer.InvokeBeforeRun(AppId, MyPerGameSettings.BasicGameInfo.ApplicationName + "SEToolbox", appDataPath);
             //MyInitializer.InitCheckSum();
 
+            Log.Debug("MyFileSystem init.");
             MyFileSystem.Reset();
             MyFileSystem.Init(contentPath, userDataPath);
+
+            Log.Debug("Creating Steam service.");
 
             // This will start the Steam Service, and Steam will think SE is running.
             // TODO: we don't want to be doing this all the while SEToolbox is running,
@@ -104,24 +114,38 @@
             _steamService = MySteamGameService.Create(Sandbox.Engine.Platform.Game.IsDedicated, AppId);
             MyServiceManager.Instance.AddService(_steamService);
 
+            Log.Debug("Init VRage platform.");
+
             MyVRage.Init(new ToolboxPlatform());
             MyVRage.Platform.Init();
+
+            Log.Debug("Creating Ugc service.");
 
             IMyUGCService ugc = MySteamUgcService.Create(AppId, _steamService);
             //MyServiceManager.Instance.AddService(ugc);
             MyGameService.WorkshopService.AddAggregate(ugc);
 
+            Log.Debug("MyFileSystem init user specific.");
+
             MyFileSystem.InitUserSpecific(_steamService.UserId.ToString()); // This sets the save file/path to load games from.
             //MyFileSystem.InitUserSpecific(null);
             //SpaceEngineersWorkshop.MySteam.Dispose();
 
+            Log.Debug("Load config.");
+
             MySandboxGame.Config = new MyConfig("SpaceEngineers.cfg"); // TODO: Is specific to SE, not configurable to ME.
             MySandboxGame.Config.Load();
 
+            Log.Debug("SetupPerGameSettings");
+
             SpaceEngineersGame.SetupPerGameSettings();
             MyPerGameSettings.UpdateOrchestratorType = null;
-            //MySandboxGame.InitMultithreading();
+
+            Log.Debug("InitMultithreading");
+
             InitMultithreading();
+
+            Log.Debug("MyRenderProxy init.");
 
             // Needed for MyRenderProxy.Log access in MyFont.LogWriteLine() and likely other things.
             // TODO: Static patching
@@ -129,9 +153,13 @@
 
             InitSandboxGame();
 
+            Log.Debug("LoadLocalization");
+
             // Creating MySandboxGame will reset the CurrentUICulture, so I have to reapply it.
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfoByIetfLanguageTag(GlobalSettings.Default.LanguageCode);
             SpaceEngineersApi.LoadLocalization();
+
+            Log.Debug("Creating session.");
 
             // Create an empty instance of MySession for use by low level code.
             var session = (Sandbox.Game.World.MySession)GetUninitializedObject(typeof(Sandbox.Game.World.MySession));
@@ -159,6 +187,8 @@
             session.RegisterComponent(planets, heightmapSystem.UpdateOrder, heightmapSystem.Priority);
             planets.LoadData();
 
+            Log.Debug("Load definitions.");
+
             _stockDefinitions = new SpaceEngineersResources();
             _stockDefinitions.LoadDefinitions();
             _manageDeleteVoxelList = [];
@@ -166,11 +196,18 @@
 
         static void InitMultithreading()
         {
+            //MySandboxGame.InitMultithreading();
             ParallelTasks.Parallel.Scheduler = new ParallelTasks.PrioritizedScheduler(Math.Max(Environment.ProcessorCount / 2, 1), amd: true, setup: null);
         }
 
         static void InitSandboxGame()
         {
+            Log.Debug("InitSandboxGame");
+
+            // If this is causing an exception then there is a missing dependency.
+            // gameTemp instance gets captured in MySandboxGame.Static
+            //MySandboxGame gameTemp = new DerivedGame(["-skipintro"]);
+
             // Required for definitions to work properly
             MySandboxGame.Static = (MySandboxGame)GetUninitializedObject(typeof(MySandboxGame));
 
@@ -183,7 +220,13 @@
             typeof(MySandboxGame).GetField("m_invokeQueueExecuting", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(game, iq2);
 
             RegisterAssemblies();
+
+            Log.Debug("MyGlobalTypeMetadata init.");
+
             VRage.Game.ObjectBuilder.MyGlobalTypeMetadata.Static.Init();
+
+            Log.Debug("Preallocate");
+
             Preallocate();
         }
 
@@ -198,6 +241,8 @@
 
         static void RegisterAssemblies()
         {
+            Log.Debug("RegisterAssemblies");
+
             MyPlugins.RegisterGameAssemblyFile(MyPerGameSettings.GameModAssembly);
 
             if (MyPerGameSettings.GameModBaseObjBuildersAssembly != null)
@@ -225,12 +270,12 @@
             ForceStaticCtor(types);
             //PreloadTypesFrom(typeof(MySandboxGame).Assembly);
 
-            static void PreloadTypesFrom(Assembly assembly)
-            {
-                ForceStaticCtor(from type in assembly.GetTypes()
-                                where Attribute.IsDefined(type, typeof(PreloadRequiredAttribute))
-                                select type);
-            }
+            //static void PreloadTypesFrom(Assembly assembly)
+            //{
+            //    ForceStaticCtor(from type in assembly.GetTypes()
+            //                    where Attribute.IsDefined(type, typeof(PreloadRequiredAttribute))
+            //                    select type);
+            //}
 
             static void ForceStaticCtor(IEnumerable<Type> types)
             {
@@ -238,5 +283,11 @@
                     RuntimeHelpers.RunClassConstructor(type.TypeHandle);
             }
         }
+
+        //class DerivedGame(string[] commandlineArgs)
+        //    : MySandboxGame(commandlineArgs, default)
+        //{
+        //    protected override void InitializeRender(IntPtr windowHandle) { }
+        //}
     }
 }

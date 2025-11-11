@@ -1,9 +1,8 @@
 ﻿namespace SEToolbox
 {
-    using System;
     using System.Diagnostics;
     using System.Globalization;
-    using System.IO;
+    using System.Linq;
     using System.Threading;
     using System.Windows;
     using System.Windows.Input;
@@ -26,41 +25,42 @@
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            bool appendLog = Enumerable.Contains(e.Args, "/appendlog");
+
+            Log.Init("./log.txt", appendLog);
+            Log.Info("Starting.");
+
+            var settings = GlobalSettings.Default;
+
+            Log.Info("Loading settings.");
+            settings.Load();
+
             if ((NativeMethods.GetKeyState(System.Windows.Forms.Keys.ShiftKey) & KeyStates.Down) == KeyStates.Down)
             {
+                Log.Info("Restting global settings.");
+
                 // Reset User Settings when Shift is held down during start up.
-                GlobalSettings.Default.Reset();
-                GlobalSettings.Default.PromptUser = true;
-
-                // Clear app bin cache.
-                var binCache = ToolboxUpdater.GetBinCachePath();
-
-                if (Directory.Exists(binCache))
-                {
-                    try
-                    {
-                        Directory.Delete(binCache, true);
-                    }
-                    catch
-                    {
-                        // File is locked and cannot be deleted at this time.
-                    }
-                }
+                settings.Reset();
+                settings.PromptUser = true;
             }
 
             LocalizeDictionary.Instance.SetCurrentThreadCulture = false;
-            LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfoByIetfLanguageTag(GlobalSettings.Default.LanguageCode);
+            LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfoByIetfLanguageTag(settings.LanguageCode);
             Thread.CurrentThread.CurrentUICulture = LocalizeDictionary.Instance.Culture;
+
+            Log.Debug("Showing splash screen.");
 
             Splasher.Splash = new WindowSplashScreen();
             Splasher.ShowSplash();
 
-            log4net.Config.XmlConfigurator.Configure();
+            Log.Info("Checking for updates.");
 
             var update = CodeRepositoryReleases.CheckForUpdates(GlobalSettings.GetAppVersion());
 
             if (update != null)
             {
+                Log.Info($"Found update: {update.Version}");
+
                 var message = string.IsNullOrEmpty(update.Notes)
                     ? string.Format(Res.DialogNewVersionMessage, update.Version)
                     : string.Format(Res.DialogNewVersionNotesMessage, update.Version, update.Notes);
@@ -69,17 +69,22 @@
 
                 if (dialogResult == MessageBoxResult.Yes)
                 {
+                    Log.Debug("Opening update link.");
+
                     Process.Start(update.Link); // Opens release URL in browser
-                    GlobalSettings.Default.Save();
+                    settings.Save();
                     Application.Current.Shutdown();
                     return;
                 }
-
-                if (dialogResult == MessageBoxResult.No)
+                else if (dialogResult == MessageBoxResult.No)
                 {
-                    GlobalSettings.Default.IgnoreUpdateVersion = update.Version.ToString();
+                    Log.Info($"Ingoring update version: {update.Version}");
+
+                    settings.IgnoreUpdateVersion = update.Version.ToString();
                 }
             }
+
+            Log.Debug("Configuring ServiceLocator.");
 
             // Configure service locator.
             ServiceLocator.RegisterSingleton<IDialogService, DialogService>();
@@ -90,12 +95,24 @@
 
             FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
 
+            Log.Debug("Initializing CoreToolbox.");
+
             _toolboxApplication = new CoreToolbox();
 
             if (_toolboxApplication.Init(e.Args))
+            {
+                Log.Info("Loading.");
+
                 _toolboxApplication.Load(e.Args);
+
+                Log.Info("Closing.");
+            }
             else
+            {
+                Log.Debug("Init returned false, closing early.");
+
                 Application.Current.Shutdown();
+            }
         }
 
         private void OnExit(object sender, ExitEventArgs e)
@@ -116,7 +133,7 @@
                 return;
             }
 
-            DiagnosticsLogging.LogException(e.Exception);
+            Log.Exception(e.Exception);
 
             string message;
 

@@ -90,6 +90,7 @@
             {
                 // We use the Bin64 Path, as these assemblies are marked "AllCPU", and will work regardless of processor architecture.
                 gamePath = GetGameRegistryFilePath();
+
                 if (!string.IsNullOrEmpty(gamePath))
                     gamePath = Path.Combine(gamePath, "Bin64");
             }
@@ -110,23 +111,21 @@
         public static string GetGameRegistryFilePath()
         {
             RegistryKey key;
+
             if (Environment.Is64BitProcess)
                 key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 244850", false);
             else
                 key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 244850", false);
 
             if (key != null)
-            {
                 return key.GetValue("InstallLocation") as string;
-            }
 
             // Backup check, but no choice if the above goes to pot.
             // Using the [Software\Valve\Steam\SteamPath] as a base for "\steamapps\common\SpaceEngineers", is unreliable, as the Steam Library is customizable and could be on another drive and directory.
             var steamPath = GetSteamFilePath();
+
             if (!string.IsNullOrEmpty(steamPath))
-            {
                 return Path.Combine(steamPath, @"SteamApps\common\SpaceEngineers");
-            }
 
             return null;
         }
@@ -150,9 +149,7 @@
                 key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Valve\Steam", false);
 
             if (key != null)
-            {
                 return (string)key.GetValue("InstallPath");
-            }
 
             return null;
         }
@@ -170,8 +167,10 @@
         {
             if (string.IsNullOrEmpty(filePath))
                 return false;
+
             if (!Directory.Exists(filePath))
                 return false;
+
             if (!Directory.Exists(Path.Combine(filePath, @"..\Content")))
                 return false;
 
@@ -211,9 +210,7 @@
                 var sourceFile = Path.Combine(baseFilePath, filename);
 
                 if (File.Exists(sourceFile))
-                {
                     File.Copy(sourceFile, Path.Combine(appFilePath, filename), true);
-                }
             }
 
             foreach (var filename in OptionalSpaceEngineersFiles)
@@ -221,9 +218,7 @@
                 var sourceFile = Path.Combine(baseFilePath, filename);
 
                 if (File.Exists(sourceFile))
-                {
                     File.Copy(sourceFile, Path.Combine(appFilePath, filename), true);
-                }
             }
 
             return true;
@@ -263,17 +258,18 @@
 
         internal static bool IsRuningElevated()
         {
-            if (_isRuningElevated.HasValue) return _isRuningElevated.Value;
+            if (_isRuningElevated.HasValue)
+                return _isRuningElevated.Value;
 
             var identity = WindowsIdentity.GetCurrent();
-            if (identity != null)
-            {
-                var pricipal = new WindowsPrincipal(identity);
-                _isRuningElevated = pricipal.IsInRole(WindowsBuiltInRole.Administrator);
-                return _isRuningElevated.Value;
-            }
 
-            return false;
+            if (identity == null)
+                return false;
+
+            var pricipal = new WindowsPrincipal(identity);
+            _isRuningElevated = pricipal.IsInRole(WindowsBuiltInRole.Administrator);
+
+            return _isRuningElevated.Value;
         }
 
         #endregion
@@ -282,16 +278,13 @@
 
         internal static int? RunElevated(string fileName, string arguments, bool elevate, bool waitForExit)
         {
-            var processInfo = new ProcessStartInfo
-            {
+            var processInfo = new ProcessStartInfo {
                 FileName = fileName,
                 Arguments = arguments
             };
 
             if (elevate)
-            {
                 processInfo.Verb = "runas";
-            }
 
             try
             {
@@ -300,6 +293,7 @@
                 if (waitForExit && process != null)
                 {
                     process.WaitForExit();
+
                     return process.ExitCode;
                 }
 
@@ -310,15 +304,6 @@
                 // Do nothing. Probably the user canceled the UAC window
                 return null;
             }
-        }
-
-        #endregion
-
-        #region GetBinCachePath
-
-        public static string GetBinCachePath()
-        {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"MidSpace\SEToolbox\__bincache");
         }
 
         #endregion

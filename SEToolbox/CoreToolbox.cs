@@ -16,70 +16,68 @@
 
     public class CoreToolbox
     {
-        //private string _tempBinPath;
-
-        #region methods
-
         public bool Init(string[] args)
         {
             // Detection and correction of local settings of SE install location.
-            var filePath = ToolboxUpdater.GetApplicationFilePath();
+            var gameBinDir = ToolboxUpdater.GetApplicationFilePath();
 
             var validApps = new string[] {
                 "SpaceEngineers.exe",
-                "SpaceEngineersDedicated.exe",
-                //"MedievalEngineers.exe",
-                //"MedievalEngineersDedicated.exe"
+                "SpaceEngineersDedicated.exe"
             };
 
-            if (GlobalSettings.Default.PromptUser || !ToolboxUpdater.ValidateSpaceEngineersInstall(filePath))
+            if (GlobalSettings.Default.PromptUser || !ToolboxUpdater.ValidateSpaceEngineersInstall(gameBinDir))
             {
-                if (Directory.Exists(filePath))
+                if (GlobalSettings.Default.PromptUser)
+                    Log.Info("Prompting user for SE bin path.");
+                else
+                    Log.Info("SE bin path is invalid, prompting user.");
+
+                if (Directory.Exists(gameBinDir))
                 {
                     foreach (var validApp in validApps)
                     {
-                        var testPath = Path.Combine(filePath, validApp);
+                        var testPath = Path.Combine(gameBinDir, validApp);
+
                         if (File.Exists(testPath))
                         {
-                            filePath = testPath;
+                            gameBinDir = testPath;
                             break;
                         }
                     }
                 }
 
-                var faModel = new FindApplicationModel()
-                {
-                    GameApplicationPath = filePath
-                };
+                var faModel = new FindApplicationModel { GameApplicationPath = gameBinDir };
                 var faViewModel = new FindApplicationViewModel(faModel);
                 var faWindow = new WindowFindApplication(faViewModel);
 
-                if (faWindow.ShowDialog() == true)
-                {
-                    filePath = faModel.GameBinPath;
-                }
-                else
-                {
+                if (faWindow.ShowDialog() != true)
                     return false;
-                }
+
+                Log.Info("Got new path.");
+
+                gameBinDir = faModel.GameBinPath;
             }
 
             // Update and save user path.
-            GlobalSettings.Default.SEBinPath = filePath;
+            GlobalSettings.Default.SEBinPath = gameBinDir;
             GlobalSettings.Default.Save();
 
-            var ignoreUpdates = args.Any(a => a.ToUpper() == "/X" || a.ToUpper() == "-X");
-            var oldDlls = true; // args.Any(a => a.ToUpper() == "/OLDDLL" || a.ToUpper() == "-OLDDLL");
-            var altDlls = !oldDlls;
+            bool ignoreUpdates = args.Any(a => a.ToUpper() == "/X" || a.ToUpper() == "-X");
 
             // Go looking for any changes in the Dependant Space Engineers assemblies and immediately attempt to update.
-            if (!ignoreUpdates && !altDlls && ToolboxUpdater.IsBaseAssembliesChanged() && !Debugger.IsAttached)
+            if (!ignoreUpdates && ToolboxUpdater.IsBaseAssembliesChanged() && !Debugger.IsAttached)
             {
-                ToolboxUpdater.RunElevated(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SEToolboxUpdate"), "/B " + String.Join(" ", args), false, false);
+                Log.Info("Starting non-elevated updater process.");
+
+                ToolboxUpdater.RunElevated(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SEToolboxUpdate"),
+                    "/B " + string.Join(" ", args), elevate: false, waitForExit: false);
+
                 return false;
             }
 
             var proc = Process.GetCurrentProcess();
+
             if (Process.GetProcessesByName(proc.ProcessName).Length == 1)
             {
                 // Clean up Temp files if this is the only instance running.
@@ -89,92 +87,27 @@
             // Dot not load any of the Space Engineers assemblies or dependant classes before this point.
             // ============================================
 
-            // Alternate experimental method for loading the Space Engineers API assemblies.
-            // Copy them to temporary path, then load with reflection on demand through the AppDomain.
-            //if (altDlls)
-            //{
-            //    _tempBinPath = ToolboxUpdater.GetBinCachePath();
-            //    var searchPath = GlobalSettings.Default.SEBinPath;
-
-            //    DirectoryInfo checkDir = null;
-            //    var counter = 0;
-
-            //    while (checkDir == null && counter < 10)
-            //    {
-            //        if (Directory.Exists(_tempBinPath))
-            //            break;
-
-            //        checkDir = Directory.CreateDirectory(_tempBinPath);
-
-            //        if (checkDir == null)
-            //        {
-            //            // wait a while, as the drive may be processing Windows Explorer which had a lock on the Directory after prior cleanup.
-            //            System.Threading.Thread.Sleep(100);
-            //        }
-
-            //        counter++;
-            //    }
-
-            //    foreach (var file in ToolboxUpdater.CoreSpaceEngineersFiles)
-            //    {
-            //        var filename = Path.Combine(searchPath, file);
-            //        var destFilename = Path.Combine(_tempBinPath, file);
-
-            //        if (ToolboxUpdater.DoFilesDiffer(searchPath, _tempBinPath, file))
-            //        {
-            //            try
-            //            {
-            //                File.Copy(filename, destFilename, true);
-            //            }
-            //            catch { }
-            //        }
-            //    }
-
-            //    // Copy directories which contain Space Engineers language resources.
-            //    var dirs = Directory.GetDirectories(searchPath);
-
-            //    foreach (var sourceDir in dirs)
-            //    {
-            //        var dirName = Path.GetFileName(sourceDir);
-            //        var destDir = Path.Combine(_tempBinPath, dirName);
-            //        Directory.CreateDirectory(destDir);
-
-            //        foreach (string oldFile in Directory.GetFiles(sourceDir, "*.*", SearchOption.AllDirectories))
-            //        {
-            //            try
-            //            {
-            //                File.Copy(oldFile, Path.Combine(destDir, Path.GetFileName(oldFile)), true);
-            //            }
-            //            catch { }
-            //        }
-            //    }
-
-            //    AppDomain currentDomain = AppDomain.CurrentDomain;
-            //    currentDomain.AssemblyResolve += currentDomain_AssemblyResolve;
-            //}
-
-#if DEBUG
-            // This will make it hairy for testing the AppDomain stuff.
-            #warning Force the local debugger to load the Types allowing inspection.
-            var settings0 = new VRage.Game.MyObjectBuilder_SessionSettings();
-            var settings1 = new Sandbox.Common.ObjectBuilders.MyObjectBuilder_InteriorLight();
-#endif
-
             return true;
         }
 
         public bool Load(string[] args)
         {
+            var settings = GlobalSettings.Default;
+
             // Fetch the game version and store, so it can be retrieved during crash if the toolbox makes it this far.
             Version gameVersion = SpaceEngineersConsts.GetSEVersion();
-            bool newVersion = GlobalSettings.Default.SEVersion != gameVersion;
-            GlobalSettings.Default.SEVersion = gameVersion;
+            bool newVersion = settings.SEVersion != gameVersion;
+
+            settings.SEVersion = gameVersion;
 
             // Test the Space Engineers version to make sure users are using an version that is new enough for SEToolbox to run with!
             // This is usually because a user has not updated a manual install of a Dedicated Server, or their Steam did not update properly.
-            if (GlobalSettings.Default.SEVersion < GlobalSettings.GetAppVersion(true))
+            if (settings.SEVersion < GlobalSettings.GetAppVersion(true))
             {
-                MessageBox.Show(string.Format(Res.DialogOldSEVersionMessage, SpaceEngineersConsts.GetSEVersion(), GlobalSettings.Default.SEBinPath, GlobalSettings.GetAppVersion()), Res.DialogOldSEVersionTitle, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show(
+                    string.Format(Res.DialogOldSEVersionMessage, SpaceEngineersConsts.GetSEVersion(), settings.SEBinPath, GlobalSettings.GetAppVersion()),
+                    Res.DialogOldSEVersionTitle, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
                 Application.Current.Shutdown();
                 return false;
             }
@@ -183,7 +116,7 @@
             if (newVersion && args.Any(a => a.Equals("/B", StringComparison.OrdinalIgnoreCase) || a.Equals("-B", StringComparison.OrdinalIgnoreCase)))
             {
                 // Reset the counter used to indicate if the game binaries have updated.
-                GlobalSettings.Default.TimesStartedLastGameUpdate = null;
+                settings.TimesStartedLastGameUpdate = null;
             }
 
             //string loadWorld = null;
@@ -194,6 +127,7 @@
             //        continue;
 
             //    string file = Path.GetFileName(arg);
+
             //    if (file.Equals("Sandbox.sbc", StringComparison.InvariantCultureIgnoreCase)
             //        || file.Equals("SANDBOX_0_0_0_.sbs", StringComparison.InvariantCultureIgnoreCase))
             //        loadWorld = Path.GetDirectoryName(arg);
@@ -224,47 +158,54 @@
             //}
             eWindow.Loaded += (sender, e) =>
             {
+                Log.Debug("Main window loaded.");
+
                 Splasher.CloseSplash();
 
-                double left = GlobalSettings.Default.WindowLeft ?? eWindow.Left;
-                double top = GlobalSettings.Default.WindowTop ?? eWindow.Top;
-                double width = GlobalSettings.Default.WindowWidth ?? eWindow.Width;
-                double height = GlobalSettings.Default.WindowHeight ?? eWindow.Height;
+                var settings = GlobalSettings.Default;
 
-                System.Drawing.Rectangle windowRect = new System.Drawing.Rectangle((int)left, (int)top, (int)width, (int)height);
+                double left = settings.WindowLeft ?? eWindow.Left;
+                double top = settings.WindowTop ?? eWindow.Top;
+                double width = settings.WindowWidth ?? eWindow.Width;
+                double height = settings.WindowHeight ?? eWindow.Height;
+
+                var windowRect = new System.Drawing.Rectangle((int)left, (int)top, (int)width, (int)height);
                 bool isInsideDesktop = false;
 
-                foreach (System.Windows.Forms.Screen screen in System.Windows.Forms.Screen.AllScreens)
+                foreach (var screen in System.Windows.Forms.Screen.AllScreens)
                 {
                     try
                     {
-                        isInsideDesktop |= screen.Bounds.IntersectsWith(windowRect);
+                        if (screen.Bounds.IntersectsWith(windowRect))
+                        {
+                            isInsideDesktop = true;
+                            break;
+                        }
                     }
                     catch
                     {
                         // some virtual screens have been know to cause issues.
                     }
                 }
+
                 if (isInsideDesktop)
                 {
                     eWindow.Left = left;
                     eWindow.Top = top;
                     eWindow.Width = width;
                     eWindow.Height = height;
-                    if (GlobalSettings.Default.WindowState.HasValue) eWindow.WindowState = GlobalSettings.Default.WindowState.Value;
+
+                    if (settings.WindowState.HasValue)
+                        eWindow.WindowState = settings.WindowState.Value;
                 }
             };
 
-            if (!GlobalSettings.Default.TimesStartedTotal.HasValue)
-                GlobalSettings.Default.TimesStartedTotal = 0;
-            GlobalSettings.Default.TimesStartedTotal++;
-            if (!GlobalSettings.Default.TimesStartedLastReset.HasValue)
-                GlobalSettings.Default.TimesStartedLastReset = 0;
-            GlobalSettings.Default.TimesStartedLastReset++;
-            if (!GlobalSettings.Default.TimesStartedLastGameUpdate.HasValue)
-                GlobalSettings.Default.TimesStartedLastGameUpdate = 0;
-            GlobalSettings.Default.TimesStartedLastGameUpdate++;
-            GlobalSettings.Default.Save();
+            settings.TimesStartedTotal = (settings.TimesStartedTotal ?? 0) + 1;
+            settings.TimesStartedLastReset = (settings.TimesStartedLastReset ?? 0) + 1;
+            settings.TimesStartedLastGameUpdate = (settings.TimesStartedLastGameUpdate ?? 0) + 1;
+            settings.Save();
+
+            Log.Debug("Showing main window.");
 
             eWindow.ShowDialog();
 
@@ -274,47 +215,21 @@
         public void Exit()
         {
             //if (VRage.Plugins.MyPlugins.Loaded)
-            //{
             //    VRage.Plugins.MyPlugins.Unload();
-            //}
+
             TempfileUtil.Dispose();
         }
 
         private static void SaveSettings(WindowExplorer eWindow)
         {
-            GlobalSettings.Default.WindowState = eWindow.WindowState;
+            var settings = GlobalSettings.Default;
+            settings.WindowState = eWindow.WindowState;
             eWindow.WindowState = WindowState.Normal; // Reset the State before getting the window size.
-            GlobalSettings.Default.WindowHeight = eWindow.Height;
-            GlobalSettings.Default.WindowWidth = eWindow.Width;
-            GlobalSettings.Default.WindowTop = eWindow.Top;
-            GlobalSettings.Default.WindowLeft = eWindow.Left;
-            GlobalSettings.Default.Save();
+            settings.WindowHeight = eWindow.Height;
+            settings.WindowWidth = eWindow.Width;
+            settings.WindowTop = eWindow.Top;
+            settings.WindowLeft = eWindow.Left;
+            settings.Save();
         }
-
-        //Assembly currentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
-        //{
-        //    // Retrieve the list of referenced assemblies in an array of AssemblyName.
-        //    var filename = args.Name.Substring(0, args.Name.IndexOf(",", StringComparison.Ordinal)) + ".dll";
-
-        //    const string filter = @"^(?<assembly>(?:\w+(?:\.?\w+)+))\s*(?:,\s?Version=(?<version>\d+\.\d+\.\d+\.\d+))?(?:,\s?Culture=(?<culture>[\w-]+))?(?:,\s?PublicKeyToken=(?<token>\w+))?$";
-        //    var match = Regex.Match(args.Name, filter);
-        //    if (match.Success)
-        //    {
-        //        filename = match.Groups["assembly"].Value + ".dll";
-        //    }
-
-        //    if (ToolboxUpdater.CoreSpaceEngineersFiles.Any(f => string.Equals(f, filename, StringComparison.OrdinalIgnoreCase)))
-        //    {
-        //        var assemblyPath = Path.Combine(_tempBinPath, filename);
-
-        //        // Load the assembly from the specified path.
-        //        // Return the loaded assembly.
-        //        return Assembly.LoadFrom(assemblyPath);
-        //    }
-
-        //    return null;
-        //}
-
-        #endregion
     }
 }
