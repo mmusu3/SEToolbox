@@ -1,0 +1,2803 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ClassType_LargeShip" xml:space="preserve">
+    <value>大型飞船</value>
+  </data>
+  <data name="ClassType_SmallShip" xml:space="preserve">
+    <value>小型飞船</value>
+  </data>
+  <data name="ClassType_LargeStation" xml:space="preserve">
+    <value>大型空间站</value>
+  </data>
+  <data name="DialogImageFiles" xml:space="preserve">
+    <value>图片文件</value>
+  </data>
+  <data name="DialogImportImageTitle" xml:space="preserve">
+    <value>选择要导入的图片</value>
+  </data>
+  <data name="ImportModelClassType_LargeShip" xml:space="preserve">
+    <value>大型飞船</value>
+  </data>
+  <data name="ImportModelClassType_SmallShip" xml:space="preserve">
+    <value>小型飞船</value>
+  </data>
+  <data name="ClassType_FloatingObject" xml:space="preserve">
+    <value>漂浮物</value>
+  </data>
+  <data name="DialogAllSupportedFiles" xml:space="preserve">
+    <value>所有支持的文件</value>
+  </data>
+  <data name="DialogImportModelTitle" xml:space="preserve">
+    <value>选择要导入的模型</value>
+  </data>
+  <data name="ClassType_Voxel" xml:space="preserve">
+    <value>小行星</value>
+  </data>
+  <data name="DialogAsteroidFiles" xml:space="preserve">
+    <value>小行星文件</value>
+  </data>
+  <data name="DialogImportVoxelTitle" xml:space="preserve">
+    <value>选择要导入的小行星</value>
+  </data>
+  <data name="ExceptionState_NoApplication" xml:space="preserve">
+    <value>找不到《太空工程师》程序。
+要使用SEToolbox，您的计算机上必须安装了《太空工程师》。</value>
+  </data>
+  <data name="ExceptionState_NoDirectory" xml:space="preserve">
+    <value>在路径 '{0}' 没有找到《太空工程师》。
+要使用SEToolbox，您的计算机上必须安装了《太空工程师》。</value>
+  </data>
+  <data name="ExceptionState_NoRegistry" xml:space="preserve">
+    <value>注册表中未检测到《太空工程师》。
+要使用SEToolbox，您的计算机上必须安装了《太空工程师》。</value>
+  </data>
+  <data name="ExceptionState_EmptyContentFile" xml:space="preserve">
+    <value>无法加载Space Engineers内容文件'{0}'，因为它可能与SEToolbox不同步。</value>
+  </data>
+  <data name="ExceptionState_MissingContentFile" xml:space="preserve">
+    <value>无法加载Space Engineers内容文件'{0}'，因为它没有被找到。</value>
+  </data>
+  <data name="DialogSandboxContentFiles" xml:space="preserve">
+    <value>沙盒内容文件</value>
+  </data>
+  <data name="DialogExportSandboxObjectTitle" xml:space="preserve">
+    <value>指定要导出的文件名'{0}_{1}'到</value>
+  </data>
+  <data name="DialogImportSandboxObjectTitle" xml:space="preserve">
+    <value>指定要导入的沙盒对象</value>
+  </data>
+  <data name="ModelTraceVoxel_Thick" xml:space="preserve">
+    <value>厚外壳</value>
+  </data>
+  <data name="ModelTraceVoxel_ThickSmoothedUp" xml:space="preserve">
+    <value>加平滑厚外壳</value>
+  </data>
+  <data name="ModelTraceVoxel_Thin" xml:space="preserve">
+    <value>薄外壳</value>
+  </data>
+  <data name="ModelTraceVoxel_ThinSmoothed" xml:space="preserve">
+    <value>平滑薄外壳</value>
+  </data>
+  <data name="CtlVoxelDetail" xml:space="preserve">
+    <value>文件名: {0}
+边界尺寸: {1} × {2} × {3} 块
+尺寸: {4} m × {5} m × {6} m
+中心: {7}, {8}, {9}
+体积: {10:#,##0.00} m³
+体素: {11:#,##0}
+距离: {12:#,##0.0} m
+位置: {13}, {14}, {15}
+﻿
+Material Mass Percent
+{16}</value>
+  </data>
+  <data name="CtlCubeDetail" xml:space="preserve">
+    <value>名称: {0}
+类型: {1}
+被驾驶: {2}
+损坏: {3}
+速度: {4:#,##0.000} m/s
+距离: {5:#,##0.0} m
+规模: {6} × {7} × {8} 块
+尺寸: {9} m × {10} m × {11} m
+质量: {12:#,##0.00} kg
+块: {13:#,##0}
+位置: {14}, {15}, {16}
+PCU: {17:#,##0}
+总生产时间: {18:dd} days, {18:hh} hours, {18:mm\:ss\.ff}
+
+建造需求:
+方块 数量 质量 生产时间 PCU
+{19}
+
+组件 数量 质量 体积 生产时间
+{20}
+
+矿锭 数量 质量 体积 生产时间
+{21}
+
+矿石 数量 质量 体积
+{22}</value>
+  </data>
+  <data name="FloatingDetail" xml:space="preserve">
+    <value>类型:  {0}
+距离:  {1:#,##0.0} m
+体积:  {2:#,##0.000} L
+质量:  {3:#,##0.00} kg
+单位:  {4:#,##0.####}</value>
+  </data>
+  <data name="Boolean_False" xml:space="preserve">
+    <value>否</value>
+    <comment>No</comment>
+  </data>
+  <data name="Boolean_True" xml:space="preserve">
+    <value>是</value>
+    <comment>Yes</comment>
+  </data>
+  <data name="DialogExportReportTitle" xml:space="preserve">
+    <value>指定导出“组件物品报告”的文件名</value>
+  </data>
+  <data name="DialogSpaceEngineersApplicationFiles" xml:space="preserve">
+    <value>《太空工程师》程序</value>
+  </data>
+  <data name="DialogLocateApplicationTitle" xml:space="preserve">
+    <value>选择《太空工程师》主程序位置</value>
+  </data>
+  <data name="DialogUnhandledExceptionEventMessage" xml:space="preserve">
+    <value>在应用程序中检测到错误，导致应用程序关闭：
+
+{0}
+
+有关更多详细信息，请参阅应用程序事件日志。
+对于给您带来的不便，我们深表歉意。</value>
+  </data>
+  <data name="DialogUnhandledExceptionMessage" xml:space="preserve">
+    <value>在应用程序中检测到错误，导致应用程序关闭：
+
+{0}
+
+对于给您带来的不便，我们深表歉意。</value>
+  </data>
+  <data name="DialogUnhandledExceptionTitle" xml:space="preserve">
+    <value>太空工程师工具箱'{0}'错误</value>
+  </data>
+  <data name="ModelTraceVoxel_ThickSmoothedDown" xml:space="preserve">
+    <value>减平滑厚外壳</value>
+  </data>
+  <data name="DialogNewVersionMessage" xml:space="preserve">
+    <value>SEToolbox({0})的新版本可用。
+您想现在下载吗？(在浏览器中打开)</value>
+  </data>
+  <data name="DialogNewVersionTitle" xml:space="preserve">
+    <value>有新版本可用</value>
+  </data>
+  <data name="ImportImageClassType_LargeShip" xml:space="preserve">
+    <value>大型飞船</value>
+  </data>
+  <data name="ImportImageClassType_SmallShip" xml:space="preserve">
+    <value>小型飞船</value>
+  </data>
+  <data name="ImportImageClassType_LargeStation" xml:space="preserve">
+    <value>大型空间站</value>
+  </data>
+  <data name="ImportModelClassType_Asteroid" xml:space="preserve">
+    <value>小行星</value>
+  </data>
+  <data name="ImportModelClassType_LargeStation" xml:space="preserve">
+    <value>大型空间站</value>
+  </data>
+  <data name="DialogAsteroidVersion2Files" xml:space="preserve">
+    <value>小行星版本2文件</value>
+  </data>
+  <data name="DialogExportVoxelTitle" xml:space="preserve">
+    <value>选择将小行星导出到</value>
+  </data>
+  <data name="DialogHtmlFiles" xml:space="preserve">
+    <value>Html文件</value>
+  </data>
+  <data name="DialogExportHtmlFileTitle" xml:space="preserve">
+    <value>指定要导出'{0}'的文件名</value>
+  </data>
+  <data name="DialogTextFiles" xml:space="preserve">
+    <value>文本文件</value>
+  </data>
+  <data name="DialogExportTextFileTitle" xml:space="preserve">
+    <value>指定要导出'{0}'的文件名</value>
+  </data>
+  <data name="DialogXmlFiles" xml:space="preserve">
+    <value>XML文件</value>
+  </data>
+  <data name="DialogExportXmlFileTitle" xml:space="preserve">
+    <value>指定要导出'{0}'的文件名</value>
+  </data>
+  <data name="WindowMainTitle" xml:space="preserve">
+    <value>太空工程师 工具箱 - {0} ({1})</value>
+    <comment>SE Toolbox - {0} ({1})</comment>
+  </data>
+  <data name="BtBrowseAppTip" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="WnLocateAppBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnLocateAppBtnContinue" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="WnLocateAppTxtInvalid" xml:space="preserve">
+    <value>无效的位置。</value>
+  </data>
+  <data name="WnLocateAppTxtPromptUser" xml:space="preserve">
+    <value>找不到《太空工程师》主程序。
+请选择《太空工程师》主程序的文件路径。</value>
+  </data>
+  <data name="WnLocateAppTitle" xml:space="preserve">
+    <value>选择程序位置</value>
+  </data>
+  <data name="WnLocateAppValidText" xml:space="preserve">
+    <value>检测到有效路径。</value>
+  </data>
+  <data name="SaveWorldType_DedicatedServerHost" xml:space="preserve">
+    <value>专用服务器主机</value>
+  </data>
+  <data name="SaveWorldType_DedicatedServerService" xml:space="preserve">
+    <value>专用服务器服务</value>
+  </data>
+  <data name="SaveWorldType_Local" xml:space="preserve">
+    <value>本地用户</value>
+  </data>
+  <data name="DialogSandboxFiles" xml:space="preserve">
+    <value>太空工程师沙盒(Sandbox)文件</value>
+  </data>
+  <data name="DialogLocateSandboxTitle" xml:space="preserve">
+    <value>选择《太空工程师》存档路径</value>
+  </data>
+  <data name="SaveWorldType_Custom" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="SaveWorldType_CustomAdminRequired" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="DialogOldSEVersionMessage" xml:space="preserve">
+    <value>在文件夹'{1}'中检测到旧版本的《太空工程师》'{0}'。
+请在下次运行SEToolbox{2}之前更新。</value>
+  </data>
+  <data name="DialogOldSEVersionTitle" xml:space="preserve">
+    <value>无法使用旧版本的《太空工程师》运行</value>
+  </data>
+  <data name="Exception_CorruptZipFile" xml:space="preserve">
+    <value>选择的文件'{0}'已损坏，似乎不是有效的压缩文件。</value>
+  </data>
+  <data name="TraceDirection_X" xml:space="preserve">
+    <value>X轴</value>
+  </data>
+  <data name="TraceDirection_XY" xml:space="preserve">
+    <value>X+Y轴</value>
+  </data>
+  <data name="TraceDirection_XYZ" xml:space="preserve">
+    <value>3轴全部</value>
+  </data>
+  <data name="TraceDirection_XZ" xml:space="preserve">
+    <value>X+Z轴</value>
+  </data>
+  <data name="TraceDirection_Y" xml:space="preserve">
+    <value>Y轴</value>
+  </data>
+  <data name="TraceDirection_YZ" xml:space="preserve">
+    <value>Y+Z轴</value>
+  </data>
+  <data name="TraceDirection_Z" xml:space="preserve">
+    <value>Z轴</value>
+  </data>
+  <data name="TraceId_Id1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TraceId_Id2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TraceId_Id3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TraceId_Id4" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TraceId_Id5" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="VoxelMergeType_SubtractVolumeLeftFromRight" xml:space="preserve">
+    <value>从右向左减去体积</value>
+  </data>
+  <data name="VoxelMergeType_SubtractVolumeRightFromLeft" xml:space="preserve">
+    <value>从左向右减去体积</value>
+  </data>
+  <data name="VoxelMergeType_UnionVolumeLeftToRight" xml:space="preserve">
+    <value>从左向右增加体积</value>
+  </data>
+  <data name="VoxelMergeType_UnionVolumeRightToLeft" xml:space="preserve">
+    <value>从右向左增加体积</value>
+  </data>
+  <data name="DialogSandboxPrefabXmlFiles" xml:space="preserve">
+    <value>沙盒预制Xml文件</value>
+  </data>
+  <data name="DialogExportPrefabObjectTitle" xml:space="preserve">
+    <value>指定要导出为预设的文件名(名称嵌入到文件中)</value>
+  </data>
+  <data name="VoxelMergeType_UnionMaterialLeftToRight" xml:space="preserve">
+    <value>从左向右增加材料</value>
+  </data>
+  <data name="VoxelMergeType_UnionMaterialRightToLeft" xml:space="preserve">
+    <value>从右向左增加材料</value>
+  </data>
+  <data name="AsteroidFillType_ByteFiller" xml:space="preserve">
+    <value>随机字节填充</value>
+  </data>
+  <data name="AsteroidFillType_None" xml:space="preserve">
+    <value>没有更改</value>
+  </data>
+  <data name="DialogLocationCustomVoxelFolder" xml:space="preserve">
+    <value>指定自定义小行星的位置</value>
+  </data>
+  <data name="ExceptionState_CorruptAsteroidFile" xml:space="preserve">
+    <value>无法加载太空工程师小行星文件'{0}'，可能是因为该文件已损坏，也可能是因为它比预期的更新。</value>
+  </data>
+  <data name="InventoryBagDetail" xml:space="preserve">
+    <value>类型:  {0}
+距离:  {1:#,##0.0} m</value>
+  </data>
+  <data name="WnExplorerColCubes" xml:space="preserve">
+    <value>方块</value>
+  </data>
+  <data name="WnExplorerColCubesTooltip" xml:space="preserve">
+    <value>方块数</value>
+  </data>
+  <data name="WnExplorerColDescription" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="WnExplorerColDistance" xml:space="preserve">
+    <value>距离</value>
+  </data>
+  <data name="WnExplorerColDistanceTooltip" xml:space="preserve">
+    <value>与玩家的距离</value>
+  </data>
+  <data name="WnExplorerColMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="WnExplorerColMassTooltip" xml:space="preserve">
+    <value>质量(kg)</value>
+  </data>
+  <data name="WnExplorerColName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WnExplorerColType" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="WnExplorerColVelocity" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="WnExplorerColVelocityTooltip" xml:space="preserve">
+    <value>物品速度 m/s</value>
+  </data>
+  <data name="WnExplorerTabObjects" xml:space="preserve">
+    <value>飞船/物品</value>
+  </data>
+  <data name="WnExplorerContextCopyGps" xml:space="preserve">
+    <value>复制_GPS</value>
+  </data>
+  <data name="WnExplorerContextDelete" xml:space="preserve">
+    <value>_删除</value>
+  </data>
+  <data name="WnExplorerMnuCreate" xml:space="preserve">
+    <value>_创建</value>
+  </data>
+  <data name="WnExplorerMnuCreateAsteroidField" xml:space="preserve">
+    <value>生成小行星区域</value>
+  </data>
+  <data name="WnExplorerMnuCreateComponent" xml:space="preserve">
+    <value>生成组件/物品</value>
+  </data>
+  <data name="WnExplorerMnuExport" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="WnExplorerMnuExportPrefab" xml:space="preserve">
+    <value>导出为预设</value>
+  </data>
+  <data name="WnExplorerMnuExportPrefabTooltip" xml:space="preserve">
+    <value>将选定的飞船和空间站导出为单个.sbc文件。</value>
+  </data>
+  <data name="WnExplorerMnuExportSandboxWithoutOwner" xml:space="preserve">
+    <value>导出时不包含所属权(.sbc)</value>
+  </data>
+  <data name="WnExplorerMnuExportSandboxWithoutOwnerTooltip" xml:space="preserve">
+    <value>将飞船和空间站导出为.sbc文件进行存储，允许导入到其他世界。</value>
+  </data>
+  <data name="WnExplorerMnuExportSandboxWithOwner" xml:space="preserve">
+    <value>导出时包含所属权(.xml)</value>
+  </data>
+  <data name="WnExplorerMnuExportSandboxWithOwnerTooltip" xml:space="preserve">
+    <value>将飞船和空间站导出为.xml文件进行存储，允许导入到其他世界。</value>
+  </data>
+  <data name="WnExplorerMnuFile" xml:space="preserve">
+    <value>_文件</value>
+  </data>
+  <data name="WnExplorerMnuFileOpen" xml:space="preserve">
+    <value>_打开 (Ctrl+O)</value>
+  </data>
+  <data name="WnExplorerMnuFileReload" xml:space="preserve">
+    <value>_重新加载 (Ctrl+R)</value>
+  </data>
+  <data name="WnExplorerMnuFileReloadTooltip" xml:space="preserve">
+    <value>撤消所有更改，然后重新加载世界。</value>
+  </data>
+  <data name="WnExplorerMnuFileSave" xml:space="preserve">
+    <value>_保存 (Ctrl+S)</value>
+  </data>
+  <data name="WnExplorerMnuFileSaveAs" xml:space="preserve">
+    <value>另存为 (Ctrl+A)</value>
+  </data>
+  <data name="WnExplorerMnuImport" xml:space="preserve">
+    <value>_导入</value>
+  </data>
+  <data name="WnExplorerMnuImport3DAsteroid" xml:space="preserve">
+    <value>小行星3D模型</value>
+  </data>
+  <data name="WnExplorerMnuImport3DModel" xml:space="preserve">
+    <value>3D模型</value>
+  </data>
+  <data name="WnExplorerMnuImportAsteroid" xml:space="preserve">
+    <value>小行星</value>
+  </data>
+  <data name="WnExplorerMnuImportImage" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="WnExplorerMnuImportImageTooltip" xml:space="preserve">
+    <value>将图像导入为装甲块平面，颜色与图像中的每个像素相匹配。</value>
+  </data>
+  <data name="WnExplorerMnuImportSandbox" xml:space="preserve">
+    <value>沙盒内容文件</value>
+  </data>
+  <data name="WnExplorerMnuImportSandboxTooltip" xml:space="preserve">
+    <value>导入之前导出的飞船和空间站的.sbc文件。</value>
+  </data>
+  <data name="WnExplorerMnuOptions" xml:space="preserve">
+    <value>_选项</value>
+  </data>
+  <data name="WnExplorerMnuOptionsAbout" xml:space="preserve">
+    <value>_关于</value>
+  </data>
+  <data name="WnExplorerMnuOptionsDocumentation" xml:space="preserve">
+    <value>_文档</value>
+  </data>
+  <data name="WnExplorerMnuOptionsLanguages" xml:space="preserve">
+    <value>_语言</value>
+  </data>
+  <data name="WnExplorerMnuOptionsSettings" xml:space="preserve">
+    <value>_设置</value>
+  </data>
+  <data name="WnExplorerMnuOptionsSupport" xml:space="preserve">
+    <value>_支持</value>
+  </data>
+  <data name="WnExplorerMnuOptionsUpdates" xml:space="preserve">
+    <value>查找更新</value>
+  </data>
+  <data name="WnExplorerMnuSelection" xml:space="preserve">
+    <value>_选择</value>
+  </data>
+  <data name="WnExplorerMnuSelectionDelete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="WnExplorerMnuSelectionMergeAsteroid" xml:space="preserve">
+    <value>将两个小行星合并</value>
+  </data>
+  <data name="WnExplorerMnuSelectionMergeAsteroidTooltip" xml:space="preserve">
+    <value>将两个小行星合并为新的小行星。</value>
+  </data>
+  <data name="WnExplorerMnuSelectionMergeShip" xml:space="preserve">
+    <value>将两个飞船合并</value>
+  </data>
+  <data name="WnExplorerMnuSelectionMergeShipTooltip" xml:space="preserve">
+    <value>将两个外部零件连接起来，形成一艘新船。</value>
+  </data>
+  <data name="WnExplorerMnuSelectionMove" xml:space="preserve">
+    <value>批量移动</value>
+  </data>
+  <data name="WnExplorerMnuSelectionRejoinShip" xml:space="preserve">
+    <value>重新连接飞船</value>
+  </data>
+  <data name="WnExplorerMnuSelectionRejoinShipTooltip" xml:space="preserve">
+    <value>将破损飞船的两个部分重新连接在一起。</value>
+  </data>
+  <data name="WnExplorerMnuSelectionRepair" xml:space="preserve">
+    <value>修复</value>
+  </data>
+  <data name="WnExplorerMnuSelectionResetSpeed" xml:space="preserve">
+    <value>重置所有速度</value>
+  </data>
+  <data name="WnExplorerMnuSelectionResetSpeedTooltip" xml:space="preserve">
+    <value>将“线性速度”和“旋转速度”设置为零(0)。</value>
+  </data>
+  <data name="WnExplorerMnuToolCopyGpsTooltip" xml:space="preserve">
+    <value>复制GPS</value>
+  </data>
+  <data name="WnExplorerMnuToolDeleteTooltip" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="WnExplorerMnuToolMoveTooltip" xml:space="preserve">
+    <value>批量移动</value>
+  </data>
+  <data name="WnExplorerMnuToolOpenTooltip" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="WnExplorerMnuToolRepairTooltip" xml:space="preserve">
+    <value>修复</value>
+  </data>
+  <data name="WnExplorerMnuToolSaveTooltip" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="WnExplorerMnuWorld" xml:space="preserve">
+    <value>_世界</value>
+  </data>
+  <data name="WnExplorerMnuWorldComponentList" xml:space="preserve">
+    <value>_组件列表</value>
+  </data>
+  <data name="WnExplorerMnuWorldOpenFolder" xml:space="preserve">
+    <value>打开路径</value>
+  </data>
+  <data name="WnExplorerMnuWorldReportResource" xml:space="preserve">
+    <value>_列出所有资源</value>
+  </data>
+  <data name="WnExplorerMnuWorldViewRaw" xml:space="preserve">
+    <value>_查看当前沙盒原始文件</value>
+  </data>
+  <data name="WnExplorerMnuWorldViewSteam" xml:space="preserve">
+    <value>_查看steam创意工坊</value>
+  </data>
+  <data name="CtlUnsavedStateTitle" xml:space="preserve">
+    <value>未保存</value>
+  </data>
+  <data name="CtlUnsavedStateTitleTooltip" xml:space="preserve">
+    <value>您的内容已更改，且尚未保存。</value>
+  </data>
+  <data name="WnAboutBtnClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="WnAboutBtnHomePage" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="WnAboutTxtCreatedBy" xml:space="preserve">
+    <value>创建者: </value>
+  </data>
+  <data name="WnAboutTxtDescription" xml:space="preserve">
+    <value>一个工具箱实用程序，用于修改和导入《太空工程师》游戏中的内容。</value>
+  </data>
+  <data name="WnAboutTxtSubtitle" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="WnAboutTxtTitle" xml:space="preserve">
+    <value>太空工程师</value>
+  </data>
+  <data name="WnAboutTxtVersion" xml:space="preserve">
+    <value>版本: </value>
+  </data>
+  <data name="WnLoadBtnBrowse" xml:space="preserve">
+    <value>_浏览</value>
+  </data>
+  <data name="WnLoadBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnLoadBtnOpen" xml:space="preserve">
+    <value>_打开</value>
+  </data>
+  <data name="WnLoadBtnRepair" xml:space="preserve">
+    <value>_修复</value>
+  </data>
+  <data name="WnLoadBtnRepairTooltip" xml:space="preserve">
+    <value>如果发现任何问题，这将尝试修复存档。</value>
+  </data>
+  <data name="WnLoadColName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WnLoadColSaved" xml:space="preserve">
+    <value>已保存</value>
+  </data>
+  <data name="WnLoadColVersion" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="WnLoadColWorkshop" xml:space="preserve">
+    <value>创意工坊</value>
+  </data>
+  <data name="WnLoadContextOpenFolder" xml:space="preserve">
+    <value>打开路径</value>
+  </data>
+  <data name="WnLoadContextWorkshop" xml:space="preserve">
+    <value>查看创意工坊</value>
+  </data>
+  <data name="WnLoadTitle" xml:space="preserve">
+    <value>选择世界</value>
+  </data>
+  <data name="WnLoadZoomInTooltip" xml:space="preserve">
+    <value>点击放大</value>
+  </data>
+  <data name="WnLoadZoomOutTooltip" xml:space="preserve">
+    <value>点击缩小</value>
+  </data>
+  <data name="GlobalSIMassKilogram" xml:space="preserve">
+    <value>kg</value>
+  </data>
+  <data name="GlobalSIVolumeLitre" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="WnGenFloatBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnGenFloatBtnCreate" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="WnGenFloatTitle" xml:space="preserve">
+    <value>创建物品</value>
+  </data>
+  <data name="WnGenFloatTxtItem" xml:space="preserve">
+    <value>物品:</value>
+  </data>
+  <data name="WnGenFloatTxtMass" xml:space="preserve">
+    <value>质量:</value>
+  </data>
+  <data name="WnGenFloatTxtMaxItems" xml:space="preserve">
+    <value>世界中漂浮物的最大数量限制为{0}。</value>
+  </data>
+  <data name="WnGenFloatTxtMultiplier" xml:space="preserve">
+    <value>倍率:</value>
+  </data>
+  <data name="WnGenFloatTxtUnit" xml:space="preserve">
+    <value>单位:</value>
+  </data>
+  <data name="WnGenFloatTxtVolume" xml:space="preserve">
+    <value>体积:</value>
+  </data>
+  <data name="WnProgressBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnProgressBtnShutdown" xml:space="preserve">
+    <value>完成后关机</value>
+  </data>
+  <data name="WnProgressTxtTimeRemain" xml:space="preserve">
+    <value>剩余时间:</value>
+  </data>
+  <data name="CtlCubeTabConstruction" xml:space="preserve">
+    <value>建造</value>
+  </data>
+  <data name="CtlCubeTabCubes" xml:space="preserve">
+    <value>方块</value>
+  </data>
+  <data name="CtlCubeMnuConvert" xml:space="preserve">
+    <value>转换</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmor" xml:space="preserve">
+    <value>装甲</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorCorner" xml:space="preserve">
+    <value>转换为斜装甲块</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorCornerTooltip" xml:space="preserve">
+    <value>将所有圆装甲块转换为斜面装甲块。</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorHeavy" xml:space="preserve">
+    <value>转换为重甲</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorHeavyTooltip" xml:space="preserve">
+    <value>将所有轻甲转换为重甲。</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorLight" xml:space="preserve">
+    <value>转换为轻甲</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorLightTooltip" xml:space="preserve">
+    <value>将所有重甲转换为轻甲。</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorRound" xml:space="preserve">
+    <value>转换为圆装甲块</value>
+  </data>
+  <data name="CtlCubeMnuConvertArmorRoundTooltip" xml:space="preserve">
+    <value>将所有斜面装甲块转换为圆装甲块。</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework" xml:space="preserve">
+    <value>框架</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework0" xml:space="preserve">
+    <value>转换为0.5%完成度的框架</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework0Tooltip" xml:space="preserve">
+    <value>将所有已构建的组件转换为未构建。</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework100" xml:space="preserve">
+    <value>转换为100%完成度的框架</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework100Tooltip" xml:space="preserve">
+    <value>将所有未构建的组件转换为已构建。</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework25" xml:space="preserve">
+    <value>转换为25%完成度的框架</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework25Tooltip" xml:space="preserve">
+    <value>将所有组件都设置为25%的完成度。</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework50" xml:space="preserve">
+    <value>转换为50%完成度的框架</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework50Tooltip" xml:space="preserve">
+    <value>将所有组件都设置为50%的完成度。</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework75" xml:space="preserve">
+    <value>转换为75%完成度的框架</value>
+  </data>
+  <data name="CtlCubeMnuConvertFramework75Tooltip" xml:space="preserve">
+    <value>将所有组件都设置为75%的完成度。</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotate" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateAxis" xml:space="preserve">
+    <value>将网格对齐到世界坐标轴</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateAxisTooltip" xml:space="preserve">
+    <value>将网格对齐到轴线并对齐方块网格。</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateXneg" xml:space="preserve">
+    <value>围绕X轴向前向下旋转立方体(-90 俯仰)</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateXpos" xml:space="preserve">
+    <value>围绕X轴向后向下旋转立方体(+90 俯仰)</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateYneg" xml:space="preserve">
+    <value>绕Y轴顺时针旋转立方体(-90 偏航)</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateYpos" xml:space="preserve">
+    <value>绕Y轴逆时针旋转立方体(+90 偏航)</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateZneg" xml:space="preserve">
+    <value>围绕Z轴向右向下旋转立方体(90 滚转)</value>
+  </data>
+  <data name="CtlCubeMnuConvertRotateZpos" xml:space="preserve">
+    <value>围绕Z轴向左向下旋转立方体(+90 滚转)</value>
+  </data>
+  <data name="CtlCubeMnuConvertStationShip" xml:space="preserve">
+    <value>空间站/飞船</value>
+  </data>
+  <data name="CtlCubeMnuConvertToShip" xml:space="preserve">
+    <value>转换为飞船</value>
+  </data>
+  <data name="CtlCubeMnuConvertToShipTooltip" xml:space="preserve">
+    <value>将空间站转换为飞船。</value>
+  </data>
+  <data name="CtlCubeMnuConvertToStation" xml:space="preserve">
+    <value>转换为空间站</value>
+  </data>
+  <data name="CtlCubeMnuConvertToStationTooltip" xml:space="preserve">
+    <value>将飞船转换为空间站。</value>
+  </data>
+  <data name="CtlCubeMnuCopyDetail" xml:space="preserve">
+    <value>复制文本详细信息到剪贴板</value>
+  </data>
+  <data name="CtlCubeMnuMirror" xml:space="preserve">
+    <value>镜像</value>
+  </data>
+  <data name="CtlCubeMnuMirrorEven" xml:space="preserve">
+    <value>寻找最大面/偶数[左&gt;|&lt;右]</value>
+  </data>
+  <data name="CtlCubeMnuMirrorEvenTooltip" xml:space="preserve">
+    <value>在边缘上寻找最大的单个面，并从那里进行镜像。</value>
+  </data>
+  <data name="CtlCubeMnuMirrorOdd" xml:space="preserve">
+    <value>寻找最大面/奇数[左&gt;|中|&lt;右]</value>
+  </data>
+  <data name="CtlCubeMnuMirrorOddTooltip" xml:space="preserve">
+    <value>在边缘上寻找最大的单个面，并从那里进行镜像。</value>
+  </data>
+  <data name="CtlCubeMnuMirrorSymmetry" xml:space="preserve">
+    <value>使用预设的X/Y/Z对称平面</value>
+  </data>
+  <data name="CtlCubeMnuMirrorSymmetryTooltip" xml:space="preserve">
+    <value>使用工程师在飞船/空间站上定义的平面。</value>
+  </data>
+  <data name="CtlCubeMnuOptimize" xml:space="preserve">
+    <value>优化</value>
+  </data>
+  <data name="CtlCubeMnuOptimizeTooltip" xml:space="preserve">
+    <value>仅适用于超过200,000个方块的巨型网格。此操作通过重新组织文件中方块的存储顺序来加快加载速度。</value>
+  </data>
+  <data name="CtlCubeMnuRepair" xml:space="preserve">
+    <value>修复</value>
+  </data>
+  <data name="CtlCubeMnuSpeed" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="CtlCubeMnuSpeedMaxToPlayer" xml:space="preserve">
+    <value>玩家最大速度</value>
+  </data>
+  <data name="CtlCubeMnuSpeedMaxToPlayerTooltip" xml:space="preserve">
+    <value>将物体的速度直接设置为朝向玩家的最大速度。</value>
+  </data>
+  <data name="CtlCubeMnuSpeedReset" xml:space="preserve">
+    <value>重置所有速度</value>
+  </data>
+  <data name="CtlCubeMnuSpeedResetLinear" xml:space="preserve">
+    <value>重置线速度</value>
+  </data>
+  <data name="CtlCubeMnuSpeedResetLinearTooltip" xml:space="preserve">
+    <value>将线速度设置为零(0).</value>
+  </data>
+  <data name="CtlCubeMnuSpeedResetRotation" xml:space="preserve">
+    <value>重置角速度</value>
+  </data>
+  <data name="CtlCubeMnuSpeedResetRotationTooltip" xml:space="preserve">
+    <value>将角速度设置为零(0).</value>
+  </data>
+  <data name="CtlCubeMnuSpeedResetTooltip" xml:space="preserve">
+    <value>将线速度和角速度设置为零(0).</value>
+  </data>
+  <data name="CtlCubeMnuSpeedReverse" xml:space="preserve">
+    <value>反转速度</value>
+  </data>
+  <data name="CtlCubeMnuSpeedReverseTooltip" xml:space="preserve">
+    <value>反转“线性速度”和“旋转速度”，使对象沿相反方向运动和旋转。</value>
+  </data>
+  <data name="CtlCubeTxtCenter" xml:space="preserve">
+    <value>中心:</value>
+  </data>
+  <data name="CtlCubeTxtDamage" xml:space="preserve">
+    <value>损坏:</value>
+  </data>
+  <data name="CtlCubeTxtDampeners" xml:space="preserve">
+    <value>惯性抑制:</value>
+  </data>
+  <data name="CtlCubeTxtDestructible" xml:space="preserve">
+    <value>可破坏:</value>
+  </data>
+  <data name="CtlCubeTxtDistance" xml:space="preserve">
+    <value>距离:</value>
+  </data>
+  <data name="CtlCubeTxtName" xml:space="preserve">
+    <value>名称:</value>
+  </data>
+  <data name="CtlCubeTxtPiloted" xml:space="preserve">
+    <value>被驾驶:</value>
+  </data>
+  <data name="CtlCubeTxtPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlCubeTxtScale" xml:space="preserve">
+    <value>规模:</value>
+  </data>
+  <data name="CtlCubeTxtSize" xml:space="preserve">
+    <value>尺寸:</value>
+  </data>
+  <data name="CtlCubeTxtSpeed" xml:space="preserve">
+    <value>速度:</value>
+  </data>
+  <data name="GlobalSIDistanceKilometre" xml:space="preserve">
+    <value>km</value>
+  </data>
+  <data name="GlobalSIDistanceMetre" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="GlobalSIVelocityMetresPerSecond" xml:space="preserve">
+    <value>m/s</value>
+  </data>
+  <data name="CtlCubeColBuild" xml:space="preserve">
+    <value>建造</value>
+  </data>
+  <data name="CtlCubeColColor" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="CtlCubeColComponentMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="CtlCubeColComponents" xml:space="preserve">
+    <value>组件</value>
+  </data>
+  <data name="CtlCubeColComponentTime" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="CtlCubeColComponentVolume" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="CtlCubeColCubeCount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="CtlCubeColCubeMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="CtlCubeColCubes" xml:space="preserve">
+    <value>方块</value>
+  </data>
+  <data name="CtlCubeColCubeTime" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="CtlCubeColIcon" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="CtlCubeColIngotAmount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="CtlCubeColIngotMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="CtlCubeColIngots" xml:space="preserve">
+    <value>矿锭</value>
+  </data>
+  <data name="CtlCubeColIngotTime" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="CtlCubeColIngotVolume" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="CtlCubeColName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="CtlCubeColOre" xml:space="preserve">
+    <value>矿石</value>
+  </data>
+  <data name="CtlCubeColOreAmount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="CtlCubeColOreMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="CtlCubeColOreVolume" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="CtlCubeColOwner" xml:space="preserve">
+    <value>归属权</value>
+  </data>
+  <data name="CtlCubeColX" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="CtlCubeColY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="CtlCubeColZ" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="CtlCubeMnuColorCube" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="CtlCubeMnuDeleteCube" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="CtlCubeMnuConvertFrameworkValue" xml:space="preserve">
+    <value>达到指定值</value>
+  </data>
+  <data name="CtlCubeMnuOwnerCube" xml:space="preserve">
+    <value>归属权</value>
+  </data>
+  <data name="CtlCubeMnuReplaceCube" xml:space="preserve">
+    <value>替换</value>
+  </data>
+  <data name="CtlCubeTxtAngularVelocityTooltip" xml:space="preserve">
+    <value>角速度(近似)</value>
+  </data>
+  <data name="CtlCubeTxtBlocks" xml:space="preserve">
+    <value>方块:</value>
+  </data>
+  <data name="CtlCubeTxtCockpitOrient" xml:space="preserve">
+    <value>驾驶舱方向:</value>
+  </data>
+  <data name="CtlCubeTxtFilter" xml:space="preserve">
+    <value>筛选:</value>
+  </data>
+  <data name="CtlCubeTxtFilterClearTooltip" xml:space="preserve">
+    <value>清除筛选(Esc)</value>
+  </data>
+  <data name="CtlCubeTxtFilterSearchTooltip" xml:space="preserve">
+    <value>搜索(Enter)</value>
+  </data>
+  <data name="CtlCubeTxtFilterTooltip" xml:space="preserve">
+    <value>输入要筛选的方块的名称。</value>
+  </data>
+  <data name="CtlCubeTxtLinearVelocityTooltip" xml:space="preserve">
+    <value>线速度</value>
+  </data>
+  <data name="CtlCubeTxtMass" xml:space="preserve">
+    <value>质量:</value>
+  </data>
+  <data name="CtlCubeTxtTimeToProd" xml:space="preserve">
+    <value>总生产时间:</value>
+  </data>
+  <data name="CtlGridBlockSizeValue" xml:space="preserve">
+    <value>{0} × {1} × {2} 块</value>
+  </data>
+  <data name="CtlGridSizeValue" xml:space="preserve">
+    <value>{0}m × {1}m × {2}m</value>
+  </data>
+  <data name="CtlGridTimeToProdValue" xml:space="preserve">
+    <value>{0:dd} 天, {0:hh} 小时, {0:mm\:ss\.ff}</value>
+  </data>
+  <data name="WnComponentsBtnClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="WnComponentsBtnExport" xml:space="preserve">
+    <value>导出报告</value>
+  </data>
+  <data name="WnComponentsColComponentAccessible" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="WnComponentsColComponentBuildTime" xml:space="preserve">
+    <value>建造时间</value>
+  </data>
+  <data name="WnComponentsColComponentMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="WnComponentsColComponentName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WnComponentsColComponentSubType" xml:space="preserve">
+    <value>子类型ID</value>
+  </data>
+  <data name="WnComponentsColComponentType" xml:space="preserve">
+    <value>类型ID</value>
+  </data>
+  <data name="WnComponentsColComponentVolume" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="WnComponentsColCubeAccessible" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="WnComponentsColCubeBuildTime" xml:space="preserve">
+    <value>建造时间</value>
+  </data>
+  <data name="WnComponentsColCubeDimention" xml:space="preserve">
+    <value>尺寸(宽x高x深)</value>
+  </data>
+  <data name="WnComponentsColCubeMass" xml:space="preserve">
+    <value>质量(kg)</value>
+  </data>
+  <data name="WnComponentsColCubeName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WnComponentsColCubeSize" xml:space="preserve">
+    <value>方块尺寸</value>
+  </data>
+  <data name="WnComponentsColCubeSubType" xml:space="preserve">
+    <value>子类型ID</value>
+  </data>
+  <data name="WnComponentsColCubeType" xml:space="preserve">
+    <value>类型ID</value>
+  </data>
+  <data name="WnComponentsColMaterialMineRate" xml:space="preserve">
+    <value>矿石开采率</value>
+  </data>
+  <data name="WnComponentsColMaterialName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WnComponentsColMaterialOreName" xml:space="preserve">
+    <value>矿石名称</value>
+  </data>
+  <data name="WnComponentsColMaterialRare" xml:space="preserve">
+    <value>稀有</value>
+  </data>
+  <data name="WnComponentsColItemAccessible" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="WnComponentsColItemBuildTime" xml:space="preserve">
+    <value>建造时间</value>
+  </data>
+  <data name="WnComponentsColItemMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="WnComponentsColItemName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WnComponentsColItemSubType" xml:space="preserve">
+    <value>子类型ID</value>
+  </data>
+  <data name="WnComponentsColItemType" xml:space="preserve">
+    <value>类型ID</value>
+  </data>
+  <data name="WnComponentsColItemVolume" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="WnComponentsColProperty" xml:space="preserve">
+    <value>财产</value>
+  </data>
+  <data name="WnComponentsColValue" xml:space="preserve">
+    <value>价值</value>
+  </data>
+  <data name="WnComponentsTabComponents" xml:space="preserve">
+    <value>组件</value>
+  </data>
+  <data name="WnComponentsTabCubes" xml:space="preserve">
+    <value>方块</value>
+  </data>
+  <data name="WnComponentsTabItems" xml:space="preserve">
+    <value>物品</value>
+  </data>
+  <data name="WnComponentsTabMaterials" xml:space="preserve">
+    <value>小行星材质</value>
+  </data>
+  <data name="WnComponentsTitle" xml:space="preserve">
+    <value>完整组件列表</value>
+  </data>
+  <data name="ClassType_Planet" xml:space="preserve">
+    <value>行星</value>
+  </data>
+  <data name="ClassType_InventoryBag" xml:space="preserve">
+    <value>物品栏</value>
+  </data>
+  <data name="CtlPlanetDetail" xml:space="preserve">
+    <value>文件名: {0}
+中心: {1}, {2}, {3}
+距离: {4:#,##0.0} m
+位置: {5}, {6}, {7}
+半径: {8:#,##0.0} m
+是否有大气: {9}
+大气半径: {10:#,##0.0} m
+最小表面半径: {11:#,##0.0} m
+最大山丘半径: {12:#,##0.0} m
+重力衰减: {13:#,##0.0} m
+表面重力: {14:#,##0.0} g
+生成植物群系: {15}
+显示GPS: {16}
+行星生成器: {17}</value>
+  </data>
+  <data name="ClassType_SmallStation" xml:space="preserve">
+    <value>小型空间站</value>
+  </data>
+  <data name="ImportImageClassType_SmallStation" xml:space="preserve">
+    <value>小型空间站</value>
+  </data>
+  <data name="ImportModelClassType_SmallStation" xml:space="preserve">
+    <value>小型空间站</value>
+  </data>
+  <data name="WnExplorerMnuSelectionConvertToShip" xml:space="preserve">
+    <value>转换为飞船</value>
+  </data>
+  <data name="WnExplorerMnuSelectionConvertToShipTooltip" xml:space="preserve">
+    <value>将选中的空间站转换为飞船</value>
+  </data>
+  <data name="WnExplorerMnuSelectionConvertToStation" xml:space="preserve">
+    <value>转换为空间站</value>
+  </data>
+  <data name="WnExplorerMnuSelectionConvertToStationTooltip" xml:space="preserve">
+    <value>将选中的飞船转换为空间站</value>
+  </data>
+  <data name="CtlCubeColBuiltBy" xml:space="preserve">
+    <value>建造者</value>
+  </data>
+  <data name="CtlCubeMnuBuiltByCube" xml:space="preserve">
+    <value>建造者</value>
+  </data>
+  <data name="WnChangeBuiltByTitle" xml:space="preserve">
+    <value>修改建造者</value>
+  </data>
+  <data name="WnChangeOwnerTitle" xml:space="preserve">
+    <value>修改所属权</value>
+  </data>
+  <data name="CtlBaseStateTip" xml:space="preserve">
+    <value>存档的文件内容已更改，您应该从这里重新加载以获得新的副本。</value>
+  </data>
+  <data name="CtlBaseStateTxt" xml:space="preserve">
+    <value>存档内容已更改！</value>
+  </data>
+  <data name="CtlCharacterBattery" xml:space="preserve">
+    <value>电池:</value>
+  </data>
+  <data name="CtlCharacterBtnSpeed" xml:space="preserve">
+    <value>速度:</value>
+  </data>
+  <data name="CtlCharacterCharTab" xml:space="preserve">
+    <value>人物</value>
+  </data>
+  <data name="CtlCharacterDampeners" xml:space="preserve">
+    <value>惯性抑制:</value>
+  </data>
+  <data name="CtlCharacterDistance" xml:space="preserve">
+    <value>距离:</value>
+  </data>
+  <data name="CtlCharacterHealth" xml:space="preserve">
+    <value>生命值:</value>
+  </data>
+  <data name="CtlCharacterInventoryTab" xml:space="preserve">
+    <value>库存</value>
+  </data>
+  <data name="CtlCharacterJetPack" xml:space="preserve">
+    <value>喷气背包:</value>
+  </data>
+  <data name="CtlCharacterMnuResetSpeed" xml:space="preserve">
+    <value>重置速度</value>
+  </data>
+  <data name="CtlCharacterMnuReverseSpeed" xml:space="preserve">
+    <value>反转速度</value>
+  </data>
+  <data name="CtlCharacterMnuSpeed" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="CtlCharacterOxygen" xml:space="preserve">
+    <value>氧气:</value>
+  </data>
+  <data name="CtlCharacterPilot" xml:space="preserve">
+    <value>驾驶员:</value>
+  </data>
+  <data name="CtlCharacterPlayer" xml:space="preserve">
+    <value>玩家:</value>
+  </data>
+  <data name="CtlCharacterPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlCharacterSuitColor" xml:space="preserve">
+    <value>太空服颜色:</value>
+  </data>
+  <data name="CtlCharacterSuitLight" xml:space="preserve">
+    <value>探照灯:</value>
+  </data>
+  <data name="CtlFloatingObjectPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlFloatingObjectTitle" xml:space="preserve">
+    <value>漂浮物</value>
+  </data>
+  <data name="CtlInventoryBagPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlInventoryBagTitle" xml:space="preserve">
+    <value>库存</value>
+  </data>
+  <data name="CtlInventoryBtnAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="CtlInventoryBtnDelete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="CtlInventoryColAmount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="CtlInventoryColIcon" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="CtlInventoryColMass" xml:space="preserve">
+    <value>质量(kg)</value>
+  </data>
+  <data name="CtlInventoryColName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="CtlInventoryColVolume" xml:space="preserve">
+    <value>体积(L)</value>
+  </data>
+  <data name="CtlInventoryVolumeTooltip" xml:space="preserve">
+    <value>库存体积</value>
+  </data>
+  <data name="CtlMeteorMnuMaxAtPlayer" xml:space="preserve">
+    <value>玩家最大速度</value>
+  </data>
+  <data name="CtlMeteorMnuMaxAtPlayerTooltip" xml:space="preserve">
+    <value>以最大速度直接在玩家处设置对象速度。</value>
+  </data>
+  <data name="CtlMeteorMnuResetSpeed" xml:space="preserve">
+    <value>重置速度</value>
+  </data>
+  <data name="CtlMeteorMnuResetSpeedTooltip" xml:space="preserve">
+    <value>将线速度和角速度设置为零(0).</value>
+  </data>
+  <data name="CtlMeteorMnuReverseSpeed" xml:space="preserve">
+    <value>反转速度</value>
+  </data>
+  <data name="CtlMeteorMnuReverseSpeedTooltip" xml:space="preserve">
+    <value>反转“线性速度”和“旋转速度”，使对象沿相反方向运动和旋转。</value>
+  </data>
+  <data name="CtlMeteorMnuSpeed" xml:space="preserve">
+    <value>速度</value>
+  </data>
+  <data name="CtlMeteorTitle" xml:space="preserve">
+    <value>流星</value>
+  </data>
+  <data name="CtlMeteorDistance" xml:space="preserve">
+    <value>距离:</value>
+  </data>
+  <data name="CtlMeteorIntegrity" xml:space="preserve">
+    <value>完整:</value>
+  </data>
+  <data name="CtlMeteorMass" xml:space="preserve">
+    <value>质量:</value>
+  </data>
+  <data name="CtlMeteorPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlMeteorType" xml:space="preserve">
+    <value>类型:</value>
+  </data>
+  <data name="CtlMeteorVolume" xml:space="preserve">
+    <value>体积:</value>
+  </data>
+  <data name="CtlMultiItemSelectInfo" xml:space="preserve">
+    <value>已选择多个物品:</value>
+  </data>
+  <data name="CtlPlanetAtmosphereRadius" xml:space="preserve">
+    <value>大气半径:</value>
+  </data>
+  <data name="CtlPlanetCenter" xml:space="preserve">
+    <value>中心:</value>
+  </data>
+  <data name="CtlPlanetDistance" xml:space="preserve">
+    <value>距离:</value>
+  </data>
+  <data name="CtlPlanetGravityFalloff" xml:space="preserve">
+    <value>重力衰减:</value>
+  </data>
+  <data name="CtlPlanetHasAtmosphere" xml:space="preserve">
+    <value>是否有大气:</value>
+  </data>
+  <data name="CtlPlanetMaximumHillRadius" xml:space="preserve">
+    <value>最大山丘半径:</value>
+  </data>
+  <data name="CtlPlanetMinimumSurfaceRadius" xml:space="preserve">
+    <value>最小表面半径:</value>
+  </data>
+  <data name="CtlPlanetMnuCopyDetail" xml:space="preserve">
+    <value>复制文本详细信息到剪贴板</value>
+  </data>
+  <data name="CtlPlanetName" xml:space="preserve">
+    <value>名称:</value>
+  </data>
+  <data name="CtlPlanetPlanetGenerator" xml:space="preserve">
+    <value>行星生成器:</value>
+  </data>
+  <data name="CtlPlanetPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlPlanetRadius" xml:space="preserve">
+    <value>半径:</value>
+  </data>
+  <data name="CtlPlanetShowGps" xml:space="preserve">
+    <value>显示GPS:</value>
+  </data>
+  <data name="CtlPlanetSpawnsFlora" xml:space="preserve">
+    <value>生成植物群系:</value>
+  </data>
+  <data name="CtlPlanetSurfaceGravity" xml:space="preserve">
+    <value>表面重力:</value>
+  </data>
+  <data name="CtlPlanetTitle" xml:space="preserve">
+    <value>行星</value>
+  </data>
+  <data name="CtlPositionXLabel" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="CtlPositionXTooltip" xml:space="preserve">
+    <value>位置坐标X</value>
+  </data>
+  <data name="CtlPositionYLabel" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="CtlPositionYTooltip" xml:space="preserve">
+    <value>位置坐标Y</value>
+  </data>
+  <data name="CtlPositionZLabel" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="CtlPositionZTooltip" xml:space="preserve">
+    <value>位置坐标Z</value>
+  </data>
+  <data name="CtlUnknownPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlUnknownTitle" xml:space="preserve">
+    <value>未知 -</value>
+  </data>
+  <data name="CtlVoxelBoundingSize" xml:space="preserve">
+    <value>边界尺寸:</value>
+  </data>
+  <data name="CtlVoxelBoundingSizeValue" xml:space="preserve">
+    <value>{0} × {1} × {2} 体素</value>
+  </data>
+  <data name="CtlVoxelCenter" xml:space="preserve">
+    <value>体积中心:</value>
+  </data>
+  <data name="CtlVoxelColMaterial" xml:space="preserve">
+    <value>材质</value>
+  </data>
+  <data name="CtlVoxelColPercent" xml:space="preserve">
+    <value>百分比</value>
+  </data>
+  <data name="CtlVoxelColVolume" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="CtlVoxelDistance" xml:space="preserve">
+    <value>距离:</value>
+  </data>
+  <data name="CtlVoxelMnuCopyDetail" xml:space="preserve">
+    <value>将文本详细信息复制到剪贴板</value>
+  </data>
+  <data name="CtlVoxelMnuExtract" xml:space="preserve">
+    <value>提取</value>
+  </data>
+  <data name="CtlVoxelMnuExtractStationLoose" xml:space="preserve">
+    <value>空间站交叉松散提取</value>
+  </data>
+  <data name="CtlVoxelMnuExtractStationLooseTooltip" xml:space="preserve">
+    <value>任何与空间站方块重叠的小行星体素都会被移除。这将导致小行星和空间站表面之间出现小而窄的间隙。</value>
+  </data>
+  <data name="CtlVoxelMnuExtractStationTight" xml:space="preserve">
+    <value>空间站交叉紧密提取</value>
+  </data>
+  <data name="CtlVoxelMnuExtractStationTightTooltip" xml:space="preserve">
+    <value>任何被任意数量的空间站方块完全包围的小行星体素都会被移除。这导致小行星与空间站的表面重叠，不留任何间隙。</value>
+  </data>
+  <data name="CtlVoxelMnuMaterial" xml:space="preserve">
+    <value>矿石/材质</value>
+  </data>
+  <data name="CtlVoxelMnuReplaceAllMaterial" xml:space="preserve">
+    <value>替换所有材质</value>
+  </data>
+  <data name="CtlVoxelMnuReplaceSelectedMaterial" xml:space="preserve">
+    <value>替换选中的材质</value>
+  </data>
+  <data name="CtlVoxelMnuReplaceSurfaceMaterial" xml:space="preserve">
+    <value>替换表面材质</value>
+  </data>
+  <data name="CtlVoxelMnuRotate" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="CtlVoxelMnuRotatePitchNegative" xml:space="preserve">
+    <value>将小行星绕X轴向前向下旋转(-90 俯仰)</value>
+  </data>
+  <data name="CtlVoxelMnuRotatePitchPositive" xml:space="preserve">
+    <value>将小行星绕X轴向后向下旋转(+90 俯仰)</value>
+  </data>
+  <data name="CtlVoxelMnuRotateRollNegative" xml:space="preserve">
+    <value>将小行星绕Z轴向右向下旋转(-90 滚转)</value>
+  </data>
+  <data name="CtlVoxelMnuRotateRollPositive" xml:space="preserve">
+    <value>将小行星绕Z轴向左向下旋转 (+90 滚转)</value>
+  </data>
+  <data name="CtlVoxelMnuRotateYawNegative" xml:space="preserve">
+    <value>将小行星绕Y轴顺时针旋转(-90 偏航)</value>
+  </data>
+  <data name="CtlVoxelMnuRotateYawPositive" xml:space="preserve">
+    <value>将小行星绕Y轴逆时针旋转(+90 偏航)</value>
+  </data>
+  <data name="CtlVoxelMnuSlice" xml:space="preserve">
+    <value>切除</value>
+  </data>
+  <data name="CtlVoxelMnuSliceHalf" xml:space="preserve">
+    <value>切除一半(复制)</value>
+  </data>
+  <data name="CtlVoxelMnuSliceHalfTooltip" xml:space="preserve">
+    <value>从太阳方向移除一半。</value>
+  </data>
+  <data name="CtlVoxelMnuSliceQuarter" xml:space="preserve">
+    <value>切除四分之一(复制)</value>
+  </data>
+  <data name="CtlVoxelMnuSliceQuarterTooltip" xml:space="preserve">
+    <value>从太阳方向删除四分之一。</value>
+  </data>
+  <data name="CtlVoxelName" xml:space="preserve">
+    <value>名称:</value>
+  </data>
+  <data name="CtlVoxelPosition" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="CtlVoxelSize" xml:space="preserve">
+    <value>尺寸:</value>
+  </data>
+  <data name="CtlVoxelSizeValue" xml:space="preserve">
+    <value>{0}m × {1}m × {2}m</value>
+  </data>
+  <data name="CtlVoxelTitle" xml:space="preserve">
+    <value>小行星</value>
+  </data>
+  <data name="CtlVoxelVolume" xml:space="preserve">
+    <value>体积:</value>
+  </data>
+  <data name="CtlVoxelVoxCells" xml:space="preserve">
+    <value>体素:</value>
+  </data>
+  <data name="GlobalSIVolumeCubicMetre" xml:space="preserve">
+    <value>m³</value>
+  </data>
+  <data name="WnChangeOwnerBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnChangeOwnerBtnChange" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="WnChangeOwnerLabelPlayer" xml:space="preserve">
+    <value>玩家:</value>
+  </data>
+  <data name="WnFrameworkBuildBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnFrameworkBuildBtnOkay" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="WnFrameworkBuildLabelPercentComplete" xml:space="preserve">
+    <value>建造百分比:</value>
+  </data>
+  <data name="WnFrameworkBuildTitle" xml:space="preserve">
+    <value>框架建造百分比</value>
+  </data>
+  <data name="WnGroupMoveBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnGroupMoveBtnOkay" xml:space="preserve">
+    <value>接受</value>
+  </data>
+  <data name="WnGroupMoveColDistance" xml:space="preserve">
+    <value>距离</value>
+  </data>
+  <data name="WnGroupMoveColNewDistance" xml:space="preserve">
+    <value>新距离</value>
+  </data>
+  <data name="WnGroupMoveColNewPosition" xml:space="preserve">
+    <value>新位置</value>
+  </data>
+  <data name="WnGroupMoveColPosition" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="WnGroupMoveColType" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="WnGroupMoveRdoOffset" xml:space="preserve">
+    <value>偏移位置:</value>
+  </data>
+  <data name="WnGroupMoveRdoSingle" xml:space="preserve">
+    <value>单一位置:</value>
+  </data>
+  <data name="WnGroupMoveTitle" xml:space="preserve">
+    <value>批量移动</value>
+  </data>
+  <data name="WnGroupMoveTxtOffsetX" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="WnGroupMoveTxtOffsetXTooltip" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="WnGroupMoveTxtOffsetY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="WnGroupMoveTxtOffsetYTooltip" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="WnGroupMoveTxtOffsetZ" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="WnGroupMoveTxtOffsetZTooltip" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="WnGroupMoveTxtSingleX" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="WnGroupMoveTxtSingleXTooltip" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="WnGroupMoveTxtSingleY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="WnGroupMoveTxtSingleYTooltip" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="WnGroupMoveTxtSingleZ" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="WnGroupMoveTxtSingleZTooltip" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="WnImportAsteroidBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnImportAsteroidBtnCreate" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="WnImportAsteroidRdoFile" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="WnImportAsteroidRdoSphere" xml:space="preserve">
+    <value>球体</value>
+  </data>
+  <data name="WnImportAsteroidRdoStock" xml:space="preserve">
+    <value>预设</value>
+  </data>
+  <data name="WnImportAsteroidTitle" xml:space="preserve">
+    <value>导入小行星</value>
+  </data>
+  <data name="WnImportAsteroidTxtFile" xml:space="preserve">
+    <value>必须是有效的太空工程师小行星文件。</value>
+  </data>
+  <data name="WnImportAsteroidTxtRadius" xml:space="preserve">
+    <value>半径</value>
+  </data>
+  <data name="WnImportAsteroidTxtRadiusTooltip" xml:space="preserve">
+    <value>半径 (m) (1 to 3000).</value>
+  </data>
+  <data name="WnImportAsteroidTxtShell" xml:space="preserve">
+    <value>外壳</value>
+  </data>
+  <data name="WnImportAsteroidTxtShellTooltip" xml:space="preserve">
+    <value>外壳厚度，为0时没有外壳</value>
+  </data>
+  <data name="WnImportImageBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnImportImageBtnCreate" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="WnImportImageBtnKeyColorTooltip" xml:space="preserve">
+    <value>更改关键色</value>
+  </data>
+  <data name="WnImportImageBtnSetOriginalSize" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="WnImportImageBtnSetOriginalSizeTooltip" xml:space="preserve">
+    <value>将尺寸设置回原始尺寸</value>
+  </data>
+  <data name="WnImportImageGrpNewSize" xml:space="preserve">
+    <value>新尺寸</value>
+  </data>
+  <data name="WnImportImageGrpOrientation" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="WnImportImageGrpOriginalSize" xml:space="preserve">
+    <value>原始尺寸</value>
+  </data>
+  <data name="WnImportImageGrpPosition" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="WnImportImageGrpTransparency" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="WnImportImageImgOriginalTooltip" xml:space="preserve">
+    <value>原始图片</value>
+  </data>
+  <data name="WnImportImageImgPreviewTooltip" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="WnImportImageLabelArmor" xml:space="preserve">
+    <value>装甲:</value>
+  </data>
+  <data name="WnImportImageLabelImage" xml:space="preserve">
+    <value>图片:</value>
+    <comment>Specify file for imaage</comment>
+  </data>
+  <data name="WnImportImageLabelNewHeight" xml:space="preserve">
+    <value>高:</value>
+  </data>
+  <data name="WnImportImageLabelNewWidth" xml:space="preserve">
+    <value>宽:</value>
+  </data>
+  <data name="WnImportImageLabelOriginalHeight" xml:space="preserve">
+    <value>高:</value>
+  </data>
+  <data name="WnImportImageLabelOriginalWidth" xml:space="preserve">
+    <value>宽:</value>
+  </data>
+  <data name="WnImportImageLabelPositionX" xml:space="preserve">
+    <value>X:</value>
+  </data>
+  <data name="WnImportImageLabelPositionY" xml:space="preserve">
+    <value>Y:</value>
+  </data>
+  <data name="WnImportImageLabelPositionZ" xml:space="preserve">
+    <value>Z:</value>
+  </data>
+  <data name="WnImportImageLabelType" xml:space="preserve">
+    <value>类型:</value>
+  </data>
+  <data name="WnImportImageRdoAlphaLevel" xml:space="preserve">
+    <value>透明度级别</value>
+  </data>
+  <data name="WnImportImageRdoFacingPlayer" xml:space="preserve">
+    <value>面向玩家</value>
+  </data>
+  <data name="WnImportImageRdoKeyColor" xml:space="preserve">
+    <value>关键色</value>
+  </data>
+  <data name="WnImportImageTItle" xml:space="preserve">
+    <value>导入图片</value>
+  </data>
+  <data name="WnImportImageTxtAlphaLevelTooltip" xml:space="preserve">
+    <value>透明度高于此数值的区域将生成方块。</value>
+  </data>
+  <data name="WnResourceReportBtnClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="WnResourceReportBtnCopy" xml:space="preserve">
+    <value>剪贴板</value>
+  </data>
+  <data name="WnResourceReportBtnExport" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="WnResourceReportBtnGenerate" xml:space="preserve">
+    <value>生成报告</value>
+  </data>
+  <data name="WnResourceReportBtnHtmlFile" xml:space="preserve">
+    <value>.html文件</value>
+  </data>
+  <data name="WnResourceReportBtnTextFile" xml:space="preserve">
+    <value>.txt文件</value>
+  </data>
+  <data name="WnResourceReportBtnXmlFile" xml:space="preserve">
+    <value>.xml文件</value>
+  </data>
+  <data name="WnResourceReportTitle" xml:space="preserve">
+    <value>资源报告</value>
+  </data>
+  <data name="WnSelectCubeBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnSelectCubeBtnOkay" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="WnSelectCubeLabelCube" xml:space="preserve">
+    <value>方块:</value>
+  </data>
+  <data name="WnSelectCubeTitle" xml:space="preserve">
+    <value>选择方块</value>
+  </data>
+  <data name="WnSettingsCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnSettingsChkCheckForUpdates" xml:space="preserve">
+    <value>总是</value>
+  </data>
+  <data name="WnSettingsChkCheckForUpdatesTooltip" xml:space="preserve">
+    <value>启动时检查更新。</value>
+  </data>
+  <data name="WnSettingsLabelApplicationPath" xml:space="preserve">
+    <value>程序路径:</value>
+  </data>
+  <data name="WnSettingsLabelCheckForUpdates" xml:space="preserve">
+    <value>检查更新:</value>
+  </data>
+  <data name="WnSettingsLabelCustomVoxelPath" xml:space="preserve">
+    <value>自定义体素路径：</value>
+  </data>
+  <data name="WnSettingsOkay" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="WnSettingsTitle" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="WnSettingsTxtCustomVoxelPath" xml:space="preserve">
+    <value>为您的个人小行星指定其他位置。</value>
+  </data>
+  <data name="WnSettingsTxtlApplicationPathTooltip" xml:space="preserve">
+    <value>太空工程师路径。</value>
+  </data>
+  <data name="WnVoxelMergeCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnVoxelMergeChkRemoveOriginals" xml:space="preserve">
+    <value>移除原始小行星</value>
+  </data>
+  <data name="WnVoxelMergeLabelAction" xml:space="preserve">
+    <value>动作:</value>
+  </data>
+  <data name="WnVoxelMergeLabelFilenameOutput" xml:space="preserve">
+    <value>新文件名:</value>
+  </data>
+  <data name="WnVoxelMergeLabelWarningNoOverlap" xml:space="preserve">
+    <value>选定的小行星不重叠。</value>
+  </data>
+  <data name="WnVoxelMergeOkay" xml:space="preserve">
+    <value>接受</value>
+  </data>
+  <data name="WnVoxelMergeTitle" xml:space="preserve">
+    <value>小行星合并</value>
+  </data>
+  <data name="ClsRepairCheckpointBroken" xml:space="preserve">
+    <value>！检查点文件丢失或损坏。</value>
+  </data>
+  <data name="ClsRepairFixedCharacterModel" xml:space="preserve">
+    <value>！修复了工程师的角色模型。</value>
+  </data>
+  <data name="ClsRepairFixedPlayerIdentity" xml:space="preserve">
+    <value>！修复了玩家身份。</value>
+  </data>
+  <data name="ClsRepairFoundSetPlayer" xml:space="preserve">
+    <value>*找到并设置新的活动玩家。</value>
+  </data>
+  <data name="ClsRepairNoIssues" xml:space="preserve">
+    <value>未检测到问题。</value>
+  </data>
+  <data name="ClsRepairNoPlayerFound" xml:space="preserve">
+    <value>！存档中没有活动玩家。</value>
+  </data>
+  <data name="ClsRepairReplacedBlockGroup" xml:space="preserve">
+    <value>*已替换方块编组。</value>
+  </data>
+  <data name="ClsRepairReplacedCharacterSubType" xml:space="preserve">
+    <value>！已替换丢失的工程师{0}。</value>
+  </data>
+  <data name="ClsRepairSavedChanges" xml:space="preserve">
+    <value>*已保存更改。</value>
+  </data>
+  <data name="ClsRepairSectorBroken" xml:space="preserve">
+    <value>！扇区文件丢失或损坏。</value>
+  </data>
+  <data name="ClsRepairUnableToRepair" xml:space="preserve">
+    <value>！无法修复。</value>
+  </data>
+  <data name="CtlCubeColCount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="WnGenAsteroidFieldBtnAddRandom" xml:space="preserve">
+    <value>随机添加</value>
+  </data>
+  <data name="WnGenAsteroidFieldBtnAddRow" xml:space="preserve">
+    <value>_添加</value>
+  </data>
+  <data name="WnGenAsteroidFieldBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnGenAsteroidFieldBtnClearRows" xml:space="preserve">
+    <value>_清除</value>
+  </data>
+  <data name="WnGenAsteroidFieldBtnCreate" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="WnGenAsteroidFieldBtnDeleteRow" xml:space="preserve">
+    <value>_删除</value>
+  </data>
+  <data name="WnGenAsteroidFieldColAsteroid" xml:space="preserve">
+    <value>小行星</value>
+  </data>
+  <data name="WnGenAsteroidFieldColMaterial" xml:space="preserve">
+    <value>材质</value>
+  </data>
+  <data name="WnGenAsteroidFieldColMaterial2" xml:space="preserve">
+    <value>材质2</value>
+  </data>
+  <data name="WnGenAsteroidFieldColMaterial3" xml:space="preserve">
+    <value>材质3</value>
+  </data>
+  <data name="WnGenAsteroidFieldColMaterial4" xml:space="preserve">
+    <value>材质4</value>
+  </data>
+  <data name="WnGenAsteroidFieldColMaterial5" xml:space="preserve">
+    <value>材质5</value>
+  </data>
+  <data name="WnGenAsteroidFieldColMaterial6" xml:space="preserve">
+    <value>材质6</value>
+  </data>
+  <data name="WnGenAsteroidFieldColMaterial7" xml:space="preserve">
+    <value>材质7</value>
+  </data>
+  <data name="WnGenAsteroidFieldColPercent" xml:space="preserve">
+    <value>百分比</value>
+  </data>
+  <data name="WnGenAsteroidFieldColPercent2" xml:space="preserve">
+    <value>百分比2</value>
+  </data>
+  <data name="WnGenAsteroidFieldColPercent3" xml:space="preserve">
+    <value>百分比3</value>
+  </data>
+  <data name="WnGenAsteroidFieldColPercent4" xml:space="preserve">
+    <value>百分比4</value>
+  </data>
+  <data name="WnGenAsteroidFieldColPercent5" xml:space="preserve">
+    <value>百分比5</value>
+  </data>
+  <data name="WnGenAsteroidFieldColPercent6" xml:space="preserve">
+    <value>百分比6</value>
+  </data>
+  <data name="WnGenAsteroidFieldColPercent7" xml:space="preserve">
+    <value>百分比7</value>
+  </data>
+  <data name="WnGenAsteroidFieldLabelCenter" xml:space="preserve">
+    <value>中心:</value>
+  </data>
+  <data name="WnGenAsteroidFieldLabelFillType" xml:space="preserve">
+    <value>填充类型:</value>
+  </data>
+  <data name="WnGenAsteroidFieldLabelRangeFrom" xml:space="preserve">
+    <value>范围:</value>
+  </data>
+  <data name="WnGenAsteroidFieldLabelRangeTo" xml:space="preserve">
+    <value>至:</value>
+  </data>
+  <data name="WnGenAsteroidFieldTitle" xml:space="preserve">
+    <value>生成小行星区域</value>
+  </data>
+  <data name="WnGenAsteroidFieldTxtCenterX" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="WnGenAsteroidFieldTxtCenterXTooltip" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="WnGenAsteroidFieldTxtCenterY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="WnGenAsteroidFieldTxtCenterYTooltip" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="WnGenAsteroidFieldTxtCenterZ" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="WnGenAsteroidFieldTxtCenterZTooltip" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="WnImport3dModelBtnBrowseModelTooltip" xml:space="preserve">
+    <value>浏览模型</value>
+  </data>
+  <data name="WnImport3dModelBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnImport3dModelBtnCreate" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="WnImport3dModelGrpNewSize" xml:space="preserve">
+    <value>新尺寸(近似)</value>
+  </data>
+  <data name="WnImport3dModelGrpOrientation" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="WnImport3dModelGrpOriginalSize" xml:space="preserve">
+    <value>原始尺寸</value>
+  </data>
+  <data name="WnImport3dModelGrpPosition" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="WnImport3dModelGrpScale" xml:space="preserve">
+    <value>规模</value>
+  </data>
+  <data name="WnImport3dModelLabelArmor" xml:space="preserve">
+    <value>装甲:</value>
+  </data>
+  <data name="WnImport3dModelLabelCalculation" xml:space="preserve">
+    <value>计算:</value>
+  </data>
+  <data name="WnImport3dModelLabelDistance" xml:space="preserve">
+    <value>距离:</value>
+  </data>
+  <data name="WnImport3dModelLabelFill" xml:space="preserve">
+    <value>填充:</value>
+  </data>
+  <data name="WnImport3dModelLabelModel" xml:space="preserve">
+    <value>模型:</value>
+  </data>
+  <data name="WnImport3dModelLabelNewDepth" xml:space="preserve">
+    <value>深:</value>
+  </data>
+  <data name="WnImport3dModelLabelNewHeight" xml:space="preserve">
+    <value>高:</value>
+  </data>
+  <data name="WnImport3dModelLabelNewSizeBlocks" xml:space="preserve">
+    <value>方块</value>
+  </data>
+  <data name="WnImport3dModelLabelNewSizeMeters" xml:space="preserve">
+    <value>米</value>
+  </data>
+  <data name="WnImport3dModelLabelNewWidth" xml:space="preserve">
+    <value>宽度:</value>
+  </data>
+  <data name="WnImport3dModelLabelOreInside" xml:space="preserve">
+    <value>矿石内部:</value>
+  </data>
+  <data name="WnImport3dModelLabelOreShell" xml:space="preserve">
+    <value>矿石外壳:</value>
+  </data>
+  <data name="WnImport3dModelLabelOriginalDepth" xml:space="preserve">
+    <value>深:</value>
+  </data>
+  <data name="WnImport3dModelLabelOriginalHeight" xml:space="preserve">
+    <value>高:</value>
+  </data>
+  <data name="WnImport3dModelLabelOriginalWidth" xml:space="preserve">
+    <value>宽度:</value>
+  </data>
+  <data name="WnImport3dModelLabelType" xml:space="preserve">
+    <value>类型:</value>
+  </data>
+  <data name="WnImport3dModelPositionX" xml:space="preserve">
+    <value>X:</value>
+  </data>
+  <data name="WnImport3dModelPositionY" xml:space="preserve">
+    <value>Y:</value>
+  </data>
+  <data name="WnImport3dModelPositionZ" xml:space="preserve">
+    <value>Z:</value>
+  </data>
+  <data name="WnImport3dModelRdoFacingPlayer" xml:space="preserve">
+    <value>面向玩家</value>
+  </data>
+  <data name="WnImport3dModelRdoMaxLength" xml:space="preserve">
+    <value>最大长度:</value>
+  </data>
+  <data name="WnImport3dModelRdoMultiply" xml:space="preserve">
+    <value>倍率:</value>
+  </data>
+  <data name="WnImport3dModelTitle" xml:space="preserve">
+    <value>导入3D模型</value>
+  </data>
+  <data name="WnImport3dModelTxtDistanceTooltip" xml:space="preserve">
+    <value>玩家前方距离(米)。</value>
+  </data>
+  <data name="WnImport3dModelTxtMaxLengthTooltip" xml:space="preserve">
+    <value>这指定了结构的最长尺寸。</value>
+  </data>
+  <data name="WnImportAsteroidBtnBrowseFileTooltip" xml:space="preserve">
+    <value>浏览小行星文件</value>
+  </data>
+  <data name="WnImportAsteroidModelBtnBrowseTooltip" xml:space="preserve">
+    <value>浏览模型</value>
+  </data>
+  <data name="WnImportAsteroidModelBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnImportAsteroidModelBtnCreate" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="WnImportAsteroidModelCboTraceDirectionTooltip" xml:space="preserve">
+    <value>指定光线追踪的方向。从所有3个方向进行追踪所需时间约为3倍，但能为高度复杂的模型生成更精确的转换结果。</value>
+  </data>
+  <data name="WnImportAsteroidModelCboTraceTypeTooltip" xml:space="preserve">
+    <value>影响对称模型的平衡，无论生成的体素是从原点开始的奇数还是偶数。从视觉上看，你可能看不到大型小行星上的任何区别。</value>
+  </data>
+  <data name="WnImportAsteroidModelGrpNewSize" xml:space="preserve">
+    <value>新尺寸(近似)</value>
+  </data>
+  <data name="WnImportAsteroidModelGrpOrientation" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="WnImportAsteroidModelGrpOriginalSize" xml:space="preserve">
+    <value>原始尺寸</value>
+  </data>
+  <data name="WnImportAsteroidModelGrpScale" xml:space="preserve">
+    <value>规模</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelBeepFinished" xml:space="preserve">
+    <value>完成时提示音:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelDepthMaterialShell" xml:space="preserve">
+    <value>外壳材质深度：</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelFrontDistance" xml:space="preserve">
+    <value>距离:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelInvalidFile" xml:space="preserve">
+    <value>指定的文件无效</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelMaterialInside" xml:space="preserve">
+    <value>内部材质:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelMaterialShell" xml:space="preserve">
+    <value>外壳材质:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelModel" xml:space="preserve">
+    <value>模型:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelNewDepth" xml:space="preserve">
+    <value>深度:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelNewHeight" xml:space="preserve">
+    <value>高度:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelNewSizeBlocks" xml:space="preserve">
+    <value>方块</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelNewSizeMeters" xml:space="preserve">
+    <value>米</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelNewWidth" xml:space="preserve">
+    <value>宽度:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelOrientationPitch" xml:space="preserve">
+    <value>俯仰:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelOrientationRoll" xml:space="preserve">
+    <value>滚转:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelOrientationYaw" xml:space="preserve">
+    <value>偏航:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelOriginalDepth" xml:space="preserve">
+    <value>深度:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelOriginalHeight" xml:space="preserve">
+    <value>高度:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelOriginalWidth" xml:space="preserve">
+    <value>宽度:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelPositionX" xml:space="preserve">
+    <value>X:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelPositionY" xml:space="preserve">
+    <value>Y:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelPositionZ" xml:space="preserve">
+    <value>Z:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelRunLowPriority" xml:space="preserve">
+    <value>以低优先级运行：</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelSaveFinished" xml:space="preserve">
+    <value>完成时保存:</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelTraceDirection" xml:space="preserve">
+    <value>追踪方向：</value>
+  </data>
+  <data name="WnImportAsteroidModelLabelTraceType" xml:space="preserve">
+    <value>追踪类型：</value>
+  </data>
+  <data name="WnImportAsteroidModelRdoFrontOfPlayer" xml:space="preserve">
+    <value>在玩家前面</value>
+  </data>
+  <data name="WnImportAsteroidModelRdoPosAbsolute" xml:space="preserve">
+    <value>绝对</value>
+  </data>
+  <data name="WnImportAsteroidModelRdoScaleMaxLength" xml:space="preserve">
+    <value>最大长度:</value>
+  </data>
+  <data name="WnImportAsteroidModelRdoScaleMultiply" xml:space="preserve">
+    <value>倍率:</value>
+  </data>
+  <data name="WnImportAsteroidModelTabMaterials" xml:space="preserve">
+    <value>材质</value>
+  </data>
+  <data name="WnImportAsteroidModelTabPosition" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="WnImportAsteroidModelTabProcessing" xml:space="preserve">
+    <value>处理</value>
+  </data>
+  <data name="WnImportAsteroidModelTabQualitySpeed" xml:space="preserve">
+    <value>质量/速度</value>
+  </data>
+  <data name="WnImportAsteroidModelTabScale" xml:space="preserve">
+    <value>规模</value>
+  </data>
+  <data name="WnImportAsteroidModelTitle" xml:space="preserve">
+    <value>导入小行星3D模型</value>
+  </data>
+  <data name="WnImportAsteroidModelTxtFrontDistanceTooltip" xml:space="preserve">
+    <value>玩家前方距离(m)。</value>
+  </data>
+  <data name="WnImportAsteroidModelTxtMaxLengthTooltip" xml:space="preserve">
+    <value>这指定了结构的最长尺寸(以块为单位)。</value>
+  </data>
+  <data name="WnImportImageBtnBrowseImageTooltip" xml:space="preserve">
+    <value>浏览图片</value>
+  </data>
+  <data name="WnSettingsBtnApplicationPath" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="WnSettingsBtnCustomVoxelPath" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="ClsErrorApplication" xml:space="preserve">
+    <value>应用程序:</value>
+  </data>
+  <data name="ClsErrorBinCachePath" xml:space="preserve">
+    <value>二进制缓存路径:</value>
+  </data>
+  <data name="ClsErrorCommandLine" xml:space="preserve">
+    <value>命令行:</value>
+  </data>
+  <data name="ClsErrorCurrentCulture" xml:space="preserve">
+    <value>当前语言:</value>
+  </data>
+  <data name="ClsErrorCurrentDirectory" xml:space="preserve">
+    <value>当前目录:</value>
+  </data>
+  <data name="ClsErrorCurrentUICulture" xml:space="preserve">
+    <value>当前UI语言:</value>
+  </data>
+  <data name="ClsErrorFiles" xml:space="preserve">
+    <value>文件:</value>
+  </data>
+  <data name="ClsErrorIs64BitOperatingSystem" xml:space="preserve">
+    <value>是否是64位操作系统:</value>
+  </data>
+  <data name="ClsErrorIsAdmin" xml:space="preserve">
+    <value>是否是管理员:</value>
+  </data>
+  <data name="ClsErrorOSVersion" xml:space="preserve">
+    <value>系统版本:</value>
+  </data>
+  <data name="ClsErrorProcessorCount" xml:space="preserve">
+    <value>处理数:</value>
+  </data>
+  <data name="ClsErrorSEBinPath" xml:space="preserve">
+    <value>Bin文件夹路径:</value>
+  </data>
+  <data name="ClsErrorSEBinVersion" xml:space="preserve">
+    <value>Bin文件夹版本:</value>
+  </data>
+  <data name="ClsErrorUnhandled" xml:space="preserve">
+    <value>未处理的异常</value>
+  </data>
+  <data name="ClsErrorVersion" xml:space="preserve">
+    <value>版本:</value>
+  </data>
+  <data name="ClsReportColAsteroid" xml:space="preserve">
+    <value>小行星</value>
+  </data>
+  <data name="ClsReportColBlockCount" xml:space="preserve">
+    <value>方块数</value>
+  </data>
+  <data name="ClsReportColEntityId" xml:space="preserve">
+    <value>实体ID</value>
+  </data>
+  <data name="ClsReportColMaterialName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="ClsReportColOreName" xml:space="preserve">
+    <value>矿石名称</value>
+  </data>
+  <data name="ClsReportColPosition" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="ClsReportColShip" xml:space="preserve">
+    <value>飞船</value>
+  </data>
+  <data name="ClsReportColVolume" xml:space="preserve">
+    <value>体积</value>
+  </data>
+  <data name="ClsReportDate" xml:space="preserve">
+    <value>日期:</value>
+  </data>
+  <data name="ClsReportSaveWorld" xml:space="preserve">
+    <value>保存世界:</value>
+  </data>
+  <data name="ClsReportTitle" xml:space="preserve">
+    <value>资源报告</value>
+  </data>
+  <data name="ClsReportColMass" xml:space="preserve">
+    <value>质量</value>
+  </data>
+  <data name="ClsReportHeadingResourcesBreakdown" xml:space="preserve">
+    <value>资源 统计</value>
+  </data>
+  <data name="ClsReportHeadingUntouchedOre" xml:space="preserve">
+    <value>未接触的矿石(小行星)</value>
+  </data>
+  <data name="ClsReportColAllItemsName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="ClsReportColComponentName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="ClsReportColCount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="ClsReportColCubeName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="ClsReportColIcon" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="ClsReportColTime" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="ClsReportHeaderAllComponents" xml:space="preserve">
+    <value>所有组件</value>
+  </data>
+  <data name="ClsReportHeaderAllCubes" xml:space="preserve">
+    <value>所有方块</value>
+  </data>
+  <data name="ClsReportHeaderAllItems" xml:space="preserve">
+    <value>所有物品</value>
+  </data>
+  <data name="ClsReportHeaderInGameAssets" xml:space="preserve">
+    <value>游戏内资产</value>
+  </data>
+  <data name="ClsReportHeaderInGameResources" xml:space="preserve">
+    <value>游戏内资源</value>
+  </data>
+  <data name="ClsReportHeaderUnusedRefinerdOre" xml:space="preserve">
+    <value>已使用的矿石(工具、物品、组件、方块)</value>
+  </data>
+  <data name="ClsReportHeaderUnusedUnrefinedOre" xml:space="preserve">
+    <value>未使用的矿石(矿石和铸锭，漂浮物或装在容器中)</value>
+  </data>
+  <data name="ClsReportHeaderUsedNpcOre" xml:space="preserve">
+    <value>NPC矿石(被NPC控制)</value>
+  </data>
+  <data name="ClsReportHeaderUsedPlayerOre" xml:space="preserve">
+    <value>玩家矿石(玩家库存)</value>
+  </data>
+  <data name="ClsReportTextInGameAssets" xml:space="preserve">
+    <value>游戏资产中所有当前物品的计数。这些表示构建、部分构建或精炼所花费的实际时间。</value>
+  </data>
+  <data name="ClsReportTextInGameResources" xml:space="preserve">
+    <value>一切都是在回归状态下衡量的。也就是说，建造这个项目需要使用多少矿石。</value>
+  </data>
+  <data name="GlobalTimeDays" xml:space="preserve">
+    <value>天数</value>
+  </data>
+  <data name="WnProgressTitle" xml:space="preserve">
+    <value>正在处理...</value>
+  </data>
+  <data name="WnProgressTxtTimeCalculating" xml:space="preserve">
+    <value>正在计算...</value>
+  </data>
+  <data name="ClsCharacterDead" xml:space="preserve">
+    <value>死亡</value>
+  </data>
+  <data name="ClsExportInventoryBag" xml:space="preserve">
+    <value>当前无法导出库存</value>
+  </data>
+  <data name="ClsExportPlanet" xml:space="preserve">
+    <value>当前无法导出行星</value>
+  </data>
+  <data name="ClsExportTitleFailed" xml:space="preserve">
+    <value>无法导出</value>
+  </data>
+  <data name="ClsExportUnknown" xml:space="preserve">
+    <value>当前无法导出未知类型</value>
+  </data>
+  <data name="ClsImportInvalid" xml:space="preserve">
+    <value>无法加载'{0}'，因为该文件已损坏或无效。</value>
+  </data>
+  <data name="ClsImportTitleFailed" xml:space="preserve">
+    <value>无法导入</value>
+  </data>
+  <data name="ClsRepairTitle" xml:space="preserve">
+    <value>修复结果</value>
+  </data>
+  <data name="CtlMeteorDisplayName" xml:space="preserve">
+    <value>流星</value>
+  </data>
+  <data name="CtlMeteorOre" xml:space="preserve">
+    <value>矿石</value>
+  </data>
+  <data name="CtlVoxelMnuRemoveMaterial" xml:space="preserve">
+    <value>删除/移除</value>
+  </data>
+  <data name="DialogExportReportFilename" xml:space="preserve">
+    <value>太空工程师组件物品报告</value>
+  </data>
+  <data name="ValidationInvalidCharacters" xml:space="preserve">
+    <value>非法字符或{0}</value>
+  </data>
+  <data name="ValidationInvalidRange" xml:space="preserve">
+    <value>请输入一个范围内的值:</value>
+  </data>
+  <data name="WnImport3dModelEmpty" xml:space="preserve">
+    <value>空对象</value>
+  </data>
+  <data name="WnImportAsteroidNoChange" xml:space="preserve">
+    <value>没有更改</value>
+  </data>
+  <data name="TraceType_Even" xml:space="preserve">
+    <value>偶数</value>
+  </data>
+  <data name="TraceType_Odd" xml:space="preserve">
+    <value>奇数</value>
+  </data>
+  <data name="Dialog3DStudioFiles" xml:space="preserve">
+    <value>3D动画</value>
+  </data>
+  <data name="DialogAllFiles" xml:space="preserve">
+    <value>所有文件</value>
+  </data>
+  <data name="DialogLightwaveFiles" xml:space="preserve">
+    <value>Lightwave文件</value>
+  </data>
+  <data name="DialogOFFFiles" xml:space="preserve">
+    <value>OFF文件</value>
+  </data>
+  <data name="DialogStereoLithographyFiles" xml:space="preserve">
+    <value>StereoLithography文件</value>
+  </data>
+  <data name="DialogWavefrontFiles" xml:space="preserve">
+    <value>Wavefront</value>
+  </data>
+  <data name="WnSettingsChkCustomResource" xml:space="preserve">
+    <value>覆盖</value>
+  </data>
+  <data name="WnSettingsChkCustomResourceTooltip" xml:space="preserve">
+    <value>使用SEToolbox提供的自定义本地化来覆盖《太空工程师》提供的文本。</value>
+  </data>
+  <data name="WnSettingsLabelUseCustomResource" xml:space="preserve">
+    <value>使用自定义本地化</value>
+  </data>
+  <data name="CtlCharacterHydrogen" xml:space="preserve">
+    <value>氢气</value>
+  </data>
+  <data name="CtlCharacterHydrogenGasSymbol" xml:space="preserve">
+    <value>H₂</value>
+  </data>
+  <data name="CtlCharacterOxygenGasSymbol" xml:space="preserve">
+    <value>O₂</value>
+  </data>
+  <data name="ClsCubeGridWheelAttached" xml:space="preserve">
+    <value>车轮 - 附着 {0}</value>
+  </data>
+  <data name="ClsCubeGridWheelDetached" xml:space="preserve">
+    <value>轮子</value>
+  </data>
+  <data name="WnExplorerMnuExportSpawnGroup" xml:space="preserve">
+    <value>导出为预设和生成组</value>
+  </data>
+  <data name="WnExplorerMnuExportSpawnGroupTooltip" xml:space="preserve">
+    <value>将选定的船只/空间站/小行星导出为.sbc文件/生成组文件/小行星。</value>
+  </data>
+  <data name="DialogExportSpawnGroupObjectTitle" xml:space="preserve">
+    <value>指定要导出的生成组的文件名(名称嵌入到文件中)</value>
+  </data>
+  <data name="DialogSandboxBinaryContentFiles" xml:space="preserve">
+    <value>沙盒二进制内容文件</value>
+  </data>
+  <data name="DialogSandboxXmlContentFiles" xml:space="preserve">
+    <value>沙盒Xml内容文件</value>
+  </data>
+  <data name="DialogSandboxPrefabBinaryFiles" xml:space="preserve">
+    <value>沙盒预制二进制文件</value>
+  </data>
+  <data name="WnExplorerMnuSelectionInertiaTensorOn" xml:space="preserve">
+    <value>惯性张量 开</value>
+  </data>
+  <data name="WnExplorerMnuSelectionInertiaTensorOnTooltip" xml:space="preserve">
+    <value>所有选定的飞船模块都将打开惯性张量</value>
+  </data>
+  <data name="ClsExplorerGridChangesMade" xml:space="preserve">
+    <value>对所选网格进行了{0:#,##0}次更改。</value>
+  </data>
+  <data name="ClsExplorerTitleChangesMade" xml:space="preserve">
+    <value>已进行更改</value>
+  </data>
+  <data name="ErrorLoadFileError" xml:space="preserve">
+    <value>未能加载文件：{0}
+原因：{1}</value>
+  </data>
+  <data name="ErrorLoadSaveGameFileError" xml:space="preserve">
+    <value>加载存档文件时出错。</value>
+  </data>
+  <data name="WnErrorDialogBtnClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="WnErrorDialogBtnCopy" xml:space="preserve">
+    <value>复制文本</value>
+  </data>
+  <data name="WnErrorDialogBtnOkay" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="WnErrorDialogLabelDescription" xml:space="preserve">
+    <value>错误文本:</value>
+  </data>
+  <data name="WnErrorDialogTitle" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="ClsReportError" xml:space="preserve">
+    <value>错误:</value>
+  </data>
+  <data name="ErrorDirectoryNotFound" xml:space="preserve">
+    <value>指定的目录不存在。</value>
+  </data>
+  <data name="ErrorGameNotFound" xml:space="preserve">
+    <value>找不到指定的存档。</value>
+  </data>
+  <data name="ErrorInvalidSaveLabel" xml:space="preserve">
+    <value> #无效存档# </value>
+  </data>
+  <data name="ErrorStackLabel" xml:space="preserve">
+    <value>堆栈:</value>
+  </data>
+  <data name="WnComponentsColComponentMod" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="WnComponentsColCubeMod" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="WnComponentsColItemMod" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="WnComponentsColMaterialMod" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="ClsErrorTimesStartedLastGameUpdate" xml:space="preserve">
+    <value>游戏更新后开始的时间:</value>
+  </data>
+  <data name="ClsErrorTimesStartedLastReset" xml:space="preserve">
+    <value>自上次重置以来开始的时间:</value>
+  </data>
+  <data name="ClsErrorTimesStartedTotal" xml:space="preserve">
+    <value>总开启时间:</value>
+  </data>
+  <data name="WnExplorerContextSelectConnector" xml:space="preserve">
+    <value>选择所有通过连接器(_Connector)连接的网格</value>
+  </data>
+  <data name="WnExplorerContextSelectMechanical" xml:space="preserve">
+    <value>选择所有机械连接的网格</value>
+  </data>
+  <data name="WnExplorerContextSelectMechanicalConnector" xml:space="preserve">
+    <value>选择所有机械和连接器连接的网格</value>
+  </data>
+  <data name="WnExplorerMnuJoinedGrids" xml:space="preserve">
+    <value>_加入网格</value>
+  </data>
+  <data name="WnBlueprintDialogBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnBlueprintDialogBtnOkay" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="WnBlueprintDialogLabelDescription" xml:space="preserve">
+    <value>请输入蓝图的名称。如果该名称已存在于您的本地蓝图文件夹中，系统将提示您覆盖它。</value>
+  </data>
+  <data name="WnBlueprintDialogLabelName" xml:space="preserve">
+    <value>名称:</value>
+  </data>
+  <data name="WnBlueprintSaveDialogTitle" xml:space="preserve">
+    <value>保存蓝图</value>
+  </data>
+  <data name="WnExplorerMnuExportBlueprint" xml:space="preserve">
+    <value>导出为蓝图</value>
+  </data>
+  <data name="WnExplorerMnuExportBlueprintTooltip" xml:space="preserve">
+    <value>将选定的飞船和空间站导出为本地蓝图。</value>
+  </data>
+  <data name="ErrorInvalidBlueprintCharactersUsed" xml:space="preserve">
+    <value>蓝图名称包含无效字符。请在继续之前删除所有符号。</value>
+  </data>
+  <data name="ErrorInvalidBlueprintExists" xml:space="preserve">
+    <value>该名称的蓝图已存在。您想覆盖它吗？</value>
+  </data>
+  <data name="ErrorInvalidBlueprintExistsTitle" xml:space="preserve">
+    <value>蓝图已存在</value>
+  </data>
+  <data name="ErrorInvalidBlueprintNameTitle" xml:space="preserve">
+    <value>蓝图名不可用</value>
+  </data>
+  <data name="ErrorNoBlueprintPath" xml:space="preserve">
+    <value>此配置文件(专用服务器或服务)下不存在蓝图路径。</value>
+  </data>
+  <data name="ErrorNoBlueprintPathTitle" xml:space="preserve">
+    <value>无法保存蓝图</value>
+  </data>
+  <data name="MyCubeSize_Large" xml:space="preserve">
+    <value>大型</value>
+  </data>
+  <data name="MyCubeSize_Small" xml:space="preserve">
+    <value>小型</value>
+  </data>
+  <data name="CtlPlanetMnuRegenerate" xml:space="preserve">
+    <value>再生</value>
+  </data>
+  <data name="CtlPlanetMnuRegenerateDetail" xml:space="preserve">
+    <value>将删除小行星的任何体素更改。允许更改随机种子和大小。</value>
+  </data>
+  <data name="WnRegeneratePlanetBtnCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="WnRegeneratePlanetBtnOkay" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="WnRegeneratePlanetLabelSeed" xml:space="preserve">
+    <value>种子</value>
+  </data>
+  <data name="WnRegeneratePlanetLabelSize" xml:space="preserve">
+    <value>米尺寸(直径)</value>
+  </data>
+  <data name="WnRegeneratePlanetTitle" xml:space="preserve">
+    <value>行星再生</value>
+  </data>
+  <data name="CtlPlanetMnuCopyGpsCenter" xml:space="preserve">
+    <value>复制GPS</value>
+  </data>
+  <data name="WnComponentsColCubePCU" xml:space="preserve">
+    <value>PCU</value>
+  </data>
+  <data name="CtlCubeColCubePCU" xml:space="preserve">
+    <value>PCU</value>
+  </data>
+  <data name="CtlCubeColPCU" xml:space="preserve">
+    <value>PCU</value>
+  </data>
+  <data name="CtlCubeTxtPCUToProd" xml:space="preserve">
+    <value>所需PCU:</value>
+  </data>
+  <data name="ClsReportColPCU" xml:space="preserve">
+    <value>PCU</value>
+  </data>
+  <data name="ClsReportHeaderTotalCubes" xml:space="preserve">
+    <value>总方块数</value>
+  </data>
+  <data name="CtlComponentColAccessible" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="CtlComponentColBuildTime" xml:space="preserve">
+    <value>建造时间(时:分:秒)</value>
+  </data>
+  <data name="CtlComponentColCubeSize" xml:space="preserve">
+    <value>方块尺寸</value>
+  </data>
+  <data name="CtlComponentColIcon" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="CtlComponentColMass" xml:space="preserve">
+    <value>质量(kg)</value>
+  </data>
+  <data name="CtlComponentColMinedOreRatio" xml:space="preserve">
+    <value>矿石开采倍率</value>
+  </data>
+  <data name="CtlComponentColMod" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="CtlComponentColName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="CtlComponentColOreName" xml:space="preserve">
+    <value>矿石名称</value>
+  </data>
+  <data name="CtlComponentColPCU" xml:space="preserve">
+    <value>PCU</value>
+  </data>
+  <data name="CtlComponentColRare" xml:space="preserve">
+    <value>稀有</value>
+  </data>
+  <data name="CtlComponentColSize" xml:space="preserve">
+    <value>尺寸(宽x高x深)</value>
+  </data>
+  <data name="CtlComponentColSubType" xml:space="preserve">
+    <value>子类型ID</value>
+  </data>
+  <data name="CtlComponentColTexture" xml:space="preserve">
+    <value>贴图</value>
+  </data>
+  <data name="CtlComponentColType" xml:space="preserve">
+    <value>类型ID</value>
+  </data>
+  <data name="CtlComponentColVolume" xml:space="preserve">
+    <value>体积(L)</value>
+  </data>
+  <data name="CtlComponentTitleComponents" xml:space="preserve">
+    <value>组件</value>
+  </data>
+  <data name="CtlComponentTitleCubes" xml:space="preserve">
+    <value>方块</value>
+  </data>
+  <data name="CtlComponentTitleItems" xml:space="preserve">
+    <value>物品</value>
+  </data>
+  <data name="CtlComponentTitleMaterials" xml:space="preserve">
+    <value>材质</value>
+  </data>
+  <data name="CtlComponentTitleReport" xml:space="preserve">
+    <value>组件物品报告</value>
+  </data>
+  <data name="ClsCharacterNPC" xml:space="preserve">
+    <value>NPC</value>
+  </data>
+  <data name="ClsCharacterPlayer" xml:space="preserve">
+    <value>玩家</value>
+  </data>
+  <data name="ClsCockpitOrientationForward" xml:space="preserve">
+    <value>前</value>
+  </data>
+  <data name="ClsCockpitOrientationMixed" xml:space="preserve">
+    <value>混合</value>
+  </data>
+  <data name="ClsCockpitOrientationNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="DialogLatestVersionMessage" xml:space="preserve">
+    <value>您拥有最新版本的SEToolbox。</value>
+  </data>
+  <data name="DialogNoNewVersionTitle" xml:space="preserve">
+    <value>您的SEToolbox是最新的</value>
+  </data>
+  <data name="DialogPrereleaseVersionMessage" xml:space="preserve">
+    <value>您正在运行SEToolbox的预发布版本。</value>
+  </data>
+  <data name="DialogNoNetworkMessage" xml:space="preserve">
+    <value>SEToolbox无法连接到internet以检查更新。请在重试之前检查您的互联网连接或防火墙设置。</value>
+  </data>
+  <data name="DialogNoNetworkTitle" xml:space="preserve">
+    <value>找不到更新</value>
+  </data>
+</root>

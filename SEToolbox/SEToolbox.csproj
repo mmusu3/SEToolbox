@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/mmusu3/SEToolbox</RepositoryUrl>
     <!-- First 3 numbers to match the current Space Engineers release. https://forum.keenswh.com/threads/about-change-log.6578819/
          Forth number to indicate my own build of SEToolbox to match. Remember to reset it back to 1 every time there is a new release of SpaceEngineers.-->
-    <Version>01.207.020.1</Version>
+    <Version>01.207.022.1</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\SEToolbox.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
@@ -154,6 +154,6 @@
   <Target Name="CopyUpdater" AfterTargets="AfterBuild">
     <Copy SourceFiles="$(ProjectDir)..\SEToolboxUpdate\bin\$(Platform)\$(Configuration)\SEToolboxUpdate.exe" DestinationFolder="$(TargetDir)" />
     <Copy SourceFiles="$(ProjectDir)..\SEToolboxUpdate\bin\$(Platform)\$(Configuration)\de\SEToolboxUpdate.resources.dll" DestinationFolder="$(TargetDir)de" />
-    <!--<Copy SourceFiles="$(ProjectDir)..\SEToolboxUpdate\bin\$(Platform)\$(Configuration)\zh-cn\SEToolboxUpdate.resources.dll" DestinationFolder="$(TargetDir)zh-cn" />-->
+    <Copy SourceFiles="$(ProjectDir)..\SEToolboxUpdate\bin\$(Platform)\$(Configuration)\zh-CN\SEToolboxUpdate.resources.dll" DestinationFolder="$(TargetDir)zh-CN" />
   </Target>
 </Project>
