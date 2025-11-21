@@ -247,7 +247,7 @@
             if (buffer1.Length != buffer2.Length)
                 return true;
 
-            return !buffer1.SequenceEqual(buffer2);
+            return !Enumerable.SequenceEqual(buffer1, buffer2);
         }
 
         #endregion

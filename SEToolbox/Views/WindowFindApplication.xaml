@@ -14,7 +14,7 @@
         FocusManager.FocusedElement="{Binding ElementName=uxInitialElement}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
     </Window.Resources>
     <Grid IsEnabled="{Binding IsActive}">
         <Grid>
@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="70"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Width="32" Height="32" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=warning32}" VerticalAlignment="Top" Margin="0,16,0,0" />
+            <Image Width="32" Height="32" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=warning32}" VerticalAlignment="Top" Margin="0,16,0,0" />
             <Grid Grid.Row="0" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -39,15 +39,15 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="1">
                     <TextBox Width="280" Text="{Binding GameApplicationPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Name="uxInitialElement"/>
                     <Button ToolTip="{lex:Loc BtBrowseAppTip}" Command="{Binding BrowseApplicationCommand}" VerticalAlignment="Center">
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=folder}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=folder}" />
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,8,0,0" Visibility="{Binding IsValidApplication, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=check24}" VerticalAlignment="Center"/>
+                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=check24}" VerticalAlignment="Center"/>
                     <TextBlock Text="{lex:Loc WnLocateAppValidText}" VerticalAlignment="Center" Margin="8,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,8,0,0" Visibility="{Binding IsWrongApplication, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=error24}" VerticalAlignment="Center"/>
+                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=error24}" VerticalAlignment="Center"/>
                     <TextBlock Text="{lex:Loc WnLocateAppTxtInvalid}" VerticalAlignment="Center" Margin="8,0,0,0"/>
                 </StackPanel>
             </Grid>

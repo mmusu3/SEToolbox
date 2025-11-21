@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -126,10 +126,6 @@
   <data name="ClassType_LargeStation" xml:space="preserve">
     <value>Large Station</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DialogImageFiles" xml:space="preserve">
     <value>Image files</value>
   </data>
@@ -145,24 +141,6 @@
   <data name="ClassType_FloatingObject" xml:space="preserve">
     <value>Floating Object</value>
   </data>
-  <data name="about" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\about.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cube_molecule" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube_molecule.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="disk_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\disk_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="import1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\import1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="photo_scenery" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\photo_scenery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DialogAllSupportedFiles" xml:space="preserve">
     <value>All supported files</value>
   </data>
@@ -172,32 +150,11 @@
   <data name="ClassType_Voxel" xml:space="preserve">
     <value>Asteroid</value>
   </data>
-  <data name="asteroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Asteroid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="export" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\export1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SpaceEngineers16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpaceEngineers16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="speedometer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\spedometer 16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wrench" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wrench.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DialogAsteroidFiles" xml:space="preserve">
     <value>Asteroid files</value>
   </data>
   <data name="DialogImportVoxelTitle" xml:space="preserve">
     <value>Select Asteroid to Import</value>
-  </data>
-  <data name="transform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\transform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ExceptionState_NoApplication" xml:space="preserve">
     <value>The Space Engineers application could not be found.
@@ -217,9 +174,6 @@ To use the SEToolbox, you must have the Space Engineers game installed on your c
   <data name="ExceptionState_MissingContentFile" xml:space="preserve">
     <value>The Space Engineers content file '{0}' could not be loaded, because it could not be located.</value>
   </data>
-  <data name="workshop16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\workshop16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DialogSandboxContentFiles" xml:space="preserve">
     <value>Sandbox Content files</value>
   </data>
@@ -228,24 +182,6 @@ To use the SEToolbox, you must have the Space Engineers game installed on your c
   </data>
   <data name="DialogImportSandboxObjectTitle" xml:space="preserve">
     <value>Specify Sandbox objects to Import</value>
-  </data>
-  <data name="SECubes16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SECubes16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="message_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\message_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="server_to_client" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\server_to_client.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Toolbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Toolbox_logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sort_descending" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sort_descending.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ModelTraceVoxel_Thick" xml:space="preserve">
     <value>Thick Shell</value>
@@ -300,48 +236,12 @@ Ingots	Amount	Mass	Volume	Time to Produce
 Ore	Amount	Mass	Volume
 {22}</value>
   </data>
-  <data name="document_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document_view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="media_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\media_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="navigate_left2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\navigate_left2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="navigate_right2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\navigate_right2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="FloatingDetail" xml:space="preserve">
     <value>Type:		{0}
 Distance:		{1:#,##0.0} m
 Volume:		{2:#,##0.000} L
 Mass:		{3:#,##0.00} kg
 Units:		{4:#,##0.####}</value>
-  </data>
-  <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icecube" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icecube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shield" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ToolboxSplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SEToolbox_splash_en.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fit_to_size" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fit_to_size.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="package_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\package_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="form_green_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\form_green_view16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="screwdriver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\screwdriver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Boolean_False" xml:space="preserve">
     <value>No</value>
@@ -359,15 +259,6 @@ Units:		{4:#,##0.####}</value>
   </data>
   <data name="DialogLocateApplicationTitle" xml:space="preserve">
     <value>Specify location of Space Engineers Application</value>
-  </data>
-  <data name="warning32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="check24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\check24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="error24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\error24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DialogUnhandledExceptionEventMessage" xml:space="preserve">
     <value>SEToolbox has experienced a fatal error and will now close:
@@ -388,9 +279,6 @@ Apologies for any inconvenience.</value>
   <data name="DialogUnhandledExceptionTitle" xml:space="preserve">
     <value>Space Engineers Toolbox '{0}' Error</value>
   </data>
-  <data name="replace2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\replace2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ModelTraceVoxel_ThickSmoothedDown" xml:space="preserve">
     <value>Thick Shell with Subtracted Smoothing</value>
   </data>
@@ -409,21 +297,6 @@ Would you like to download it now? (Open in browser)</value>
   <data name="DialogNewVersionTitle" xml:space="preserve">
     <value>New version available</value>
   </data>
-  <data name="find" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\find.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="navigate_cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\navigate_cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="colors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\colors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="selection_replace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\selection_replace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="book_open2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book_open2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ImportImageClassType_LargeShip" xml:space="preserve">
     <value>Large Ship</value>
   </data>
@@ -438,15 +311,6 @@ Would you like to download it now? (Open in browser)</value>
   </data>
   <data name="ImportModelClassType_LargeStation" xml:space="preserve">
     <value>Large Station</value>
-  </data>
-  <data name="document_pulse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document_pulse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_china" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_china.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_great_britain" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_great_britain.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DialogAsteroidVersion2Files" xml:space="preserve">
     <value>Asteroid version 2 files</value>
@@ -506,81 +370,6 @@ Please specify the location of the Space Engineers Application file.</value>
   <data name="SaveWorldType_Local" xml:space="preserve">
     <value>Local User</value>
   </data>
-  <data name="flag_brazil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_brazil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_catalonia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_catalonia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_croatia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_croatia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_czech_republic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_czech_republic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_denmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_denmark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_estonia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_estonia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_finland" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_finland.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_france" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_france.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_germany" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_germany.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_hungary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_hungary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_iceland" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_iceland.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_italy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_italy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_lithuania" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_lithuania.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_mexico" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_mexico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_netherlands" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_netherlands.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_norway" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_norway.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_poland" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_poland.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_romania" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_romania.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_russia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_russia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_slovakia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_slovakia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_spain" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_spain.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_sweden" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_sweden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_turkey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_turkey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_ukraine" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_ukraine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flag_usa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flag_usa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DialogSandboxFiles" xml:space="preserve">
     <value>Space Engineers Sandbox files</value>
   </data>
@@ -592,24 +381,6 @@ Please specify the location of the Space Engineers Application file.</value>
   </data>
   <data name="SaveWorldType_CustomAdminRequired" xml:space="preserve">
     <value>Custom</value>
-  </data>
-  <data name="add2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="battery" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\battery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="medical_bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\medical_bag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="document" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="components" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\components.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="first_aid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\first_aid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DialogOldSEVersionMessage" xml:space="preserve">
     <value>An old version '{0}' of Space Engineers was detected in the folder '{1}'.
@@ -669,15 +440,6 @@ Please update it before running SEToolbox {2} again.</value>
     <value>5</value>
     <comment>enum</comment>
   </data>
-  <data name="selection" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\selection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Asteroid_model" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Asteroid_model.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="users_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\users_back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="VoxelMergeType_SubtractVolumeLeftFromRight" xml:space="preserve">
     <value>Subtract Volume Left from Right</value>
   </data>
@@ -715,9 +477,6 @@ Please update it before running SEToolbox {2} again.</value>
   </data>
   <data name="ExceptionState_CorruptAsteroidFile" xml:space="preserve">
     <value>The Space Engineers asteroid file '{0}' could not be loaded, either because it is corrupt, or it is newer than expected.</value>
-  </data>
-  <data name="target" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\target.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="InventoryBagDetail" xml:space="preserve">
     <value>Type:		{0}
@@ -1393,13 +1152,13 @@ Distance:		{1:#,##0.0} m</value>
     <value>https://github.com/midspace/SEToolbox/wiki</value>
   </data>
   <data name="GlobalHomepageUrl" xml:space="preserve">
-    <value>https://github.com/midspace/SEToolbox</value>
+    <value>https://github.com/mmusu3/SEToolbox</value>
   </data>
   <data name="GlobalSupportUrl" xml:space="preserve">
-    <value>https://github.com/midspace/SEToolbox/issues</value>
+    <value>https://github.com/mmusu3/SEToolbox/issues</value>
   </data>
   <data name="GlobalUpdatesUrl" xml:space="preserve">
-    <value>https://github.com/midspace/SEToolbox/releases/latest</value>
+    <value>https://github.com/mmusu3/SEToolbox/releases/latest</value>
   </data>
   <data name="WnComponentsBtnClose" xml:space="preserve">
     <value>Close</value>
@@ -1554,9 +1313,6 @@ Planet Generator:	{17}</value>
   </data>
   <data name="CtlCubeMnuBuiltByCube" xml:space="preserve">
     <value>Built By</value>
-  </data>
-  <data name="hammer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hammer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WnChangeBuiltByTitle" xml:space="preserve">
     <value>Change Built By</value>
@@ -2955,9 +2711,6 @@ Reason: {1}</value>
   </data>
   <data name="CtlPlanetMnuRegenerateDetail" xml:space="preserve">
     <value>Will remove any voxel changes to the asteroid. Allows changing random seed, and changing size.</value>
-  </data>
-  <data name="earth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\earth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WnRegeneratePlanetBtnCancel" xml:space="preserve">
     <value>Cancel</value>

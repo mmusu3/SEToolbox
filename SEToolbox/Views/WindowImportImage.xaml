@@ -15,7 +15,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <converters:NullImageConverter x:Key="NullImageConverter"/>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
         <converters:EnumToResouceConverter x:Key="EnumToResouceConverter"/>
         <converters:BusyMouseConverter x:Key="BusyMouseConverter" />
     </Window.Resources>
@@ -49,7 +49,7 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <TextBox Width="180" Text="{Binding Filename, Mode=TwoWay}" VerticalAlignment="Center" Name="uxInitialElement"/>
                     <Button ToolTip="{lex:Loc WnImportImageBtnBrowseImageTooltip}" Command="{Binding BrowseImageCommand}" VerticalAlignment="Center">
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=folder}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=folder}" />
                     </Button>
                 </StackPanel>
                 <Label Content="{lex:Loc WnImportImageLabelType}" Grid.Row="1" />

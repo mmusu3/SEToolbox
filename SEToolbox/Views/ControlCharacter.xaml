@@ -13,7 +13,7 @@
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="300">
     <UserControl.Resources>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
     </UserControl.Resources>
     <Grid>
@@ -28,16 +28,16 @@
                         </Menu.ItemsPanel>
                         <MenuItem Header="{lex:Loc CtlCharacterMnuSpeed}" Style="{StaticResource ToolBarTopMenuitem}">
                             <MenuItem.Icon>
-                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=speedometer}" />
+                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=speedometer}" />
                             </MenuItem.Icon>
                             <MenuItem Header="{lex:Loc CtlCharacterMnuResetSpeed}" Command="{Binding ResetVelocityCommand}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCharacterMnuReverseSpeed}" Command="{Binding ReverseVelocityCommand}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_left2}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_left2}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                         </MenuItem>
@@ -95,7 +95,7 @@
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
-                            <Image Grid.Column="1" Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=medical_bag}" />
+                            <Image Grid.Column="1" Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=medical_bag}" />
                             <Slider Grid.Column="2" Value="{Binding Health}" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" />
                         </Grid>
                         <Label Grid.Column="0" Grid.Row="8" Content="{lex:Loc CtlCharacterBattery}"/>
@@ -114,7 +114,7 @@
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
-                            <Image Grid.Column="1" Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=battery}" />
+                            <Image Grid.Column="1" Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=battery}" />
                             <Slider Grid.Column="2" Value="{Binding BatteryCapacity}" Minimum="0" Maximum="1" SmallChange=".01" LargeChange=".1"/>
                         </Grid>
                         <Label Grid.Row="9" Grid.Column="0" Content="{lex:Loc CtlCharacterOxygen}"/>
@@ -167,12 +167,12 @@
                                 <ContextMenu HorizontalAlignment="Right">
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCharacterMnuResetSpeed}" Command="{Binding ResetVelocityCommand}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCharacterMnuReverseSpeed}" Command="{Binding ReverseVelocityCommand}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_left2}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_left2}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                 </ContextMenu>

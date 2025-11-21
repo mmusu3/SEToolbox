@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="SEToolbox.Views.ControlVoxel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:SEToolbox.Controls"
              xmlns:converters="clr-namespace:SEToolbox.Converters"
              xmlns:props="clr-namespace:SEToolbox.Properties"
@@ -10,10 +10,10 @@
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
              lex:ResxLocalizationProvider.DefaultAssembly="SEToolbox"
              lex:ResxLocalizationProvider.DefaultDictionary="Resources"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
         <converters:I18NFormatterConverter x:Key="I18NFormatter"  />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <converters:DDSConverter x:Key="DDSConverter"/>
@@ -95,7 +95,7 @@
                 </MenuItem>
                 <MenuItem Header="{lex:Loc CtlVoxelMnuRotate}" Style="{StaticResource ToolBarTopMenuitem}">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=replace2}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=replace2}" />
                     </MenuItem.Icon>
                     <MenuItem Header="{lex:Loc CtlVoxelMnuRotatePitchPositive}" Command="{Binding RotateAsteroidPitchPositiveCommand}"/>
                     <MenuItem Header="{lex:Loc CtlVoxelMnuRotatePitchNegative}" Command="{Binding RotateAsteroidPitchNegativeCommand}"/>
@@ -106,7 +106,7 @@
                 </MenuItem>
                 <MenuItem HorizontalAlignment="Right" Style="{StaticResource ToolBarTopMenuitem}" ToolTip="{lex:Loc CtlVoxelMnuCopyDetail}" Command="{Binding CopyDetailCommand}">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=copy}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=copy}" />
                     </MenuItem.Icon>
                 </MenuItem>
             </Menu>

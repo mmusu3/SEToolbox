@@ -17,7 +17,7 @@
              commands:DialogService.IsRegisteredView="True">
     <UserControl.Resources>
         <converters:EnumToResouceConverter x:Key="EnumToResouceConverter"/>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
         <converters:I18NFormatterConverter x:Key="I18NFormatter"  />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <converters:DDSConverter x:Key="DDSConverter"/>
@@ -38,46 +38,46 @@
                         </Menu.ItemsPanel>
                         <MenuItem Header="{lex:Loc CtlCubeMnuRepair}" Command="{Binding RepairObjectCommand}" Style="{StaticResource ToolBarTopMenuitem}">
                             <MenuItem.Icon>
-                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=wrench}" />
+                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=wrench}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="{lex:Loc CtlCubeMnuSpeed}" Style="{StaticResource ToolBarTopMenuitem}">
                             <MenuItem.Icon>
-                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=speedometer}" />
+                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=speedometer}" />
                             </MenuItem.Icon>
                             <MenuItem Header="{lex:Loc CtlCubeMnuSpeedResetLinear}" Command="{Binding ResetLinearVelocityCommand}" ToolTip="{lex:Loc CtlCubeMnuSpeedResetLinearTooltip}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCubeMnuSpeedResetRotation}" Command="{Binding ResetRotationVelocityCommand}" ToolTip="{lex:Loc CtlCubeMnuSpeedResetRotationTooltip}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCubeMnuSpeedReset}" Command="{Binding ResetVelocityCommand}" ToolTip="{lex:Loc CtlCubeMnuSpeedResetTooltip}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCubeMnuSpeedReverse}" Command="{Binding ReverseVelocityCommand}" ToolTip="{lex:Loc CtlCubeMnuSpeedReverseTooltip}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_left2}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_left2}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCubeMnuSpeedMaxToPlayer}" Command="{Binding MaxVelocityAtPlayerCommand}" ToolTip="{lex:Loc CtlCubeMnuSpeedMaxToPlayerTooltip}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_right2}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_right2}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                         </MenuItem>
                         <MenuItem Header="{lex:Loc CtlCubeMnuConvert}" Command="{Binding ConvertGridCommand}" Style="{StaticResource ToolBarTopMenuitem}">
                             <MenuItem.Icon>
-                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=transform}" />
+                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=transform}" />
                             </MenuItem.Icon>
                             <MenuItem Header="{lex:Loc CtlCubeMnuConvertArmor}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=shield}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=shield}" />
                                 </MenuItem.Icon>
                                 <MenuItem Header="{lex:Loc CtlCubeMnuConvertArmorHeavy}" Command="{Binding ConvertGridToHeavyArmorCommand}" ToolTip="{lex:Loc CtlCubeMnuConvertArmorHeavyTooltip}"/>
                                 <MenuItem Header="{lex:Loc CtlCubeMnuConvertArmorLight}" Command="{Binding ConvertGridToLightArmorCommand}" ToolTip="{lex:Loc CtlCubeMnuConvertArmorLightTooltip}"/>
@@ -87,7 +87,7 @@
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCubeMnuConvertFramework}" Command="{Binding ConvertGridFrameworkCommand}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=cube_molecule}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=cube_molecule}" />
                                 </MenuItem.Icon>
                                 <MenuItem Header="{lex:Loc CtlCubeMnuConvertFramework0}" Command="{Binding ConvertGridToFrameworkCommand}" ToolTip="{lex:Loc CtlCubeMnuConvertFramework0Tooltip}">
                                     <MenuItem.CommandParameter>
@@ -121,7 +121,7 @@
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCubeMnuConvertRotate}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=replace2}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=replace2}" />
                                 </MenuItem.Icon>
                                 <MenuItem Header="{lex:Loc CtlCubeMnuConvertRotateAxis}" Command="{Binding ReorientStationCommand}" ToolTip="{lex:Loc CtlCubeMnuConvertRotateAxisTooltip}" />
                                 <Separator/>
@@ -147,12 +147,12 @@
                         </MenuItem>
                         <MenuItem Header="{lex:Loc CtlCubeMnuOptimize}" Command="{Binding OptimizeObjectCommand}" Style="{StaticResource ToolBarTopMenuitem}" ToolTip="{lex:Loc CtlCubeMnuOptimizeTooltip}">
                             <MenuItem.Icon>
-                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=sort_descending}" />
+                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=sort_descending}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem HorizontalAlignment="Right" Style="{StaticResource ToolBarTopMenuitem}" ToolTip="{lex:Loc CtlCubeMnuCopyDetail}" Command="{Binding CopyDetailCommand}">
                             <MenuItem.Icon>
-                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=copy}" />
+                                <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=copy}" />
                             </MenuItem.Icon>
                         </MenuItem>
                     </Menu>
@@ -198,7 +198,7 @@
                                 <ContextMenu HorizontalAlignment="Right">
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuRepair}" Command="{Binding RepairObjectCommand}" Style="{StaticResource ToolBarTopMenuitem}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=wrench}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=wrench}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                 </ContextMenu>
@@ -215,27 +215,27 @@
                                 <ContextMenu HorizontalAlignment="Right">
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedResetLinear}" Command="{Binding ResetLinearVelocityCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedResetLinearTooltip}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedResetRotation}" Command="{Binding ResetRotationVelocityCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedResetRotationTooltip}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedReset}" Command="{Binding ResetVelocityCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedResetTooltip}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedReverse}" Command="{Binding ReverseVelocityCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedReverseTooltip}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_left2}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_left2}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedMaxToPlayer}" Command="{Binding MaxVelocityAtPlayerCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlCubeMnuSpeedMaxToPlayerTooltip}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_right2}" />
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_right2}" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                 </ContextMenu>
@@ -330,39 +330,39 @@
                             </TextBox>
                             <Button Grid.Column="2" ToolTip="{lex:Loc CtlCubeTxtFilterSearchTooltip}" Command="{Binding FilterStartCommand}" IsTabStop="False">
                                 <Button.Content>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=find}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=find}" />
                                 </Button.Content>
                             </Button>
                             <Button Grid.Column="3" ToolTip="{lex:Loc CtlCubeTxtFilterClearTooltip}" Command="{Binding FilterClearCommand}" IsTabStop="False">
                                 <Button.Content>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_cross}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_cross}" />
                                 </Button.Content>
                             </Button>
                         </Grid>
                         <Menu Grid.Row="1" Grid.ColumnSpan="2">
                             <MenuItem Command="{Binding DeleteCubesCommand}" Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuDeleteCube}" Style="{StaticResource ToolBarTopMenuitem}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=delete2}"/>
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=delete2}"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="{lex:Loc CtlCubeMnuConvert}" Command="{Binding ConvertCubesCommand}" Style="{StaticResource ToolBarTopMenuitem}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=transform}" />
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=transform}" />
                                 </MenuItem.Icon>
                                 <MenuItem Header="{lex:Loc CtlCubeMnuConvertArmor}">
                                     <MenuItem.Icon>
-                                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=shield}" />
+                                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=shield}" />
                                     </MenuItem.Icon>
                                     <MenuItem Header="{lex:Loc CtlCubeMnuConvertArmorHeavy}" Command="{Binding ConvertCubeToHeavyArmorCommand}" ToolTip="{lex:Loc CtlCubeMnuConvertArmorHeavyTooltip}"/>
                                     <MenuItem Header="{lex:Loc CtlCubeMnuConvertArmorLight}" Command="{Binding ConvertCubeToLightArmorCommand}" ToolTip="{lex:Loc CtlCubeMnuConvertArmorLightTooltip}"/>
                                 </MenuItem>
                                 <MenuItem Header="{lex:Loc CtlCubeMnuConvertFramework}" Command="{Binding ConvertGridFrameworkCommand}">
                                     <MenuItem.Icon>
-                                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=cube_molecule}" />
+                                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=cube_molecule}" />
                                     </MenuItem.Icon>
                                     <MenuItem Header="{lex:Loc CtlCubeMnuConvertFrameworkValue}" Command="{Binding ConvertCubeToFrameworkDialogCommand}" Style="{StaticResource ToolBarTopMenuitem}">
                                         <MenuItem.Icon>
-                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=cube_molecule}"/>
+                                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=cube_molecule}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="{lex:Loc CtlCubeMnuConvertFramework0}" Command="{Binding ConvertCubeToFrameworkCommand}" ToolTip="{lex:Loc CtlCubeMnuConvertFramework0Tooltip}">
@@ -394,22 +394,22 @@
                             </MenuItem>
                             <MenuItem Command="{Binding ReplaceCubesCommand}" Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuReplaceCube}" Style="{StaticResource ToolBarTopMenuitem}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=selection_replace}"/>
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=selection_replace}"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Command="{Binding ColorCubesCommand}" Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuColorCube}" Style="{StaticResource ToolBarTopMenuitem}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=colors}"/>
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=colors}"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Command="{Binding SetOwnerCommand}" Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuOwnerCube}" Style="{StaticResource ToolBarTopMenuitem}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=users_back}"/>
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=users_back}"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Command="{Binding SetBuiltByCommand}" Header="{lex:Loc SEToolbox:Resources:CtlCubeMnuBuiltByCube}" Style="{StaticResource ToolBarTopMenuitem}">
                                 <MenuItem.Icon>
-                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=hammer}"/>
+                                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=hammer}"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                         </Menu>

@@ -5,9 +5,9 @@
     xmlns:converters="clr-namespace:SEToolbox.Converters"
     Title="SE Toolbox" Height="256" Width="256" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True">
     <Window.Resources>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=ToolboxSplash}" />
+        <ImageBrush ImageSource="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=ToolboxSplash}" />
     </Window.Background>
 </Window>

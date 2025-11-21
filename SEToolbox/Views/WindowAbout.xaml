@@ -10,11 +10,11 @@
         Title="About" Height="250" Width="250" Icon="/SEToolbox;component/app.ico"
         commands:DialogCloser.DialogResult="{Binding CloseResult}" AllowsTransparency="True" Background="Transparent">
     <Window.Resources>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
     </Window.Resources>
     <Border CornerRadius="20">
         <Border.Background>
-            <ImageBrush ImageSource="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=Toolbox}" />
+            <ImageBrush ImageSource="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=Toolbox}" />
         </Border.Background>
         <Grid>
             <Label Content="{lex:Loc WnAboutTxtTitle}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="22" Foreground="White" FontWeight="Normal" FontFamily="Tahoma">

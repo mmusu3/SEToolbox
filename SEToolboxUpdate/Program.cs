@@ -25,11 +25,11 @@
 
             Log.Init(logFileName, appendFile: false);
             Log.Info("Updater started.");
-            Log.Debug("Loading settings");
 
+            Log.Debug("Loading settings");
             GlobalSettings.Default.Load();
 
-            Log.Info("Setting UI culture");
+            Log.Info($"Current language code is: {GlobalSettings.Default.LanguageCode}");
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfoByIetfLanguageTag(GlobalSettings.Default.LanguageCode);
 
             // Binaries.

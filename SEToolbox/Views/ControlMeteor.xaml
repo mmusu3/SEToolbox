@@ -13,7 +13,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -42,21 +42,21 @@
             </Menu.ItemsPanel>
             <MenuItem Header="{lex:Loc CtlMeteorMnuSpeed}" Style="{StaticResource ToolBarTopMenuitem}">
                 <MenuItem.Icon>
-                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=speedometer}" />
+                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=speedometer}" />
                 </MenuItem.Icon>
                 <MenuItem Header="{lex:Loc CtlMeteorMnuResetSpeed}" Command="{Binding ResetVelocityCommand}" ToolTip="{lex:Loc CtlMeteorMnuResetSpeedTooltip}">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="{lex:Loc CtlMeteorMnuReverseSpeed}" Command="{Binding ReverseVelocityCommand}" ToolTip="{lex:Loc CtlMeteorMnuReverseSpeedTooltip}">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_left2}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_left2}" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="{lex:Loc CtlMeteorMnuMaxAtPlayer}" Command="{Binding MaxVelocityAtPlayerCommand}" ToolTip="{lex:Loc CtlMeteorMnuMaxAtPlayerTooltip}">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_right2}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_right2}" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -71,17 +71,17 @@
                 <ContextMenu HorizontalAlignment="Right">
                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlMeteorMnuResetSpeed}" Command="{Binding ResetVelocityCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlMeteorMnuResetSpeedTooltip}">
                         <MenuItem.Icon>
-                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=media_stop}" />
+                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=media_stop}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlMeteorMnuReverseSpeed}" Command="{Binding ReverseVelocityCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlMeteorMnuReverseSpeedTooltip}">
                         <MenuItem.Icon>
-                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_left2}" />
+                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_left2}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{lex:Loc SEToolbox:Resources:CtlMeteorMnuMaxAtPlayer}" Command="{Binding MaxVelocityAtPlayerCommand}" ToolTip="{lex:Loc SEToolbox:Resources:CtlMeteorMnuMaxAtPlayerTooltip}">
                         <MenuItem.Icon>
-                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=navigate_right2}" />
+                            <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=navigate_right2}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>

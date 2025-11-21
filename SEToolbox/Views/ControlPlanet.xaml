@@ -16,7 +16,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
              commands:DialogService.IsRegisteredView="True">
     <UserControl.Resources>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Style TargetType="ListViewItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -58,12 +58,12 @@
                 </Menu.ItemsPanel>
                 <MenuItem Header="{lex:Loc CtlPlanetMnuRegenerate}" ToolTip="{lex:Loc CtlPlanetMnuRegenerateDetail}" Command="{Binding RegenerateCommand}" Style="{StaticResource ToolBarTopMenuitem}">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=earth}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=earth}" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem HorizontalAlignment="Right" Style="{StaticResource ToolBarTopMenuitem}" ToolTip="{lex:Loc CtlPlanetMnuCopyDetail}" Command="{Binding CopyDetailCommand}">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=copy}" />
+                        <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=copy}" />
                     </MenuItem.Icon>
                 </MenuItem>
             </Menu>
@@ -76,7 +76,7 @@
             <Grid Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch">
                 <TextBlock Margin="4 0 4 0" Text="{lex:Loc CtlPlanetCenter}"/>
                 <Button Command="{Binding CopyCenterGpsCommand}" ToolTip="{lex:Loc CtlPlanetMnuCopyGpsCenter}" HorizontalAlignment="Right" Margin="0 0 4 0">
-                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=target}"/>
+                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=target}"/>
                 </Button>
             </Grid>
             <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">

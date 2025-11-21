@@ -16,7 +16,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <converters:EnumToResouceConverter x:Key="EnumToResouceConverter"/>
-        <converters:ResouceToImageConverter x:Key="ResouceToImageConverter"/>
+        <converters:ResourceToImageConverter x:Key="ResourceToImageConverter"/>
         <converters:BusyMouseConverter x:Key="BusyMouseConverter"/>
     </Window.Resources>
     <Window.Cursor>
@@ -40,14 +40,14 @@
                 <Label Content="{lex:Loc WnImportAsteroidModelLabelModel}" />
                 <TextBox Width="180" Text="{Binding Filename, Mode=TwoWay}" VerticalAlignment="Center" Name="uxInitialElement" Grid.Column="1"/>
                 <Button ToolTip="{lex:Loc WnImportAsteroidModelBtnBrowseTooltip}" Command="{Binding Browse3DModelCommand}" VerticalAlignment="Center" Grid.Column="2">
-                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=folder}" />
+                    <Image Width="16" Height="16" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=folder}" />
                 </Button>
                 <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="8,0,0,0" Visibility="{Binding IsValidModel, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=check24}" VerticalAlignment="Center"/>
+                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=check24}" VerticalAlignment="Center"/>
                     <TextBlock Text="" VerticalAlignment="Center" Margin="8,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="8,0,0,0" Visibility="{Binding IsWrongModel, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResouceToImageConverter}, ConverterParameter=error24}" VerticalAlignment="Center"/>
+                    <Image Width="24" Height="24" Source="{Binding Converter={StaticResource ResourceToImageConverter}, ConverterParameter=error24}" VerticalAlignment="Center"/>
                     <TextBlock Text="{lex:Loc WnImportAsteroidModelLabelInvalidFile}" VerticalAlignment="Center" Margin="8,0,0,0"/>
                 </StackPanel>
             </Grid>
