@@ -26,6 +26,8 @@ namespace SEToolbox.Interop
 <#
         // NOTE: The template will not run unless the solution has been built in AnyCPU configuration
 
+        GlobalSettings.Default.Load();
+
         string appPath = ToolboxUpdater.GetApplicationFilePath();
 
         if (appPath != null)
