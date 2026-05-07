@@ -67,19 +67,6 @@
             "msvcr120.dll",                     // VRage.Native dependancy.
         };
 
-        //internal static readonly string[] CoreMedievalEngineersFiles = {
-        //    "Sandbox.Common.dll",
-        //    "MedievalEngineers.ObjectBuilders.dll",
-        //    "MedievalEngineers.ObjectBuilders.XmlSerializers.dll",
-        //    "Sandbox.Game.dll",
-        //    "HavokWrapper.dll",
-        //    "VRage.dll",
-        //    "VRage.Game.dll",
-        //    "VRage.Game.XmlSerializers.dll",
-        //    "VRage.Library.dll",
-        //    "VRage.Math.dll"
-        //};
-
         #region GetApplicationFilePath
 
         public static string GetApplicationFilePath()
