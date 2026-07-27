@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/mmusu3/SEToolbox</RepositoryUrl>
     <!-- First 3 numbers to match the current Space Engineers release. https://forum.keenswh.com/threads/about-change-log.6578819/
          Forth number to indicate my own build of SEToolbox to match. Remember to reset it back to 1 every time there is a new release of SpaceEngineers.-->
-    <Version>01.209.020.2</Version>
+    <Version>01.210.011.1</Version>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\SEToolbox.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
@@ -42,9 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.Memory">
-      <HintPath>$(BinPath)\System.Memory.dll</HintPath>
-    </Reference>
     <Reference Include="ProtoBuf.Net">
       <HintPath>$(BinPath)\ProtoBuf.Net.dll</HintPath>
     </Reference>
@@ -145,6 +142,7 @@
     <PackageReference Include="Octokit" Version="13.0.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
   </ItemGroup>
 

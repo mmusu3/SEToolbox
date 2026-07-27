@@ -37,6 +37,8 @@ namespace SEToolbox.Interop
         public IMyCrashReporting CrashReporting => throw new NotImplementedException();
         public IVRageScripting Scripting => throw new NotImplementedException();
 
+        public IMyTaskRunner TaskRunner => MyDefaultTaskRunner.Instance;
+
         IProtoTypeModel typeModel;
 
         public void Init()

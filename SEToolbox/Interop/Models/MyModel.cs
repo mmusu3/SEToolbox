@@ -619,12 +619,14 @@
                 foreach (var bone in clip.Bones)
                 {
                     writer.Write(bone.Name);
-                    writer.Write(bone.Keyframes.Count);
+                    writer.Write(bone.Keyframes.Length);
 
-                    foreach (var keyframe in bone.Keyframes)
+                    for (int i = 0; i < bone.Keyframes.Length; i++)
                     {
-                        writer.Write(keyframe.Time);
+                        ref var keyframe = ref bone.Keyframes[i];
                         var rotation = keyframe.Rotation.ToVector4();
+
+                        writer.Write(keyframe.Time);
                         writer.WriteVector4(ref rotation);
                         writer.WriteVector3(ref keyframe.Translation);
                     }
@@ -1148,14 +1150,21 @@
             {
                 var clipName = reader.ReadString();
                 var duration = reader.ReadDouble();
-                var animationClip = new MyAnimationClip() { Name = clipName, Duration = duration };
+                int boneCount = reader.ReadInt32();
 
-                var boneCount = reader.ReadInt32();
+                var animationClip = new MyAnimationClip() {
+                    Name = clipName,
+                    Duration = duration
+                };
+
                 for (var j = 0; j < boneCount; j++)
                 {
                     var boneName = reader.ReadString();
-                    var bone = new MyAnimationClip.Bone() { Name = boneName };
-                    var keyFrameCount = reader.ReadInt32();
+                    int keyFrameCount = reader.ReadInt32();
+
+                    var bone = new MyAnimationClip.Bone(keyFrameCount) {
+                        Name = boneName
+                    };
 
                     for (var k = 0; k < keyFrameCount; k++)
                     {
@@ -1163,7 +1172,12 @@
                         var vector = ReadVector4(reader);
                         var rotation = new Quaternion(vector.X, vector.Y, vector.Z, vector.W);
                         var translation = ReadVector3(reader);
-                        bone.Keyframes.Add(new MyAnimationClip.Keyframe() { Time = time, Rotation = rotation, Translation = translation });
+
+                        bone.Keyframes[k] = new MyAnimationClip.Keyframe() {
+                            Time = time,
+                            Rotation = rotation,
+                            Translation = translation
+                        };
                     }
 
                     animationClip.Bones.Add(bone);
