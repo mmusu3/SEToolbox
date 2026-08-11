@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: For crashes and other problems
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 - [ ] Ensure you are using the latest version of SEToolbox. You can get it from [here.](https://github.com/mmusu3/SEToolbox/releases/latest)
 - [ ] Ensure that the issue is reproducible, that you can make it occur more than once.
 - [ ] If the issue involves a world / blueprint, please provide the relevant files if possible.
