@@ -62,11 +62,6 @@
             "SixLabors.ImageSharp.dll"
         };
 
-        internal static readonly string[] OptionalSpaceEngineersFiles = {
-            "msvcp120.dll",                     // VRage.Native dependancy.  // testing dropping it these. Keen may have made a mistake by removing them from DS deployment.
-            "msvcr120.dll",                     // VRage.Native dependancy.
-        };
-
         #region GetApplicationFilePath
 
         public static string GetApplicationFilePath()
@@ -193,14 +188,6 @@
             var appFilePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
             foreach (var filename in CoreSpaceEngineersFiles)
-            {
-                var sourceFile = Path.Combine(baseFilePath, filename);
-
-                if (File.Exists(sourceFile))
-                    File.Copy(sourceFile, Path.Combine(appFilePath, filename), true);
-            }
-
-            foreach (var filename in OptionalSpaceEngineersFiles)
             {
                 var sourceFile = Path.Combine(baseFilePath, filename);
 

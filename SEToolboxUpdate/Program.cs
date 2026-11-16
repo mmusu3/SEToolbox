@@ -214,21 +214,6 @@
                 }
             }
 
-            foreach (var fileName in ToolboxUpdater.OptionalSpaceEngineersFiles)
-            {
-                var sourceFile = Path.Combine(baseFilePath, fileName);
-
-                try
-                {
-                    File.Copy(sourceFile, Path.Combine(appFilePath, fileName), overwrite: true);
-                }
-                catch (Exception ex)
-                {
-                    exception = ex;
-                    return false;
-                }
-            }
-
             return true;
         }
     }
